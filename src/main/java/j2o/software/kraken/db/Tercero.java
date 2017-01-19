@@ -9,11 +9,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-/**
- * @author jkelsy
- */
 @Entity(name = "Tercero")
 @Table(name = "tercero")
 public class Tercero implements Serializable {
@@ -24,6 +23,10 @@ public class Tercero implements Serializable {
 
     @Basic
     private String nombre1;
+
+    @ManyToOne(targetEntity = TipoIdentificacion.class)
+    @JoinColumn(name = "TIPOIDENTIFICACION_ID")
+    private TipoIdentificacion tipoIdentificacion;
 
     public Long getId() {
         return this.id;
@@ -39,6 +42,14 @@ public class Tercero implements Serializable {
 
     public void setNombre1(String nombre1) {
         this.nombre1 = nombre1;
+    }
+
+    public TipoIdentificacion getTipoIdentificacion() {
+        return this.tipoIdentificacion;
+    }
+
+    public void setTipoIdentificacion(TipoIdentificacion tipoIdentificacion) {
+        this.tipoIdentificacion = tipoIdentificacion;
     }
 
 }

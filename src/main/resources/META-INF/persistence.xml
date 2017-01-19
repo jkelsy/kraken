@@ -3,6 +3,7 @@
   <persistence-unit name="KrakenPU" transaction-type="JTA">
     <jta-data-source>java:/jboss/datasources/KrakenDS</jta-data-source>
     <class>j2o.software.kraken.db.Tercero</class>
+    <class>j2o.software.kraken.db.TipoIdentificacion</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.hbm2ddl.auto" value="update"/>
