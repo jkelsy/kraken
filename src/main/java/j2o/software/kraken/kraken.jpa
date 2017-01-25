@@ -1,17 +1,42 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" pkg="j2o.software.kraken.db" v="2.6.3" persistenceUnitName="KrakenPU" sm="false" xs="false" id="_14848601690341" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
-    <jpa:entity name="Tercero" lbl-ref="_14848602284832" xre="false" compositePrimaryKeyClass="TerceroPK" abs="false" class="Tercero" visibile="true" minimized="false" rootElement="_14848601690341" id="_1484860228384">
+    <jpa:entity name="Tercero" lbl-ref="_14848602284832" xre="false" compositePrimaryKeyClass="TerceroPK" abs="false" class="Tercero" v="true" minimized="false" rootElement="_14848601690341" id="_1484860228384">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
         <jpa:attributes>
-            <jpa:basic attribute-type="String" visibile="true" name="nombre1" id="_14848603134244">
+            <jpa:basic attribute-type="String" v="true" name="identificacion" id="_14853716443295">
+                <jpa:bv>
+                    <jpa:nn/>
+                </jpa:bv>
+                <jpa:column unique="true" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="Long" v="true" name="digitoVerificacion" id="_148537972708812">
                 <jpa:bv/>
             </jpa:basic>
-            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1484862620704" visibile="true" name="tipoIdentificacion" id="_148486284958710">
+            <jpa:basic attribute-type="String" v="true" name="primerNombre" id="_14853717756966">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="segundoNombre" id="_14853718294797">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="primerApellido" id="_14853718585048">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="segundoApellido" id="_14853718683039">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="sexo" id="_148537919630010">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.sql.Date" v="true" name="fechaNacimiento" id="_148537920983511">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1484862620704" v="true" name="tipoIdentificacion" id="_148486284958710">
+                <jpa:bv/>
                 <jpa:join-column name="TIPOIDENTIFICACION_ID" rc="" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
             </jpa:many-to-one>
-            <jpa:id attribute-type="Long" visibile="true" name="id" id="_14848602284832">
+            <jpa:id attribute-type="Long" v="true" name="id" id="_14848602284832">
                 <jpa:bv/>
                 <jpa:generated-value strategy="IDENTITY"/>
             </jpa:id>
@@ -22,20 +47,48 @@
         <jpa:nq e="false" name="Tercero.findByNombre1">
             <jpa:query>Select t from Tercero t where t.nombre1=:nombre1</jpa:query>
         </jpa:nq>
+        <jpa:nq e="false" name="Tercero.findByIdentificacion">
+            <jpa:query>Select t from Tercero t where t.identificacion=:identificacion</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Tercero.findByIdentificacion">
+            <jpa:query>Select t from Tercero t where t.identificacion=:identificacion</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Tercero.findByPrimerNombre">
+            <jpa:query>Select t from Tercero t where t.primerNombre=:primerNombre</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Tercero.findBySegundoNombre">
+            <jpa:query>Select t from Tercero t where t.segundoNombre=:segundoNombre</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Tercero.findByPrimerApellido">
+            <jpa:query>Select t from Tercero t where t.primerApellido=:primerApellido</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Tercero.findBySegundoApellido">
+            <jpa:query>Select t from Tercero t where t.segundoApellido=:segundoApellido</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Tercero.findBySexo">
+            <jpa:query>Select t from Tercero t where t.sexo=:sexo</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Tercero.findByFechaNacimiento">
+            <jpa:query>Select t from Tercero t where t.fechaNacimiento=:fechaNacimiento</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Tercero.findByDigitoVerificacion">
+            <jpa:query>Select t from Tercero t where t.digitoVerificacion=:digitoVerificacion</jpa:query>
+        </jpa:nq>
+        <jpa:el/>
         <jpa:table name="tercero"/>
     </jpa:entity>
-    <jpa:entity lbl-ref="_14848626207065" xre="false" compositePrimaryKeyClass="TipoIdentificacionPK" abs="false" class="TipoIdentificacion" visibile="true" minimized="false" rootElement="_14848601690341" id="_1484862620704">
+    <jpa:entity lbl-ref="_14848626207065" xre="false" compositePrimaryKeyClass="TipoIdentificacionPK" abs="false" class="TipoIdentificacion" v="true" minimized="false" rootElement="_14848601690341" id="_1484862620704">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
         <jpa:attributes>
-            <jpa:basic attribute-type="String" visibile="true" name="descripcion" id="_14848627594587">
+            <jpa:basic attribute-type="String" v="true" name="descripcion" id="_14848627594587">
                 <jpa:bv/>
             </jpa:basic>
-            <jpa:basic attribute-type="String" visibile="true" name="abreviatura" id="_14848627659388">
+            <jpa:basic attribute-type="String" v="true" name="abreviatura" id="_14848627659388">
                 <jpa:bv/>
             </jpa:basic>
-            <jpa:id attribute-type="Long" visibile="true" name="id" id="_14848626207065">
+            <jpa:id attribute-type="Long" v="true" name="id" id="_14848626207065">
                 <jpa:bv/>
                 <jpa:generated-value strategy="IDENTITY"/>
             </jpa:id>
@@ -49,18 +102,62 @@
         <jpa:nq e="false" name="TipoIdentificacion.findByAbreviatura">
             <jpa:query>Select t from TipoIdentificacion t where t.abreviatura=:abreviatura</jpa:query>
         </jpa:nq>
+        <jpa:el/>
         <jpa:table name="tipo_identificacion"/>
     </jpa:entity>
-    <jpa:snp e="true" loc="BEFORE_PACKAGE">/**
+    <jpa:entity xre="false" compositePrimaryKeyClass="DireccionPK" abs="false" class="Direccion" v="true" minimized="false" rootElement="_14848601690341" id="_1485380178639">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="direccion" id="_148538094559215">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="ciudad" id="_148538096386416">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1484860228384" v="true" name="tercero" id="_148538590638723">
+                <jpa:bv/>
+                <jpa:join-column name="TERCERO_ID" rc="" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
+            </jpa:many-to-one>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_148538017864113">
+                <jpa:bv/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Direccion.findAll">
+            <jpa:query>Select e from Direccion e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Direccion.findByDireccion">
+            <jpa:query>Select d from Direccion d where d.Direccion=:Direccion</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Direccion.findByCiudad">
+            <jpa:query>Select d from Direccion d where d.ciudad=:ciudad</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Direccion.findByIdTercero">
+            <jpa:query>Select d from Direccion d where d.idTercero=:idTercero</jpa:query>
+        </jpa:nq>
+        <jpa:el/>
+    </jpa:entity>
+    <jpa:snp loc="BEFORE_PACKAGE" e="true">/**
  * This file was generated by the JPA Modeler
  */</jpa:snp>
+    <jpa:c>
+        <ct>java.util.List</ct>
+        <ct>java.util.Set</ct>
+        <ct>java.util.Map</ct>
+        <ct>java.util.Collection</ct>
+    </jpa:c>
     <jpa:diagram>
         <plane elementRef="_14848601690341">
             <shape elementRef="_1484860228384">
-                <Bounds x="137.0" y="213.0" width="164.0" height="118.0"/>
+                <Bounds x="61.0" y="32.0" width="149.0" height="273.0"/>
             </shape>
             <shape elementRef="_1484862620704">
-                <Bounds x="431.0" y="67.0" width="221.0" height="106.0"/>
+                <Bounds x="272.0" y="32.0" width="196.0" height="113.0"/>
+            </shape>
+            <shape elementRef="_1485380178639">
+                <Bounds x="353.0" y="267.0" width="150.0" height="147.0"/>
             </shape>
         </plane>
     </jpa:diagram>
