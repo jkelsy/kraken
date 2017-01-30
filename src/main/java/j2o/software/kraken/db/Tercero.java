@@ -49,10 +49,22 @@ public class Tercero {
     private String segundoApellido;
 
     @Basic
-    private String sexo;
+    private String Genero;
+
+    @Basic
+    private String email;
+
+    @Basic
+    private String estadoCivil;
 
     @Basic
     private Date fechaNacimiento;
+
+    @Basic
+    private Date fechaCreacion;
+
+    @Basic
+    private String usuario;
 
     @ManyToOne(targetEntity = TipoIdentificacion.class)
     @JoinColumn(name="TIPOIDENTIFICACION_ID")
@@ -114,12 +126,28 @@ public class Tercero {
         this.segundoApellido = segundoApellido;
     }
 
-    public String getSexo() {
-        return this.sexo;
+    public String getGenero() {
+        return this.Genero;
     }
 
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
+    public void setGenero(String Genero) {
+        this.Genero = Genero;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getEstadoCivil() {
+        return this.estadoCivil;
+    }
+
+    public void setEstadoCivil(String estadoCivil) {
+        this.estadoCivil = estadoCivil;
     }
 
     public Date getFechaNacimiento() {
@@ -128,6 +156,22 @@ public class Tercero {
 
     public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public Date getFechaCreacion() {
+        return this.fechaCreacion;
+    }
+
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public String getUsuario() {
+        return this.usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
     public TipoIdentificacion getTipoIdentificacion() {

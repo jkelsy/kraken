@@ -5,6 +5,8 @@
     <class>j2o.software.kraken.db.Tercero</class>
     <class>j2o.software.kraken.db.TipoIdentificacion</class>
     <class>j2o.software.kraken.db.Direccion</class>
+    <class>j2o.software.kraken.db.Telefono</class>
+    <class>j2o.software.kraken.db.Empresa</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.hbm2ddl.auto" value="update"/>
