@@ -385,7 +385,7 @@
         </jpa:nq>
         <jpa:el/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="TipoDocumentoPK" abs="false" class="TipoDocumento" v="true" minimized="false" rootElement="_14848601690341" id="_1485535597664">
+    <jpa:entity lbl-ref="_148553559767528" xre="false" compositePrimaryKeyClass="TipoDocumentoPK" abs="false" class="TipoDocumento" v="true" minimized="false" rootElement="_14848601690341" id="_1485535597664">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -393,6 +393,9 @@
             <jpa:basic attribute-type="String" v="true" name="nombre" id="_148553563103031">
                 <jpa:bv/>
             </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1485794599783" v="true" name="modulo" id="_148579477113940">
+                <jpa:bv/>
+            </jpa:many-to-one>
             <jpa:id attribute-type="Long" v="true" name="id" id="_148553559767528">
                 <jpa:bv/>
                 <jpa:generated-value strategy="AUTO"/>
@@ -407,9 +410,12 @@
         <jpa:nq e="false" name="TipoDocumento.findByNombre">
             <jpa:query>Select d from TipoDocumento d where d.nombre=:nombre</jpa:query>
         </jpa:nq>
+        <jpa:nq e="false" name="TipoDocumento.findByAttribute">
+            <jpa:query>Select t from TipoDocumento t where t.attribute=:attribute</jpa:query>
+        </jpa:nq>
         <jpa:el/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="AsientoContablePK" abs="false" class="AsientoContable" v="true" minimized="false" rootElement="_14848601690341" id="_1485536213490">
+    <jpa:entity lbl-ref="_148553621350033" xre="false" compositePrimaryKeyClass="AsientoContablePK" abs="false" class="AsientoContable" v="true" minimized="false" rootElement="_14848601690341" id="_1485536213490">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -529,7 +535,7 @@
         </jpa:nq>
         <jpa:el/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="DetalleAsientoPK" abs="true" class="DetalleAsiento" v="true" minimized="false" rootElement="_14848601690341" id="_1485554758762">
+    <jpa:entity lbl-ref="_148555475877061" xre="false" compositePrimaryKeyClass="DetalleAsientoPK" abs="true" class="DetalleAsiento" v="true" minimized="false" rootElement="_14848601690341" id="_1485554758762">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -577,7 +583,7 @@
         </jpa:nq>
         <jpa:el/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="ComprobanteSaldoPK" abs="false" class="ComprobanteSaldo" v="true" minimized="false" rootElement="_14848601690341" id="_1485730188565">
+    <jpa:entity lbl-ref="_148573018858727" xre="false" compositePrimaryKeyClass="ComprobanteSaldoPK" abs="false" class="ComprobanteSaldo" v="true" minimized="false" rootElement="_14848601690341" id="_1485730188565">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -613,21 +619,21 @@
         </jpa:nq>
         <jpa:el/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="DetalleSaldoCuentaPK" abs="false" class="DetalleSaldoCuenta" v="true" minimized="false" rootElement="_14848601690341" id="_1485731254704">
+    <jpa:entity lbl-ref="_148573125471731" xre="false" compositePrimaryKeyClass="DetalleSaldoCuentaPK" abs="false" class="DetalleSaldoCuenta" v="true" minimized="false" rootElement="_14848601690341" id="_1485731254704">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
         <jpa:attributes>
-            <jpa:basic attribute-type="String" v="true" name="saldoAnterior" id="_148573283060237">
+            <jpa:basic attribute-type="double" v="true" name="saldoAnterior" id="_148573283060237">
                 <jpa:bv/>
             </jpa:basic>
-            <jpa:basic attribute-type="int" v="true" name="valorDB" id="_148573145020333">
+            <jpa:basic attribute-type="double" v="true" name="valorDB" id="_148573145020333">
                 <jpa:bv/>
             </jpa:basic>
-            <jpa:basic attribute-type="int" v="true" name="valorCR" id="_148573157852234">
+            <jpa:basic attribute-type="double" v="true" name="valorCR" id="_148573157852234">
                 <jpa:bv/>
             </jpa:basic>
-            <jpa:basic attribute-type="java.math.BigDecimal" v="true" name="saldoFinal" id="_148573292903238">
+            <jpa:basic attribute-type="Double" v="true" name="saldoFinal" id="_148573292903238">
                 <jpa:bv/>
             </jpa:basic>
             <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1485730188565" v="true" name="comprobanteSaldo" id="_148573166839535">
@@ -658,21 +664,21 @@
         </jpa:nq>
         <jpa:el/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="DetalleSaldoTerceroPK" abs="false" class="DetalleSaldoTercero" v="true" minimized="false" rootElement="_14848601690341" id="_1485733066869">
+    <jpa:entity lbl-ref="_148573306688239" xre="false" compositePrimaryKeyClass="DetalleSaldoTerceroPK" abs="false" class="DetalleSaldoTercero" v="true" minimized="false" rootElement="_14848601690341" id="_1485733066869">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
         <jpa:attributes>
-            <jpa:basic attribute-type="String" v="true" name="saldoAnterior" id="_148573324614241">
+            <jpa:basic attribute-type="double" v="true" name="saldoAnterior" id="_148573324614241">
                 <jpa:bv/>
             </jpa:basic>
-            <jpa:basic attribute-type="String" v="true" name="valorDB" id="_148573331038942">
+            <jpa:basic attribute-type="double" v="true" name="valorDB" id="_148573331038942">
                 <jpa:bv/>
             </jpa:basic>
-            <jpa:basic attribute-type="String" v="true" name="valorCR" id="_148573332403743">
+            <jpa:basic attribute-type="double" v="true" name="valorCR" id="_148573332403743">
                 <jpa:bv/>
             </jpa:basic>
-            <jpa:basic attribute-type="String" v="true" name="saldoFinal" id="_148573333318144">
+            <jpa:basic attribute-type="double" v="true" name="saldoFinal" id="_148573333318144">
                 <jpa:bv/>
             </jpa:basic>
             <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1485730188565" v="true" name="comprobanteSaldo" id="_148573337920745">
@@ -703,6 +709,63 @@
         </jpa:nq>
         <jpa:nq e="false" name="DetalleSaldoTercero.findBySaldoFinal">
             <jpa:query>Select d from DetalleSaldoTercero d where d.saldoFinal=:saldoFinal</jpa:query>
+        </jpa:nq>
+        <jpa:el/>
+    </jpa:entity>
+    <jpa:entity lbl-ref="_148579459991935" xre="false" compositePrimaryKeyClass="ModuloPK" abs="false" class="Modulo" v="true" minimized="false" rootElement="_14848601690341" id="_1485794599783">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="nombre" id="_148579465594337">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1485471392339" v="true" name="empresa" id="_148579468314638">
+                <jpa:bv/>
+            </jpa:many-to-one>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_148579459991935">
+                <jpa:bv/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Modulo.findAll">
+            <jpa:query>Select e from Modulo e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Modulo.findByNombre">
+            <jpa:query>Select m from Modulo m where m.nombre=:nombre</jpa:query>
+        </jpa:nq>
+        <jpa:el/>
+    </jpa:entity>
+    <jpa:entity lbl-ref="_148579482404541" xre="false" compositePrimaryKeyClass="DetalleDocumentoPK" abs="false" class="DetalleDocumento" v="true" minimized="false" rootElement="_14848601690341" id="_1485794823928">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="naturaleza" id="_148580442512743">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="acreedora" id="_148580455889644">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1485535597664" v="true" name="tipoDocumento" id="_148580460095345">
+                <jpa:bv/>
+            </jpa:many-to-one>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1485532388500" v="true" name="planUnicoCuentas" id="_148580463257346">
+                <jpa:bv/>
+            </jpa:many-to-one>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_148579482404541">
+                <jpa:bv/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="DetalleDocumento.findAll">
+            <jpa:query>Select e from DetalleDocumento e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="DetalleDocumento.findByNaturaleza">
+            <jpa:query>Select d from DetalleDocumento d where d.naturaleza=:naturaleza</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="DetalleDocumento.findByAcreedora">
+            <jpa:query>Select d from DetalleDocumento d where d.acreedora=:acreedora</jpa:query>
         </jpa:nq>
         <jpa:el/>
     </jpa:entity>
@@ -739,25 +802,31 @@
                 <Bounds x="645.0" y="26.0" width="167.0" height="252.0"/>
             </shape>
             <shape elementRef="_1485535597664">
-                <Bounds x="687.0" y="292.0" width="185.0" height="92.0"/>
+                <Bounds x="1101.0" y="149.0" width="185.0" height="126.0"/>
             </shape>
             <shape elementRef="_1485536213490">
-                <Bounds x="645.0" y="411.0" width="189.0" height="273.0"/>
+                <Bounds x="623.0" y="320.0" width="189.0" height="273.0"/>
             </shape>
             <shape elementRef="_1485552878846">
                 <Bounds x="872.0" y="47.0" width="140.0" height="231.0"/>
             </shape>
             <shape elementRef="_1485554758762">
-                <Bounds x="872.0" y="352.0" width="178.0" height="231.0"/>
+                <Bounds x="834.0" y="341.0" width="178.0" height="231.0"/>
             </shape>
             <shape elementRef="_1485730188565">
-                <Bounds x="1066.0" y="65.0" width="205.0" height="168.0"/>
+                <Bounds x="1066.0" y="562.0" width="205.0" height="168.0"/>
             </shape>
             <shape elementRef="_1485731254704">
-                <Bounds x="1066.0" y="323.0" width="207.0" height="210.0"/>
+                <Bounds x="1090.0" y="318.0" width="207.0" height="210.0"/>
             </shape>
             <shape elementRef="_1485733066869">
-                <Bounds x="1336.0" y="223.0" width="212.0" height="231.0"/>
+                <Bounds x="1321.0" y="380.0" width="212.0" height="231.0"/>
+            </shape>
+            <shape elementRef="_1485794599783">
+                <Bounds x="1066.0" y="-6.0" width="137.0" height="126.0"/>
+            </shape>
+            <shape elementRef="_1485794823928">
+                <Bounds x="1321.0" y="78.0" width="200.0" height="168.0"/>
             </shape>
         </plane>
     </jpa:diagram>
