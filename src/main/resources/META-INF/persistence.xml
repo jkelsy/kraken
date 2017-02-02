@@ -7,6 +7,22 @@
     <class>j2o.software.kraken.db.Direccion</class>
     <class>j2o.software.kraken.db.Telefono</class>
     <class>j2o.software.kraken.db.Empresa</class>
+    <class>j2o.software.kraken.db.contabilidad.pcga.Tercero</class>
+    <class>j2o.software.kraken.db.contabilidad.pcga.TipoIdentificacion</class>
+    <class>j2o.software.kraken.db.contabilidad.pcga.Direccion</class>
+    <class>j2o.software.kraken.db.contabilidad.pcga.Telefono</class>
+    <class>j2o.software.kraken.db.contabilidad.pcga.Empresa</class>
+    <class>j2o.software.kraken.db.contabilidad.pcga.PlanUnicoCuentas</class>
+    <class>j2o.software.kraken.db.contabilidad.pcga.CentroCosto</class>
+    <class>j2o.software.kraken.db.contabilidad.pcga.TipoDocumento</class>
+    <class>j2o.software.kraken.db.contabilidad.pcga.AsientoContable</class>
+    <class>j2o.software.kraken.db.contabilidad.pcga.Periodo</class>
+    <class>j2o.software.kraken.db.contabilidad.pcga.DetalleAsiento</class>
+    <class>j2o.software.kraken.db.contabilidad.pcga.ComprobanteSaldo</class>
+    <class>j2o.software.kraken.db.contabilidad.pcga.DetalleSaldoCuenta</class>
+    <class>j2o.software.kraken.db.contabilidad.pcga.DetalleSaldoTercero</class>
+    <class>j2o.software.kraken.db.contabilidad.pcga.Modulo</class>
+    <class>j2o.software.kraken.db.contabilidad.pcga.DetalleDocumento</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.hbm2ddl.auto" value="update"/>

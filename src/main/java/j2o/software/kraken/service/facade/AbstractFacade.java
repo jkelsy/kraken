@@ -12,100 +12,82 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-public abstract class AbstractFacade<E, P> {
+public abstract class AbstractFacade<T> {
 
-    private final Class<E> entityClass;
+    private final Class<T> entityClass;
 
-    public AbstractFacade(Class<E> entityClass) {
+    public AbstractFacade(Class<T> entityClass) {
         this.entityClass = entityClass;
     }
 
     protected abstract EntityManager getEntityManager();
 
-    public void create(E entity) {
+    public void create(T entity) {
         getEntityManager().persist(entity);
     }
 
-    public E edit(E entity) {
+    public T edit(T entity) {
         return getEntityManager().merge(entity);
     }
 
-    public void remove(E entity) {
+    public void remove(T entity) {
         getEntityManager().remove(getEntityManager().merge(entity));
     }
 
-    public P getIdentifier(E entity) {
-        return (P) getEntityManager().getEntityManagerFactory().getPersistenceUnitUtil().getIdentifier(entity);
-    }
-
-    public E find(P id) {
+    public T find(Object id) {
         return getEntityManager().find(entityClass, id);
     }
 
-    public List<E> findAll() {
+    public List<T> findAll() {
         CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
         return getEntityManager().createQuery(cq).getResultList();
     }
 
-    public List<E> findRange(int startPosition, int size) {
-        return findRange(startPosition, size, null);
-    }
-
-    public List<E> findRange(int startPosition, int size, String entityGraph) {
+    public List<T> findRange(int startPosition, int size) {
         CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
         Query q = getEntityManager().createQuery(cq);
         q.setMaxResults(size);
         q.setFirstResult(startPosition);
-        if (entityGraph != null) {
-            q.setHint("javax.persistence.loadgraph", getEntityManager().getEntityGraph(entityGraph));
-        }
         return q.getResultList();
     }
 
     public int count() {
         CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
-        Root<E> rt = cq.from(entityClass);
+        Root<T> rt = cq.from(entityClass);
         cq.select(getEntityManager().getCriteriaBuilder().count(rt));
         Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
     }
 
-    public Optional<E> findSingleByNamedQuery(String namedQueryName, Class<E> classT) {
+    public Optional<T> findSingleByNamedQuery(String namedQueryName, Class<T> classT) {
         return findOrEmpty(() -> getEntityManager().createNamedQuery(namedQueryName, classT).getSingleResult());
     }
 
-    public Optional<E> findSingleByNamedQuery(String namedQueryName, Map<String, Object> parameters, Class<E> classT) {
-        return findSingleByNamedQuery(namedQueryName, null, parameters, classT);
-    }
-
-    public Optional<E> findSingleByNamedQuery(String namedQueryName, String entityGraph, Map<String, Object> parameters, Class<E> classT) {
+    public Optional<T> findSingleByNamedQuery(String namedQueryName, Map<String, Object> parameters, Class<T> classT) {
         Set<Entry<String, Object>> rawParameters = parameters.entrySet();
-        TypedQuery<E> query = getEntityManager().createNamedQuery(namedQueryName, classT);
+        TypedQuery<T> query = getEntityManager().createNamedQuery(namedQueryName, classT);
         rawParameters.stream().forEach((entry) -> {
             query.setParameter(entry.getKey(), entry.getValue());
         });
-        if (entityGraph != null) {
-            query.setHint("javax.persistence.loadgraph", getEntityManager().getEntityGraph(entityGraph));
-        }
         return findOrEmpty(() -> query.getSingleResult());
     }
 
-    public List<E> findByNamedQuery(String namedQueryName) {
+    public List<T> findByNamedQuery(String namedQueryName) {
         return getEntityManager().createNamedQuery(namedQueryName).getResultList();
     }
 
-    public List<E> findByNamedQuery(String namedQueryName, Map<String, Object> parameters) {
+    public List<T> findByNamedQuery(String namedQueryName, Map<String, Object> parameters) {
         return findByNamedQuery(namedQueryName, parameters, 0);
     }
 
-    public List<E> findByNamedQuery(String queryName, int resultLimit) {
+    public List<T> findByNamedQuery(String queryName, int resultLimit) {
         return getEntityManager().createNamedQuery(queryName).
                 setMaxResults(resultLimit).getResultList();
     }
 
-    public List<E> findByNamedQuery(String namedQueryName, Map<String, Object> parameters, int resultLimit) {
+    public List<T> findByNamedQuery(String namedQueryName, Map<String, Object> parameters, int resultLimit) {
         Set<Entry<String, Object>> rawParameters = parameters.entrySet();
         Query query = getEntityManager().createNamedQuery(namedQueryName);
         if (resultLimit > 0) {
@@ -117,7 +99,7 @@ public abstract class AbstractFacade<E, P> {
         return query.getResultList();
     }
 
-    public static <E> Optional<E> findOrEmpty(final DaoRetriever<E> retriever) {
+    public static <T> Optional<T> findOrEmpty(final DaoRetriever<T> retriever) {
         try {
             return Optional.of(retriever.retrieve());
         } catch (NoResultException ex) {
@@ -127,9 +109,9 @@ public abstract class AbstractFacade<E, P> {
     }
 
     @FunctionalInterface
-    public interface DaoRetriever<E> {
+    public interface DaoRetriever<T> {
 
-        E retrieve() throws NoResultException;
+        T retrieve() throws NoResultException;
     }
 
 }

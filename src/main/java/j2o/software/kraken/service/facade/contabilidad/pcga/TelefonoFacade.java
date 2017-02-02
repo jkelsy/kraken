@@ -1,14 +1,15 @@
-package j2o.software.kraken.service.facade;
+package j2o.software.kraken.service.facade.contabilidad.pcga;
 
 import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import j2o.software.kraken.db.Tercero;
+import j2o.software.kraken.db.contabilidad.pcga.Telefono;
+import j2o.software.kraken.service.facade.AbstractFacade;
 
 @Stateless
-@Named("tercero")
-public class TerceroFacade extends AbstractFacade<Tercero, Long> {
+@Named("telefono")
+public class TelefonoFacade extends AbstractFacade<Telefono> {
 
     @PersistenceContext(unitName = "KrakenPU")
     private EntityManager em;
@@ -18,8 +19,8 @@ public class TerceroFacade extends AbstractFacade<Tercero, Long> {
         return em;
     }
 
-    public TerceroFacade() {
-        super(Tercero.class);
+    public TelefonoFacade() {
+        super(Telefono.class);
     }
 
 }
