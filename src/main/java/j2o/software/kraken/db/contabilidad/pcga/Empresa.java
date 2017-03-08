@@ -4,18 +4,22 @@
 package j2o.software.kraken.db.contabilidad.pcga;
 
 import java.io.Serializable;
+import j2o.software.kraken.db.Usuario;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  * @author jkelsy
  */
 @Entity
+@Table(name = "conf_empresa")
 public class Empresa implements Serializable {
 
     @Id
@@ -37,9 +41,9 @@ public class Empresa implements Serializable {
     @Basic
     private String email;
 
-    @OneToOne(targetEntity = Tercero.class)
-    @JoinColumn(name = "REPRESENTANTE_ID")
-    private Tercero representante;
+    @OneToMany(targetEntity = Usuario.class)
+    @JoinColumn(name = "CREADO_POR")
+    private List<Usuario> creado_por;
 
     public Long getId() {
         return this.id;
@@ -89,12 +93,12 @@ public class Empresa implements Serializable {
         this.email = email;
     }
 
-    public Tercero getRepresentante() {
-        return this.representante;
+    public List<Usuario> getCreado_por() {
+        return this.creado_por;
     }
 
-    public void setRepresentante(Tercero representante) {
-        this.representante = representante;
+    public void setCreado_por(List<Usuario> creado_por) {
+        this.creado_por = creado_por;
     }
 
 }

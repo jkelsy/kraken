@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">    
+    <h:body>
+        <ui:composition template="/plantilla.xhtml">
+            <ui:define name="contentHeader">
+                <h1>
+                    <small>CREAR TERCERO</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <h:link outcome="/pages/configuracion/tercero/terceroListado"><i class="fa fa-link"></i> <span>Listado de Terceros</span></h:link>
+                </ol> 
+            </ui:define>
+            <ui:define name="content">
+                <f:view>
+
+
+                    <h:form>
+                        <h1><h:outputText value="Create/Edit"/></h1>
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="Id:" for="id" />
+                            <p:inputText id="id" value="#{terceroController.nuevo.id}" title="Id" />
+                            <p:outputLabel value="Identificacion:" for="identificacion" />
+                            <p:inputText id="identificacion" value="#{terceroController.nuevo.identificacion}" title="Identificacion" />
+                            <p:outputLabel value="DigitoVerificacion:" for="digitoVerificacion" />
+                            <p:inputText id="digitoVerificacion" value="#{terceroController.nuevo.digitoVerificacion}" title="DigitoVerificacion" />
+                            <p:outputLabel value="PrimerNombre:" for="primerNombre" />
+                            <p:inputText id="primerNombre" value="#{terceroController.nuevo.primerNombre}" title="PrimerNombre" />
+                            <p:outputLabel value="SegundoNombre:" for="segundoNombre" />
+                            <p:inputText id="segundoNombre" value="#{terceroController.nuevo.segundoNombre}" title="SegundoNombre" />
+                            <p:outputLabel value="PrimerApellido:" for="primerApellido" />
+                            <p:inputText id="primerApellido" value="#{terceroController.nuevo.primerApellido}" title="PrimerApellido" />
+                            <p:outputLabel value="SegundoApellido:" for="segundoApellido" />
+                            <p:inputText id="segundoApellido" value="#{terceroController.nuevo.segundoApellido}" title="SegundoApellido" />
+                            <p:outputLabel value="Genero:" for="genero" />
+                            <p:inputText id="genero" value="#{terceroController.nuevo.genero}" title="Genero" />
+                            <p:outputLabel value="Email:" for="email" />
+                            <p:inputText id="email" value="#{terceroController.nuevo.email}" title="Email" />
+                            <p:outputLabel value="EstadoCivil:" for="estadoCivil" />
+                            <p:inputText id="estadoCivil" value="#{terceroController.nuevo.estadoCivil}" title="EstadoCivil" />
+                            <p:outputLabel value="FechaNacimiento:" for="fechaNacimiento" />
+                            <p:inputText id="fechaNacimiento" value="#{terceroController.nuevo.fechaNacimiento}" title="FechaNacimiento" />
+                            <p:outputLabel value="FechaCreacion:" for="fechaCreacion" />
+                            <p:inputText id="fechaCreacion" value="#{terceroController.nuevo.fechaCreacion}" title="FechaCreacion" />
+                            <p:outputLabel value="Usuario:" for="usuario" />
+                            <p:inputText id="usuario" value="#{terceroController.nuevo.usuario}" title="Usuario" />
+                            <p:outputLabel value="TipoIdentificacion:" for="tipoIdentificacion" />
+                            <p:selectOneMenu id="tipoIdentificacion" value="#{terceroController.nuevo.tipoIdentificacion}" >
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{fixme}"/>
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Empresa:" for="empresa" />
+                            <p:selectOneMenu id="empresa" value="#{terceroController.nuevo.empresa}" >
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{fixme}"/>
+                            </p:selectOneMenu>
+                        </p:panelGrid>
+                    </h:form>
+                </f:view>
+
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

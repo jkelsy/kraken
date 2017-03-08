@@ -23,6 +23,11 @@
     <class>j2o.software.kraken.db.contabilidad.pcga.DetalleSaldoTercero</class>
     <class>j2o.software.kraken.db.contabilidad.pcga.Modulo</class>
     <class>j2o.software.kraken.db.contabilidad.pcga.DetalleDocumento</class>
+    <class>j2o.software.kraken.db.Representante</class>
+    <class>j2o.software.kraken.db.contabilidad.pcga.Representante</class>
+    <class>j2o.software.kraken.db.Usuario</class>
+    <class>j2o.software.kraken.db.Rol</class>
+    <class>j2o.software.kraken.db.Permiso</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.hbm2ddl.auto" value="update"/>

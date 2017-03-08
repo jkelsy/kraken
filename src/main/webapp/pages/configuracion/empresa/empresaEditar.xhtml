@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">    
+    <h:body>
+        <ui:composition template="/plantilla.xhtml">
+            <ui:define name="contentHeader">
+                <h1>
+                    <small>EDITAR EMPRESA</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <h:link outcome="/pages/configuracion/empresa/empresaListado"><i class="fa fa-link"></i> <span>Listado de Empresas</span></h:link>
+                </ol> 
+            </ui:define>
+            <ui:define name="content">
+                <f:metadata>  
+                    <f:viewParam name="id" value="#{empresaController.id}"/>
+                    <f:viewAction action="#{empresaController.cargarEditar()}"/>
+                </f:metadata>
+                <f:view>
+                    <h:form>
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="Identificacion:" for="identificacion" />
+                            <p:inputText id="identificacion" value="#{empresaController.nueva.identificacion}" title="Identificacion" />
+                            <p:outputLabel value="Nombre:" for="nombre" />
+                            <p:inputText id="nombre" value="#{empresaController.nueva.nombre}" title="Nombre" />
+                            <p:outputLabel value="Direccion:" for="direccion" />
+                            <p:inputText id="direccion" value="#{empresaController.nueva.direccion}" title="Direccion" />
+                            <p:outputLabel value="Telefono:" for="telefono" />
+                            <p:inputText id="telefono" value="#{empresaController.nueva.telefono}" title="Telefono" />
+                            <p:outputLabel value="Email:" for="email" />
+                            <p:inputText id="email" value="#{empresaController.nueva.email}" title="Email" />
+                        </p:panelGrid>
+                        <p:commandButton action="#{empresaController.editar()}" value="Guardar"/>
+                    </h:form>
+                </f:view>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
