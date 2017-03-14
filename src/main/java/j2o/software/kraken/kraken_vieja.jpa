@@ -1,0 +1,916 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" pkg="j2o.software.kraken.db" v="2.6.3" rws="_1489530384333298" Pws="_1489530384333298" cws="_1489530384333298" persistenceUnitName="KrakenPU" sm="false" xs="false" id="_14848601690341" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
+    <jpa:entity name="Tercero" lbl-ref="_14848602284832" xre="false" compositePrimaryKeyClass="TerceroPK" abs="false" class="Tercero" v="true" gen="false" pkg="contabilidad.pcga" m="false" rootElement="_14848601690341" id="_1484860228384">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="identificacion" id="_14853716443295">
+                <jpa:bv>
+                    <jpa:nn/>
+                </jpa:bv>
+            </jpa:basic>
+            <jpa:basic attribute-type="Long" v="true" name="digitoVerificacion" id="_148537972708812">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="primerNombre" id="_14853717756966">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="segundoNombre" id="_14853718294797">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="primerApellido" id="_14853718585048">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="segundoApellido" id="_14853718683039">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="genero" id="_148537919630010">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="email" id="_148547102620712">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="estadoCivil" id="_148547118235714">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.sql.Date" v="true" name="fechaNacimiento" id="_148537920983511">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.sql.Date" v="true" name="fechaCreacion" id="_14854423530166">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="usuario" id="_14854707077687">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1484862620704" v="true" name="tipoIdentificacion" id="_148486284958710">
+                <jpa:bv/>
+                <jpa:join-column name="TIPOIDENTIFICACION_ID" rc="" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
+            </jpa:many-to-one>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1485471392339" v="true" name="empresa" id="_148553172155710">
+                <jpa:bv/>
+            </jpa:many-to-one>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_14848602284832">
+                <jpa:bv/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Tercero.findAll">
+            <jpa:query>Select e from Tercero e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Tercero.findByNombre1">
+            <jpa:query>Select t from Tercero t where t.nombre1=:nombre1</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Tercero.findByIdentificacion">
+            <jpa:query>Select t from Tercero t where t.identificacion=:identificacion</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Tercero.findByIdentificacion">
+            <jpa:query>Select t from Tercero t where t.identificacion=:identificacion</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Tercero.findByPrimerNombre">
+            <jpa:query>Select t from Tercero t where t.primerNombre=:primerNombre</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Tercero.findBySegundoNombre">
+            <jpa:query>Select t from Tercero t where t.segundoNombre=:segundoNombre</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Tercero.findByPrimerApellido">
+            <jpa:query>Select t from Tercero t where t.primerApellido=:primerApellido</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Tercero.findBySegundoApellido">
+            <jpa:query>Select t from Tercero t where t.segundoApellido=:segundoApellido</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Tercero.findByGenero">
+            <jpa:query>Select t from Tercero t where t.genero=:genero</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Tercero.findByFechaNacimiento">
+            <jpa:query>Select t from Tercero t where t.fechaNacimiento=:fechaNacimiento</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Tercero.findByDigitoVerificacion">
+            <jpa:query>Select t from Tercero t where t.digitoVerificacion=:digitoVerificacion</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Tercero.findByFechaCreacion">
+            <jpa:query>Select t from Tercero t where t.fechaCreacion=:fechaCreacion</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Tercero.findByUsuario">
+            <jpa:query>Select t from Tercero t where t.usuario=:usuario</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Tercero.findByEmail">
+            <jpa:query>Select t from Tercero t where t.email=:email</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Tercero.findByEstadoCivil">
+            <jpa:query>Select t from Tercero t where t.estadoCivil=:estadoCivil</jpa:query>
+        </jpa:nq>
+        <jpa:el/>
+        <jpa:table name="tercero"/>
+    </jpa:entity>
+    <jpa:entity lbl-ref="_14848626207065" xre="false" compositePrimaryKeyClass="TipoIdentificacionPK" abs="false" class="TipoIdentificacion" v="true" gen="false" pkg="contabilidad.pcga" m="false" rootElement="_14848601690341" id="_1484862620704">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="descripcion" id="_14848627594587">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="abreviatura" id="_14848627659388">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_14848626207065">
+                <jpa:bv/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="TipoIdentificacion.findAll">
+            <jpa:query>Select e from TipoIdentificacion e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="TipoIdentificacion.findByDescripcion">
+            <jpa:query>Select t from TipoIdentificacion t where t.descripcion=:descripcion</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="TipoIdentificacion.findByAbreviatura">
+            <jpa:query>Select t from TipoIdentificacion t where t.abreviatura=:abreviatura</jpa:query>
+        </jpa:nq>
+        <jpa:el/>
+        <jpa:table name="tipo_identificacion"/>
+    </jpa:entity>
+    <jpa:entity lbl-ref="_148538017864113" xre="false" compositePrimaryKeyClass="DireccionPK" abs="false" class="Direccion" v="true" gen="false" pkg="contabilidad.pcga" m="false" rootElement="_14848601690341" id="_1485380178639">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="direccion" id="_148538094559215">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="ciudad" id="_148538096386416">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1484860228384" v="true" name="tercero" id="_148538590638723">
+                <jpa:bv/>
+                <jpa:join-column name="TERCERO_ID" rc="" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
+            </jpa:many-to-one>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_148538017864113">
+                <jpa:bv/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Direccion.findAll">
+            <jpa:query>Select e from Direccion e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Direccion.findByDireccion">
+            <jpa:query>Select d from Direccion d where d.Direccion=:Direccion</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Direccion.findByCiudad">
+            <jpa:query>Select d from Direccion d where d.ciudad=:ciudad</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Direccion.findByIdTercero">
+            <jpa:query>Select d from Direccion d where d.idTercero=:idTercero</jpa:query>
+        </jpa:nq>
+        <jpa:el/>
+    </jpa:entity>
+    <jpa:entity lbl-ref="_14854707899558" xre="false" compositePrimaryKeyClass="TelefonoPK" abs="false" class="Telefono" v="true" gen="false" pkg="contabilidad.pcga" m="false" rootElement="_14848601690341" id="_1485470789931">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="numero" id="_148547082200810">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="tipoTel" id="_148547084172811">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1484860228384" v="true" name="tercero" id="_148547113817513">
+                <jpa:bv/>
+            </jpa:many-to-one>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_14854707899558">
+                <jpa:bv/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Telefono.findAll">
+            <jpa:query>Select e from Telefono e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Telefono.findByNumero">
+            <jpa:query>Select t from Telefono t where t.numero=:numero</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Telefono.findByTipoTel">
+            <jpa:query>Select t from Telefono t where t.tipoTel=:tipoTel</jpa:query>
+        </jpa:nq>
+        <jpa:el/>
+    </jpa:entity>
+    <jpa:entity lbl-ref="_148547139234115" xre="false" compositePrimaryKeyClass="EmpresaPK" abs="false" class="Empresa" v="true" pkg="contabilidad.pcga" m="false" rootElement="_14848601690341" id="_1485471392339">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="identificacion" id="_148547140695517">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="nombre" id="_148547144887618">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="direccion" id="_148547147942719">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="telefono" id="_148547149814720">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="email" id="_148547151732321">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:one-to-many orp="false" own="true" collection-type="java.util.List" connected-entity-id="_1488041610613" v="true" name="creado_por" id="_1488042106180119">
+                <jpa:bv/>
+                <jpa:join-column name="CREADO_POR" rc="" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
+            </jpa:one-to-many>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_148547139234115">
+                <jpa:bv/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Empresa.findAll">
+            <jpa:query>Select e from Empresa e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Empresa.findByIdentificacion">
+            <jpa:query>Select e from Empresa e where e.identificacion=:identificacion</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Empresa.findByNombre">
+            <jpa:query>Select e from Empresa e where e.nombre=:nombre</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Empresa.findByDireccion">
+            <jpa:query>Select e from Empresa e where e.direccion=:direccion</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Empresa.findByTelefono">
+            <jpa:query>Select e from Empresa e where e.telefono=:telefono</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Empresa.findByEmail">
+            <jpa:query>Select e from Empresa e where e.email=:email</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Empresa.findByIdRepresentante">
+            <jpa:query>Select e from Empresa e where e.idRepresentante=:idRepresentante</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Empresa.findByIdRepresentante">
+            <jpa:query>Select e from Empresa e where e.idRepresentante=:idRepresentante</jpa:query>
+        </jpa:nq>
+        <jpa:el/>
+        <jpa:table name="conf_empresa"/>
+    </jpa:entity>
+    <jpa:entity lbl-ref="_148553238851511" xre="false" compositePrimaryKeyClass="PlanUnicoCuentasPK" abs="false" class="PlanUnicoCuentas" v="true" gen="false" pkg="contabilidad.pcga" m="false" rootElement="_14848601690341" id="_1485532388500">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="cuenta" id="_148553617270732">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="pertenece" id="_148553287778614">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="nombre" id="_148553315490315">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="naturaleza" id="_148555601290964">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="nivel" id="_148553319489616">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="auxiliar" id="_148553320878617">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="clase" id="_148553323220018">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.sql.Date" v="true" name="fecha" id="_148555332972751">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="usuario" id="_148555341668652">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1485471392339" v="true" name="empresa" id="_148553327500219">
+                <jpa:bv/>
+            </jpa:many-to-one>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_148553238851511">
+                <jpa:bv/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="PlanUnicoCuentas.findAll">
+            <jpa:query>Select e from PlanUnicoCuentas e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="PlanUnicoCuentas.findById">
+            <jpa:query>Select p from PlanUnicoCuentas p where p.id=:id</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="PlanUnicoCuentas.findByPertenece">
+            <jpa:query>Select p from PlanUnicoCuentas p where p.pertenece=:pertenece</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="PlanUnicoCuentas.findByNombre">
+            <jpa:query>Select p from PlanUnicoCuentas p where p.nombre=:nombre</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="PlanUnicoCuentas.findByNivel">
+            <jpa:query>Select p from PlanUnicoCuentas p where p.nivel=:nivel</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="PlanUnicoCuentas.findByAuxiliar">
+            <jpa:query>Select p from PlanUnicoCuentas p where p.auxiliar=:auxiliar</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="PlanUnicoCuentas.findByClase">
+            <jpa:query>Select p from PlanUnicoCuentas p where p.clase=:clase</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="PlanUnicoCuentas.findByCuenta">
+            <jpa:query>Select p from PlanUnicoCuentas p where p.cuenta=:cuenta</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="PlanUnicoCuentas.findByFecha">
+            <jpa:query>Select p from PlanUnicoCuentas p where p.fecha=:fecha</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="PlanUnicoCuentas.findByUsuario">
+            <jpa:query>Select p from PlanUnicoCuentas p where p.usuario=:usuario</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="PlanUnicoCuentas.findByNaturaleza">
+            <jpa:query>Select p from PlanUnicoCuentas p where p.naturaleza=:naturaleza</jpa:query>
+        </jpa:nq>
+        <jpa:el/>
+    </jpa:entity>
+    <jpa:entity lbl-ref="_148553423606420" xre="false" compositePrimaryKeyClass="CentroCostoPK" abs="false" class="CentroCosto" v="true" gen="false" pkg="contabilidad.pcga" m="false" rootElement="_14848601690341" id="_1485534236056">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="codigo" id="_148553427211122">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="nombre" id="_148553427977623">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="pertenece" id="_148553477286024">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="nivel" id="_148553491486825">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="nivelFinal" id="_148553492492426">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="Usuario" id="_148555469608559">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.sql.Date" v="true" name="fecha" id="_148555470358260">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1485471392339" v="true" name="empresa" id="_148553501664327">
+                <jpa:bv/>
+            </jpa:many-to-one>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_148553423606420">
+                <jpa:bv/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="CentroCosto.findAll">
+            <jpa:query>Select e from CentroCosto e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="CentroCosto.findByCodigo">
+            <jpa:query>Select c from CentroCosto c where c.codigo=:codigo</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="CentroCosto.findByNombre">
+            <jpa:query>Select c from CentroCosto c where c.nombre=:nombre</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="CentroCosto.findByPertenece">
+            <jpa:query>Select c from CentroCosto c where c.pertenece=:pertenece</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="CentroCosto.findByNivel">
+            <jpa:query>Select c from CentroCosto c where c.nivel=:nivel</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="CentroCosto.findByNivelFinal">
+            <jpa:query>Select c from CentroCosto c where c.nivelFinal=:nivelFinal</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="CentroCosto.findByUsuario">
+            <jpa:query>Select c from CentroCosto c where c.Usuario=:Usuario</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="CentroCosto.findByFecha">
+            <jpa:query>Select c from CentroCosto c where c.fecha=:fecha</jpa:query>
+        </jpa:nq>
+        <jpa:el/>
+    </jpa:entity>
+    <jpa:entity lbl-ref="_148553559767528" xre="false" compositePrimaryKeyClass="TipoDocumentoPK" abs="false" class="TipoDocumento" v="true" gen="false" pkg="contabilidad.pcga" m="false" rootElement="_14848601690341" id="_1485535597664">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="nombre" id="_148553563103031">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1485794599783" v="true" name="modulo" id="_148579477113940">
+                <jpa:bv/>
+            </jpa:many-to-one>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_148553559767528">
+                <jpa:bv/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="TipoDocumento.findAll">
+            <jpa:query>Select e from TipoDocumento e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="TipoDocumento.findByCodigo">
+            <jpa:query>Select d from TipoDocumento d where d.codigo=:codigo</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="TipoDocumento.findByNombre">
+            <jpa:query>Select d from TipoDocumento d where d.nombre=:nombre</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="TipoDocumento.findByAttribute">
+            <jpa:query>Select t from TipoDocumento t where t.attribute=:attribute</jpa:query>
+        </jpa:nq>
+        <jpa:el/>
+    </jpa:entity>
+    <jpa:entity lbl-ref="_148553621350033" xre="false" compositePrimaryKeyClass="AsientoContablePK" abs="false" class="AsientoContable" v="true" gen="false" pkg="contabilidad.pcga" m="false" rootElement="_14848601690341" id="_1485536213490">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="java.sql.Date" v="true" name="fecha" id="_148553624953835">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="nroDocumento" id="_148554657349538">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="aprobado" id="_148553634409836">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.sql.Date" v="true" name="fechaAprobacion" id="_148554690466939">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="nroExterno" id="_148554695646940">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="usuario" id="_148555329659150">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1485535597664" v="true" name="tipoDocumento" id="_148555166134943">
+                <jpa:bv/>
+            </jpa:many-to-one>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1485552878846" v="true" name="periodo" id="_148555318565148">
+                <jpa:bv/>
+            </jpa:many-to-one>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1485471392339" v="true" name="empresa" id="_148555325495649">
+                <jpa:bv/>
+            </jpa:many-to-one>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_148553621350033">
+                <jpa:bv/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="AsientoContable.findAll">
+            <jpa:query>Select e from AsientoContable e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="AsientoContable.findByFecha">
+            <jpa:query>Select a from AsientoContable a where a.fecha=:fecha</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="AsientoContable.findByAprobado">
+            <jpa:query>Select a from AsientoContable a where a.aprobado=:aprobado</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="AsientoContable.findByPeriodo">
+            <jpa:query>Select a from AsientoContable a where a.Periodo=:Periodo</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="AsientoContable.findByNroDocumento">
+            <jpa:query>Select a from AsientoContable a where a.nroDocumento=:nroDocumento</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="AsientoContable.findByFechaAprobacion">
+            <jpa:query>Select a from AsientoContable a where a.fechaAprobacion=:fechaAprobacion</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="AsientoContable.findByNroExterno">
+            <jpa:query>Select a from AsientoContable a where a.nroExterno=:nroExterno</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="AsientoContable.findByUsuario">
+            <jpa:query>Select a from AsientoContable a where a.usuario=:usuario</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="AsientoContable.findByAttribute">
+            <jpa:query>Select a from AsientoContable a where a.attribute=:attribute</jpa:query>
+        </jpa:nq>
+        <jpa:el/>
+    </jpa:entity>
+    <jpa:entity lbl-ref="_148555287884844" xre="false" compositePrimaryKeyClass="PeriodoPK" abs="false" class="Periodo" v="true" gen="false" pkg="contabilidad.pcga" m="false" rootElement="_14848601690341" id="_1485552878846">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="anio" id="_148555290407446">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="mes" id="_148555294418647">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="estado" id="_148555432884053">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.sql.Date" v="true" name="fechaApertura" id="_148555434780954">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.sql.Date" v="true" name="fechaCierre" id="_148555440135255">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="usuario" id="_148555446402357">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1485471392339" v="true" name="empresa" id="_148555443871456">
+                <jpa:bv/>
+            </jpa:many-to-one>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_148555287884844">
+                <jpa:bv/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Periodo.findAll">
+            <jpa:query>Select e from Periodo e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Periodo.findByAnio">
+            <jpa:query>Select p from Periodo p where p.anio=:anio</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Periodo.findByMes">
+            <jpa:query>Select p from Periodo p where p.mes=:mes</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Periodo.findByEstado">
+            <jpa:query>Select p from Periodo p where p.estado=:estado</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Periodo.findByFechaApertura">
+            <jpa:query>Select p from Periodo p where p.fechaApertura=:fechaApertura</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Periodo.findByFechaCierre">
+            <jpa:query>Select p from Periodo p where p.fechaCierre=:fechaCierre</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Periodo.findByUsuario">
+            <jpa:query>Select p from Periodo p where p.usuario=:usuario</jpa:query>
+        </jpa:nq>
+        <jpa:el/>
+        <jpa:table name="conf_periodo"/>
+    </jpa:entity>
+    <jpa:entity lbl-ref="_148555475877061" xre="false" compositePrimaryKeyClass="DetalleAsientoPK" abs="true" class="DetalleAsiento" v="true" gen="false" pkg="contabilidad.pcga" m="false" rootElement="_14848601690341" id="_1485554758762">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="naturaleza" id="_148555481249363">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic optional="false" attribute-type="double" v="true" name="valorDB" id="_148555629950665">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="int" v="true" name="valorCR" id="_148555642171366">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="descrpcion" id="_148572953873926">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1484860228384" v="true" name="tercero" id="_148555645318167">
+                <jpa:bv/>
+            </jpa:many-to-one>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1485536213490" v="true" name="asientoContable" id="_148555649774668">
+                <jpa:bv/>
+            </jpa:many-to-one>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1485534236056" v="true" name="centroCosto" id="_148555656666569">
+                <jpa:bv/>
+            </jpa:many-to-one>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_148555475877061">
+                <jpa:bv/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="DetalleAsiento.findAll">
+            <jpa:query>Select e from DetalleAsiento e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="DetalleAsiento.findByNaturaleza">
+            <jpa:query>Select m from DetalleAsiento m where m.naturaleza=:naturaleza</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="DetalleAsiento.findByValorDB">
+            <jpa:query>Select d from DetalleAsiento d where d.valorDB=:valorDB</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="DetalleAsiento.findByValorCR">
+            <jpa:query>Select d from DetalleAsiento d where d.valorCR=:valorCR</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="DetalleAsiento.findByDescrpcion">
+            <jpa:query>Select d from DetalleAsiento d where d.descrpcion=:descrpcion</jpa:query>
+        </jpa:nq>
+        <jpa:el/>
+    </jpa:entity>
+    <jpa:entity lbl-ref="_148573018858727" xre="false" compositePrimaryKeyClass="ComprobanteSaldoPK" abs="false" class="ComprobanteSaldo" v="true" gen="false" pkg="contabilidad.pcga" m="false" rootElement="_14848601690341" id="_1485730188565">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="descripcion" id="_148573022750129">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.sql.Date" v="true" name="fecha" id="_148573356392448">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="usuario" id="_148573358344449">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1485552878846" v="true" name="periodo" id="_148573122056030">
+                <jpa:bv/>
+            </jpa:many-to-one>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_148573018858727">
+                <jpa:bv/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="ComprobanteSaldo.findAll">
+            <jpa:query>Select e from ComprobanteSaldo e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="ComprobanteSaldo.findByDescripcion">
+            <jpa:query>Select c from ComprobanteSaldo c where c.descripcion=:descripcion</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="ComprobanteSaldo.findByFecha">
+            <jpa:query>Select c from ComprobanteSaldo c where c.fecha=:fecha</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="ComprobanteSaldo.findByUsuario">
+            <jpa:query>Select c from ComprobanteSaldo c where c.usuario=:usuario</jpa:query>
+        </jpa:nq>
+        <jpa:el/>
+    </jpa:entity>
+    <jpa:entity lbl-ref="_148573125471731" xre="false" compositePrimaryKeyClass="DetalleSaldoCuentaPK" abs="false" class="DetalleSaldoCuenta" v="true" gen="false" pkg="contabilidad.pcga" m="false" rootElement="_14848601690341" id="_1485731254704">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="double" v="true" name="saldoAnterior" id="_148573283060237">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="double" v="true" name="valorDB" id="_148573145020333">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="double" v="true" name="valorCR" id="_148573157852234">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="Double" v="true" name="saldoFinal" id="_148573292903238">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1485730188565" v="true" name="comprobanteSaldo" id="_148573166839535">
+                <jpa:bv/>
+            </jpa:many-to-one>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1485532388500" v="true" name="planUnicoCuentas" id="_148573248788536">
+                <jpa:bv/>
+            </jpa:many-to-one>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_148573125471731">
+                <jpa:bv/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="DetalleSaldoCuenta.findAll">
+            <jpa:query>Select e from DetalleSaldoCuenta e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="DetalleSaldoCuenta.findByValorDB">
+            <jpa:query>Select d from DetalleSaldoCuenta d where d.valorDB=:valorDB</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="DetalleSaldoCuenta.findByValorCR">
+            <jpa:query>Select d from DetalleSaldoCuenta d where d.valorCR=:valorCR</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="DetalleSaldoCuenta.findBySaldoAnterior">
+            <jpa:query>Select d from DetalleSaldoCuenta d where d.saldoAnterior=:saldoAnterior</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="DetalleSaldoCuenta.findBySaldoFinal">
+            <jpa:query>Select d from DetalleSaldoCuenta d where d.saldoFinal=:saldoFinal</jpa:query>
+        </jpa:nq>
+        <jpa:el/>
+    </jpa:entity>
+    <jpa:entity lbl-ref="_148573306688239" xre="false" compositePrimaryKeyClass="DetalleSaldoTerceroPK" abs="false" class="DetalleSaldoTercero" v="true" gen="false" pkg="contabilidad.pcga" m="false" rootElement="_14848601690341" id="_1485733066869">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="double" v="true" name="saldoAnterior" id="_148573324614241">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="double" v="true" name="valorDB" id="_148573331038942">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="double" v="true" name="valorCR" id="_148573332403743">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="double" v="true" name="saldoFinal" id="_148573333318144">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1485730188565" v="true" name="comprobanteSaldo" id="_148573337920745">
+                <jpa:bv/>
+            </jpa:many-to-one>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1484860228384" v="true" name="tercero" id="_148573340148646">
+                <jpa:bv/>
+            </jpa:many-to-one>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1485532388500" v="true" name="planUnicoCuentas" id="_148573345747947">
+                <jpa:bv/>
+            </jpa:many-to-one>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_148573306688239">
+                <jpa:bv/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="DetalleSaldoTercero.findAll">
+            <jpa:query>Select e from DetalleSaldoTercero e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="DetalleSaldoTercero.findBySaldoAnterior">
+            <jpa:query>Select d from DetalleSaldoTercero d where d.saldoAnterior=:saldoAnterior</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="DetalleSaldoTercero.findByValorDB">
+            <jpa:query>Select d from DetalleSaldoTercero d where d.valorDB=:valorDB</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="DetalleSaldoTercero.findByValorCR">
+            <jpa:query>Select d from DetalleSaldoTercero d where d.valorCR=:valorCR</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="DetalleSaldoTercero.findBySaldoFinal">
+            <jpa:query>Select d from DetalleSaldoTercero d where d.saldoFinal=:saldoFinal</jpa:query>
+        </jpa:nq>
+        <jpa:el/>
+    </jpa:entity>
+    <jpa:entity lbl-ref="_148579459991935" xre="false" compositePrimaryKeyClass="ModuloPK" abs="false" class="Modulo" v="true" gen="false" pkg="contabilidad.pcga" m="false" rootElement="_14848601690341" id="_1485794599783">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="nombre" id="_148579465594337">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1485471392339" v="true" name="empresa" id="_148579468314638">
+                <jpa:bv/>
+            </jpa:many-to-one>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_148579459991935">
+                <jpa:bv/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Modulo.findAll">
+            <jpa:query>Select e from Modulo e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Modulo.findByNombre">
+            <jpa:query>Select m from Modulo m where m.nombre=:nombre</jpa:query>
+        </jpa:nq>
+        <jpa:el/>
+    </jpa:entity>
+    <jpa:entity lbl-ref="_148579482404541" xre="false" compositePrimaryKeyClass="DetalleDocumentoPK" abs="false" class="DetalleDocumento" v="true" gen="false" pkg="contabilidad.pcga" m="false" rootElement="_14848601690341" id="_1485794823928">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="naturaleza" id="_148580442512743">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="acreedora" id="_148580455889644">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1485535597664" v="true" name="tipoDocumento" id="_148580460095345">
+                <jpa:bv/>
+            </jpa:many-to-one>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1485532388500" v="true" name="planUnicoCuentas" id="_148580463257346">
+                <jpa:bv/>
+            </jpa:many-to-one>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_148579482404541">
+                <jpa:bv/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="DetalleDocumento.findAll">
+            <jpa:query>Select e from DetalleDocumento e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="DetalleDocumento.findByNaturaleza">
+            <jpa:query>Select d from DetalleDocumento d where d.naturaleza=:naturaleza</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="DetalleDocumento.findByAcreedora">
+            <jpa:query>Select d from DetalleDocumento d where d.acreedora=:acreedora</jpa:query>
+        </jpa:nq>
+        <jpa:el/>
+    </jpa:entity>
+    <jpa:entity lbl-ref="_148607429039841" xre="false" compositePrimaryKeyClass="RepresentantePK" abs="false" class="Representante" v="true" pkg="contabilidad.pcga" m="false" rootElement="_14848601690341" id="_1486074290363">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1485471392339" v="true" name="empresa" id="_148607432346744">
+                <jpa:bv/>
+                <jpa:join-column name="EMPRESA_ID" rc="" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
+            </jpa:many-to-one>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1484860228384" v="true" name="tercero" id="_148607437860345">
+                <jpa:bv/>
+                <jpa:join-column name="TERCERO_ID" rc="" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
+            </jpa:many-to-one>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_148607429039841">
+                <jpa:bv/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Representante.findAll">
+            <jpa:query>Select e from Representante e</jpa:query>
+        </jpa:nq>
+        <jpa:el/>
+        <jpa:table name="conf_representante"/>
+    </jpa:entity>
+    <jpa:entity lbl-ref="_1488041610644105" xre="false" compositePrimaryKeyClass="UsuarioPK" abs="false" class="Usuario" v="true" m="false" rootElement="_14848601690341" id="_1488041610613">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="login" id="_1488041630341107">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="password" id="_1488041635061108">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="boolean" v="true" name="activo" id="_1488041644133109">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:one-to-many orp="false" own="true" collection-type="java.util.List" connected-entity-id="_1484860228384" v="true" name="tercero" id="_1488041799852110">
+                <jpa:bv/>
+                <jpa:join-column name="TERCERO_ID" rc="" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
+            </jpa:one-to-many>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_1488041610644105">
+                <jpa:bv/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Usuario.findAll">
+            <jpa:query>Select e from Usuario e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Usuario.findByLogin">
+            <jpa:query>Select u from Usuario u where u.login=:login</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Usuario.findByPassword">
+            <jpa:query>Select u from Usuario u where u.password=:password</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Usuario.findByActivo">
+            <jpa:query>Select u from Usuario u where u.activo=:activo</jpa:query>
+        </jpa:nq>
+        <jpa:table name="sec_usuario"/>
+    </jpa:entity>
+    <jpa:entity lbl-ref="_1488041843284111" xre="false" compositePrimaryKeyClass="RolPK" abs="false" class="Rol" v="true" m="false" rootElement="_14848601690341" id="_1488041843252">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="nombre" id="_1488041996729117">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_1488041843284111">
+                <jpa:bv/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Rol.findAll">
+            <jpa:query>Select e from Rol e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Rol.findByNombre">
+            <jpa:query>Select r from Rol r where r.nombre=:nombre</jpa:query>
+        </jpa:nq>
+        <jpa:table name="sec_rol"/>
+    </jpa:entity>
+    <jpa:entity lbl-ref="_1488041891958113" xre="false" compositePrimaryKeyClass="PermisoPK" abs="false" class="Permiso" v="true" m="false" rootElement="_14848601690341" id="_1488041891930">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:one-to-many orp="false" own="true" collection-type="java.util.List" connected-entity-id="_1488041610613" v="true" name="usuario" id="_1488041934732115">
+                <jpa:bv/>
+                <jpa:join-column name="USUARIO_ID" rc="" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
+            </jpa:one-to-many>
+            <jpa:one-to-many orp="false" own="true" collection-type="java.util.List" connected-entity-id="_1488041843252" v="true" name="rol" id="_1488041959109116">
+                <jpa:bv/>
+                <jpa:join-column name="ROL_ID" rc="" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
+            </jpa:one-to-many>
+            <jpa:one-to-many orp="false" own="true" collection-type="java.util.List" connected-entity-id="_1485471392339" v="true" name="empresa" id="_1488042049294118">
+                <jpa:bv/>
+                <jpa:join-column name="EMPRESA_ID" rc="" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
+            </jpa:one-to-many>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_1488041891958113">
+                <jpa:bv/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Permiso.findAll">
+            <jpa:query>Select e from Permiso e</jpa:query>
+        </jpa:nq>
+        <jpa:table name="sec_permiso"/>
+    </jpa:entity>
+    <jpa:snp loc="BEFORE_PACKAGE" e="true">/**
+ * This file was generated by the JPA Modeler
+ */</jpa:snp>
+    <jpa:c>
+        <ct>java.util.List</ct>
+        <ct>java.util.Set</ct>
+        <ct>java.util.Map</ct>
+        <ct>java.util.Collection</ct>
+    </jpa:c>
+    <jpa:wsl>
+        <jpa:ws n="Main" id="_1489530384333298">
+            <i ref="_1485730188565" x="1053" y="602"/>
+            <i ref="_1488041891930" x="472" y="591"/>
+            <i ref="_1485731254704" x="794" y="294"/>
+            <i ref="_1485794823928" x="1403" y="48"/>
+            <i ref="_1485534236056" x="645" y="26"/>
+            <i ref="_1485535597664" x="1177" y="294"/>
+            <i ref="_1485794599783" x="1084" y="68"/>
+            <i ref="_1488041610613" x="267" y="633"/>
+            <i ref="_1488041843252" x="656" y="631"/>
+            <i ref="_1485554758762" x="813" y="553"/>
+            <i ref="_1485471392339" x="434" y="-12"/>
+            <i ref="_1485532388500" x="49" y="284"/>
+            <i ref="_1485552878846" x="915" y="8"/>
+            <i ref="_1485536213490" x="455" y="294"/>
+            <i ref="_1484862620704" x="139" y="-80"/>
+            <i ref="_1486074290363" x="89" y="64"/>
+            <i ref="_1484860228384" x="-175" y="-23"/>
+            <i ref="_1485380178639" x="49" y="633"/>
+            <i ref="_1485733066869" x="1359" y="444"/>
+            <i ref="_1485470789931" x="-130" y="464"/>
+        </jpa:ws>
+    </jpa:wsl>
+</jpa:entity-mappings>
