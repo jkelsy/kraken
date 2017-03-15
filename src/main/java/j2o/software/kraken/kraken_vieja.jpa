@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" pkg="j2o.software.kraken.db" v="2.6.3" rws="_1489530384333298" Pws="_1489530384333298" cws="_1489530384333298" persistenceUnitName="KrakenPU" sm="false" xs="false" id="_14848601690341" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
-    <jpa:entity name="Tercero" lbl-ref="_14848602284832" xre="false" compositePrimaryKeyClass="TerceroPK" abs="false" class="Tercero" v="true" gen="false" pkg="contabilidad.pcga" m="false" rootElement="_14848601690341" id="_1484860228384">
+<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" pkg="j2o.software.kraken.db" v="2.6.3" rws="_1489530384333298" Pws="_1489530384333298" cws="_1489530384333298" persistenceUnitName="KrakenPU" sm="false" xs="false" id="_14848601690341" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">    <jpa:entity name="Tercero" lbl-ref="_14848602284832" xre="false" compositePrimaryKeyClass="TerceroPK" abs="false" class="Tercero" v="true" gen="false" pkg="contabilidad.pcga" m="false" rootElement="_14848601690341" id="_1484860228384">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -906,7 +905,7 @@
             <i ref="_1485552878846" x="915" y="8"/>
             <i ref="_1485536213490" x="455" y="294"/>
             <i ref="_1484862620704" x="139" y="-80"/>
-            <i ref="_1486074290363" x="89" y="64"/>
+            <i ref="_1486074290363" x="60" y="64"/>
             <i ref="_1484860228384" x="-175" y="-23"/>
             <i ref="_1485380178639" x="49" y="633"/>
             <i ref="_1485733066869" x="1359" y="444"/>

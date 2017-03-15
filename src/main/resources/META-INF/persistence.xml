@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="KrakenPU" transaction-type="JTA">
-    <jta-data-source>java:/jboss/datasources/KrakenDS</jta-data-source>
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <class>j2o.software.kraken.db.Tercero</class>
     <class>j2o.software.kraken.db.TipoIdentificacion</class>
     <class>j2o.software.kraken.db.Direccion</class>
@@ -28,6 +28,15 @@
     <class>j2o.software.kraken.db.Usuario</class>
     <class>j2o.software.kraken.db.Rol</class>
     <class>j2o.software.kraken.db.Permiso</class>
+    <class>j2o.software.kraken.db.general.Telefono</class>
+    <class>j2o.software.kraken.db.seguridad.Permiso</class>
+    <class>j2o.software.kraken.db.seguridad.Rol</class>
+    <class>j2o.software.kraken.db.seguridad.Usuario</class>
+    <class>j2o.software.kraken.db.general.Tercero</class>
+    <class>j2o.software.kraken.db.general.Representante</class>
+    <class>j2o.software.kraken.db.general.Direccion</class>
+    <class>j2o.software.kraken.db.general.TipoIdentificacion</class>
+    <class>j2o.software.kraken.db.general.Empresa</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.hbm2ddl.auto" value="update"/>

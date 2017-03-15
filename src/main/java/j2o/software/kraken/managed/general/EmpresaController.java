@@ -1,10 +1,8 @@
 package j2o.software.kraken.managed.general;
 
-import j2o.software.kraken.db.contabilidad.pcga.Empresa;
-import j2o.software.kraken.service.facade.contabilidad.pcga.EmpresaFacade;
+import j2o.software.kraken.db.general.Empresa;
 import java.io.Serializable;
 import java.util.List;
-import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
@@ -15,7 +13,7 @@ import javax.inject.Inject;
 @Named(value = "empresaController")
 @ViewScoped
 public class EmpresaController implements Serializable{
-    @Inject
+   /* @Inject
     private EmpresaFacade empresaService;
     //@PersistenceContext(unitName = "KrakenPU")
     //private EntityManager em;      
@@ -91,4 +89,5 @@ public class EmpresaController implements Serializable{
         context.addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO, "Éxito",  "Registro modificado con éxito"));
         return "/pages/configuracion/empresa/empresaListado?faces-redirect=true";
     }
+*/
 }

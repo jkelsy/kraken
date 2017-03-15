@@ -5,7 +5,7 @@
  */
 package j2o.software.kraken.managed.general;
 
-import j2o.software.kraken.db.contabilidad.pcga.Tercero;
+import j2o.software.kraken.db.general.Tercero;
 import java.io.Serializable;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;

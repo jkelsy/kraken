@@ -41,7 +41,13 @@
             <artifactId>hibernate-jpamodelgen-4.3.1.Final</artifactId>
             <version>SNAPSHOT</version>
             <scope>provided</scope>
-        </dependency>        
+        </dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+            <scope>provided</scope>
+            <version>${version.javaee}</version>
+        </dependency>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
@@ -99,6 +105,16 @@
             </plugin>
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <property>
+                    <name>!prod</name>
+                </property>
+            </activation>
+        </profile>
+    </profiles>
     <repositories>
         <repository>
             <id>unknown-jars-temp-repo</id>

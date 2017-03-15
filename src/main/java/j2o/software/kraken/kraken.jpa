@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" pkg="j2o.software.kraken.db" v="3.5.1" rws="_1489529657821247" Pws="_1489529657821247" cws="_1489529657821247" persistenceUnitName="KrakenPU" sm="false" xs="false" id="_148952964007652" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
-    <jpa:entity xre="false" compositePrimaryKeyClass="TelefonoPK" abs="false" class="Telefono" v="true" m="false" rootElement="_148952964007652" id="_148952964012653">
+    <jpa:entity xre="false" compositePrimaryKeyClass="TelefonoPK" abs="false" class="Telefono" v="true" pkg="general" m="false" rootElement="_148952964007652" id="_148952964012653">
         <jpa:ts e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
@@ -20,7 +20,7 @@
         </jpa:attributes>
         <jpa:el/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="ModuloPK" abs="false" class="Modulo" v="true" m="false" rootElement="_148952964007652" id="_148952964015558">
+    <jpa:entity xre="false" compositePrimaryKeyClass="ModuloPK" abs="false" class="Modulo" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_148952964015558">
         <jpa:ts e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
@@ -37,7 +37,7 @@
         </jpa:attributes>
         <jpa:el/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="ComprobanteSaldoPK" abs="false" class="ComprobanteSaldo" v="true" m="false" rootElement="_148952964007652" id="_148952964019262">
+    <jpa:entity xre="false" compositePrimaryKeyClass="ComprobanteSaldoPK" abs="false" class="ComprobanteSaldo" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_148952964019262">
         <jpa:ts e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
@@ -60,7 +60,7 @@
         </jpa:attributes>
         <jpa:el/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="PeriodoPK" abs="false" class="Periodo" v="true" m="false" rootElement="_148952964007652" id="_148952964020868">
+    <jpa:entity xre="false" compositePrimaryKeyClass="PeriodoPK" abs="false" class="Periodo" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_148952964020868">
         <jpa:ts e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
@@ -92,7 +92,7 @@
         </jpa:attributes>
         <jpa:el/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="PermisoPK" abs="false" class="Permiso" v="true" m="false" rootElement="_148952964007652" id="_148952964022477">
+    <jpa:entity xre="false" compositePrimaryKeyClass="PermisoPK" abs="false" class="Permiso" v="true" pkg="seguridad" m="false" rootElement="_148952964007652" id="_148952964022477">
         <jpa:ts e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
@@ -116,7 +116,7 @@
         <jpa:el/>
         <jpa:table name="sec_permiso"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="AsientoContablePK" abs="false" class="AsientoContable" v="true" m="false" rootElement="_148952964007652" id="_148952964024782">
+    <jpa:entity xre="false" compositePrimaryKeyClass="AsientoContablePK" abs="false" class="AsientoContable" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_148952964024782">
         <jpa:ts e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
@@ -154,7 +154,8 @@
         </jpa:attributes>
         <jpa:el/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="TipoDocumentoPK" abs="false" class="TipoDocumento" v="true" m="false" rootElement="_148952964007652" id="_148952964026493">
+    <jpa:entity xre="false" compositePrimaryKeyClass="TipoDocumentoPK" abs="false" class="TipoDocumento" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_148952964026493">
+        <jpa:ts e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" name="nombre" ft="false" id="_148952964026495">
@@ -168,8 +169,9 @@
                 <jpa:generated-value strategy="AUTO"/>
             </jpa:id>
         </jpa:attributes>
+        <jpa:el/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="DetalleSaldoTerceroPK" abs="false" class="DetalleSaldoTercero" v="true" m="false" rootElement="_148952964007652" id="_148952964028297">
+    <jpa:entity xre="false" compositePrimaryKeyClass="DetalleSaldoTerceroPK" abs="false" class="DetalleSaldoTercero" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_148952964028297">
         <jpa:ts e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
@@ -201,7 +203,7 @@
         </jpa:attributes>
         <jpa:el/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="DetalleSaldoCuentaPK" abs="false" class="DetalleSaldoCuenta" v="true" m="false" rootElement="_148952964007652" id="_1489529640304106">
+    <jpa:entity xre="false" compositePrimaryKeyClass="DetalleSaldoCuentaPK" abs="false" class="DetalleSaldoCuenta" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_1489529640304106">
         <jpa:ts e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
@@ -230,7 +232,7 @@
         </jpa:attributes>
         <jpa:el/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="RolPK" abs="false" class="Rol" v="true" m="false" rootElement="_148952964007652" id="_1489529640331114">
+    <jpa:entity xre="false" compositePrimaryKeyClass="RolPK" abs="false" class="Rol" v="true" pkg="seguridad" m="false" rootElement="_148952964007652" id="_1489529640331114">
         <jpa:ts e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
@@ -245,7 +247,7 @@
         <jpa:el/>
         <jpa:table name="sec_rol"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="UsuarioPK" abs="false" class="Usuario" v="true" m="false" rootElement="_148952964007652" id="_1489529640358117">
+    <jpa:entity xre="false" compositePrimaryKeyClass="UsuarioPK" abs="false" class="Usuario" v="true" pkg="seguridad" m="false" rootElement="_148952964007652" id="_1489529640358117">
         <jpa:ts e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
@@ -270,7 +272,7 @@
         <jpa:el/>
         <jpa:table name="sec_usuario"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="DetalleAsientoPK" abs="true" class="DetalleAsiento" v="true" m="false" rootElement="_148952964007652" id="_1489529640377123">
+    <jpa:entity xre="false" compositePrimaryKeyClass="DetalleAsientoPK" abs="true" class="DetalleAsiento" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_1489529640377123">
         <jpa:ts e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
@@ -302,7 +304,7 @@
         </jpa:attributes>
         <jpa:el/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="DetalleDocumentoPK" abs="false" class="DetalleDocumento" v="true" m="false" rootElement="_148952964007652" id="_1489529640394132">
+    <jpa:entity xre="false" compositePrimaryKeyClass="DetalleDocumentoPK" abs="false" class="DetalleDocumento" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_1489529640394132">
         <jpa:ts e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
@@ -325,7 +327,7 @@
         </jpa:attributes>
         <jpa:el/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="PlanUnicoCuentasPK" abs="false" class="PlanUnicoCuentas" v="true" m="false" rootElement="_148952964007652" id="_1489529640410138">
+    <jpa:entity xre="false" compositePrimaryKeyClass="PlanUnicoCuentasPK" abs="false" class="PlanUnicoCuentas" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_1489529640410138">
         <jpa:ts e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
@@ -366,7 +368,7 @@
         </jpa:attributes>
         <jpa:el/>
     </jpa:entity>
-    <jpa:entity name="Tercero" lbl-ref="_1489529640429152" xre="false" compositePrimaryKeyClass="TerceroPK" abs="false" class="Tercero" v="true" m="false" rootElement="_148952964007652" id="_1489529640428150">
+    <jpa:entity name="Tercero" lbl-ref="_1489529640429152" xre="false" compositePrimaryKeyClass="TerceroPK" abs="false" class="Tercero" v="true" pkg="general" m="false" rootElement="_148952964007652" id="_1489529640428150">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -425,7 +427,7 @@
         <jpa:el/>
         <jpa:table name="tercero"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="RepresentantePK" abs="false" class="Representante" v="true" m="false" rootElement="_148952964007652" id="_1489529640443166">
+    <jpa:entity xre="false" compositePrimaryKeyClass="RepresentantePK" abs="false" class="Representante" v="true" pkg="general" m="false" rootElement="_148952964007652" id="_1489529640443166">
         <jpa:ts e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
@@ -445,7 +447,7 @@
         <jpa:el/>
         <jpa:table name="conf_representante"/>
     </jpa:entity>
-    <jpa:entity lbl-ref="_1489529640453172" xre="false" compositePrimaryKeyClass="DireccionPK" abs="false" class="Direccion" v="true" m="false" rootElement="_148952964007652" id="_1489529640453170">
+    <jpa:entity lbl-ref="_1489529640453172" xre="false" compositePrimaryKeyClass="DireccionPK" abs="false" class="Direccion" v="true" pkg="general" m="false" rootElement="_148952964007652" id="_1489529640453170">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -468,7 +470,7 @@
         </jpa:attributes>
         <jpa:el/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="TipoIdentificacionPK" abs="false" class="TipoIdentificacion" v="true" m="false" rootElement="_148952964007652" id="_1489529640468175">
+    <jpa:entity xre="false" compositePrimaryKeyClass="TipoIdentificacionPK" abs="false" class="TipoIdentificacion" v="true" pkg="general" m="false" rootElement="_148952964007652" id="_1489529640468175">
         <jpa:ts e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
@@ -486,8 +488,10 @@
         <jpa:el/>
         <jpa:table name="tipo_identificacion"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="CentroCostoPK" abs="false" class="CentroCosto" v="true" m="false" rootElement="_148952964007652" id="_1489529640484179">
+    <jpa:entity xre="false" compositePrimaryKeyClass="CentroCostoPK" abs="false" class="CentroCosto" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_1489529640484179">
         <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" name="codigo" ft="false" id="_1489529640485181">
@@ -518,7 +522,7 @@
         </jpa:attributes>
         <jpa:el/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="EmpresaPK" abs="false" class="Empresa" v="true" m="false" rootElement="_148952964007652" id="_1489529640532188">
+    <jpa:entity xre="false" compositePrimaryKeyClass="EmpresaPK" abs="false" class="Empresa" v="true" pkg="general" m="false" rootElement="_148952964007652" id="_1489529640532188">
         <jpa:ts e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
@@ -554,26 +558,55 @@
  */</jpa:snp>
     <jpa:wsl>
         <jpa:ws n="Main" id="_1489529657821247">
-            <i ref="_1489529640304106" x="556" y="1300"/>
-            <i ref="_1489529640394132" x="69" y="1263"/>
-            <i ref="_148952964022477" x="1328" y="32"/>
-            <i ref="_1489529640532188" x="957" y="592"/>
-            <i ref="_148952964026493" x="622" y="32"/>
-            <i ref="_148952964028297" x="12" y="902"/>
-            <i ref="_1489529640453170" x="32" y="426"/>
-            <i ref="_148952964024782" x="929" y="1203"/>
-            <i ref="_148952964020868" x="1101" y="204"/>
-            <i ref="_1489529640443166" x="591" y="235"/>
-            <i ref="_148952964015558" x="929" y="32"/>
-            <i ref="_148952964012653" x="53" y="97"/>
-            <i ref="_1489529640331114" x="1598" y="52"/>
-            <i ref="_1489529640377123" x="1280" y="550"/>
-            <i ref="_1489529640358117" x="1390" y="297"/>
-            <i ref="_148952964019262" x="556" y="472"/>
-            <i ref="_1489529640484179" x="1239" y="902"/>
-            <i ref="_1489529640410138" x="505" y="812"/>
-            <i ref="_1489529640428150" x="296" y="68"/>
-            <i ref="_1489529640468175" x="32" y="662"/>
+            <i ref="_1489529640304106" x="1397" y="1542"/>
+            <i ref="_1489529640394132" x="817" y="1542"/>
+            <i ref="_148952964022477" x="1397" y="314"/>
+            <i ref="_1489529640532188" x="1108" y="596"/>
+            <i ref="_148952964026493" x="2004" y="1018"/>
+            <i ref="_148952964028297" x="1699" y="1804"/>
+            <i ref="_1489529640453170" x="254" y="314"/>
+            <i ref="_148952964024782" x="539" y="1200"/>
+            <i ref="_148952964020868" x="1699" y="1200"/>
+            <i ref="_1489529640443166" x="817" y="1018"/>
+            <i ref="_148952964015558" x="1397" y="1018"/>
+            <i ref="_148952964012653" x="32" y="1200"/>
+            <i ref="_1489529640331114" x="1108" y="32"/>
+            <i ref="_1489529640377123" x="539" y="32"/>
+            <i ref="_1489529640358117" x="1699" y="596"/>
+            <i ref="_148952964019262" x="2004" y="1542"/>
+            <i ref="_1489529640484179" x="817" y="314"/>
+            <i ref="_1489529640410138" x="1108" y="1200"/>
+            <i ref="_1489529640428150" x="539" y="596"/>
+            <i ref="_1489529640468175" x="254" y="1018"/>
+        </jpa:ws>
+        <jpa:ws n="seguridad" id="_1489613015910423">
+            <i ref="_148952964022477" x="224" y="32"/>
+            <i ref="_1489529640331114" x="32" y="202"/>
+            <i ref="_1489529640358117" x="441" y="202"/>
+        </jpa:ws>
+        <jpa:ws n="general" id="_1489613139789538">
+            <i ref="_1489529640443166" x="545" y="32"/>
+            <i ref="_148952964012653" x="32" y="624"/>
+            <i ref="_1489529640532188" x="812" y="202"/>
+            <i ref="_1489529640484179" x="1033" y="624"/>
+            <i ref="_1489529640453170" x="545" y="624"/>
+            <i ref="_1489529640468175" x="32" y="32"/>
+            <i ref="_1489529640428150" x="317" y="202"/>
+        </jpa:ws>
+        <jpa:ws n="contabilidad.pcga" id="_1489613252947603">
+            <i ref="_1489529640304106"/>
+            <i ref="_1489529640394132"/>
+            <i ref="_1489529640532188"/>
+            <i ref="_148952964026493"/>
+            <i ref="_148952964028297"/>
+            <i ref="_148952964024782"/>
+            <i ref="_148952964020868"/>
+            <i ref="_148952964015558"/>
+            <i ref="_1489529640377123"/>
+            <i ref="_1489529640484179"/>
+            <i ref="_148952964019262"/>
+            <i ref="_1489529640410138"/>
+            <i ref="_1489529640428150"/>
         </jpa:ws>
     </jpa:wsl>
 </jpa:entity-mappings>
