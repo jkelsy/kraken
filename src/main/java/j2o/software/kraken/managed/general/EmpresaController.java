@@ -1,6 +1,7 @@
 package j2o.software.kraken.managed.general;
 
 import j2o.software.kraken.db.general.Empresa;
+import j2o.software.kraken.services.general.EmpresaService;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -9,41 +10,20 @@ import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 
-
 @Named(value = "empresaController")
 @ViewScoped
-public class EmpresaController implements Serializable{
-   /* @Inject
-    private EmpresaFacade empresaService;
-    //@PersistenceContext(unitName = "KrakenPU")
-    //private EntityManager em;      
-        
+public class EmpresaController implements Serializable {
+
+    @Inject
+    private EmpresaService empresaService;
+
     private List<Empresa> empresas;
     private List<Empresa> empresasFiltradas;
     private Empresa nueva;
-    
+
     private Long id; //id empresa seleccionada utilizado para mostrar o editar las empresas
-   
-    public void inicio(){
-        nueva = new Empresa();
-        empresas = empresaService.findAll();
-    }
-    
-    public void cargarCrear(){
-        nueva = new Empresa();
-    }
-    
-    public void cargarListado(){
-        empresas = empresaService.findAll();
-    }
-    
-    public void cargarMostrar(){
-        nueva = empresaService.find(id);
-    }
-    
-    public void cargarEditar(){
-        nueva = empresaService.find(id);
-    }
+
+    String labelAccion;
 
     public List<Empresa> getEmpresas() {
         return empresas;
@@ -51,7 +31,7 @@ public class EmpresaController implements Serializable{
 
     public void setEmpresas(List<Empresa> empresas) {
         this.empresas = empresas;
-    }    
+    }
 
     public List<Empresa> getEmpresasFiltradas() {
         return empresasFiltradas;
@@ -76,18 +56,80 @@ public class EmpresaController implements Serializable{
     public void setId(Long id) {
         this.id = id;
     }
-    
-    public String crear(){
-        empresaService.create(nueva);
+
+    public String getLabelAccion() {
+        return labelAccion;
+    }
+
+    public void setLabelAccion(String labelAccion) {
+        this.labelAccion = labelAccion;
+    }
+
+    public void inicio() {
+        nueva = new Empresa();
+        empresas = empresaService.getEmpresaFacade().findAll();
+    }
+
+    public void cargarCrear() {
+        labelAccion = "Grabar";
+        nueva = new Empresa();
+    }
+
+    public void cargarEditar() {
+        labelAccion = "Actualizar";
+        nueva = empresaService.getEmpresaFacade().find(id);
+    }
+
+    public void cargarListado() {
+        empresas = empresaService.getEmpresaFacade().findAll();
+    }
+
+    public void cargarMostrar() {
+        nueva = empresaService.getEmpresaFacade().find(id);
+    }
+
+    public String grabar() {
+
+        String mensaje = "";
+
+        FacesContext context = FacesContext.getCurrentInstance();
+
+        try {
+
+            if (nueva.getId() == null) {
+                mensaje = "Registro creado con exito";
+                empresaService.getEmpresaFacade().create(nueva);
+            } else {
+                mensaje = "Registro Modificado con exito";
+                empresaService.getEmpresaFacade().edit(nueva);
+            }
+
+            // MENSAJE
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Éxito", mensaje));
+        } catch (Exception e) {
+            // MENSAJE
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Aviso", "Error al actualizar el registro"));
+            System.err.println("ERRRO AL GRABAR" + e);
+        } finally {
+            FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+        }
+
+        return "/pages/configuracion/empresa/empresaListado?faces-redirect=true";
+
+    }
+
+    public String crear() {
+
+        empresaService.getEmpresaFacade().create(nueva);
         return "/pages/configuracion/empresa/empresaListado?faces-redirect=true";
     }
-    
-    public String editar(){
-        empresaService.edit(nueva);
+
+    public String editar() {
+        empresaService.getEmpresaFacade().edit(nueva);
         FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
-        FacesContext context = FacesContext.getCurrentInstance();     
-        context.addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO, "Éxito",  "Registro modificado con éxito"));
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Éxito", "Registro modificado con éxito"));
         return "/pages/configuracion/empresa/empresaListado?faces-redirect=true";
     }
-*/
+
 }

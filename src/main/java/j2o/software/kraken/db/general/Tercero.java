@@ -67,6 +67,7 @@ public class Tercero implements Serializable {
     private TipoIdentificacion tipoIdentificacion;
 
     @ManyToOne(targetEntity = Empresa.class)
+    @JoinColumn(name="EMPRESA_ID")
     private Empresa empresa;
 
 

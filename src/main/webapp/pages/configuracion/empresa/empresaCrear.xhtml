@@ -19,23 +19,7 @@
                 <f:metadata>                        
                     <f:viewAction action="#{empresaController.cargarCrear()}"/>
                 </f:metadata>
-                <f:view>
-                    <h:form>
-                        <p:panelGrid columns="2">
-                            <p:outputLabel value="Identificacion:" for="identificacion" />
-                            <p:inputText id="identificacion" value="#{empresaController.nueva.identificacion}" title="Identificacion" />
-                            <p:outputLabel value="Nombre:" for="nombre" />
-                            <p:inputText id="nombre" value="#{empresaController.nueva.nombre}" title="Nombre" />
-                            <p:outputLabel value="Direccion:" for="direccion" />
-                            <p:inputText id="direccion" value="#{empresaController.nueva.direccion}" title="Direccion" />
-                            <p:outputLabel value="Telefono:" for="telefono" />
-                            <p:inputText id="telefono" value="#{empresaController.nueva.telefono}" title="Telefono" />
-                            <p:outputLabel value="Email:" for="email" />
-                            <p:inputText id="email" value="#{empresaController.nueva.email}" title="Email" />
-                        </p:panelGrid>
-                        <p:commandButton action="#{empresaController.crear()}" value="Guardar"/>
-                    </h:form>
-                </f:view>
+                <ui:include src="empresaForm.xhtml"/>
             </ui:define>
         </ui:composition>
     </h:body>

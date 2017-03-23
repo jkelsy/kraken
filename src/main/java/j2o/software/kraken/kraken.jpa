@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" pkg="j2o.software.kraken.db" v="3.5.1" rws="_1489529657821247" Pws="_1489529657821247" cws="_1489529657821247" persistenceUnitName="KrakenPU" sm="false" xs="false" id="_148952964007652" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
+<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" pkg="j2o.software.kraken.db" v="3.5.1" rws="_1489529657821247" Pws="_1489613139789538" cws="_1489613139789538" persistenceUnitName="KrakenPU" sm="false" xs="false" id="_148952964007652" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
     <jpa:entity xre="false" compositePrimaryKeyClass="TelefonoPK" abs="false" class="Telefono" v="true" pkg="general" m="false" rootElement="_148952964007652" id="_148952964012653">
         <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" name="numero" ft="false" id="_148952964012855">
@@ -10,7 +12,7 @@
             <jpa:basic attribute-type="String" v="true" name="tipoTel" ft="false" id="_148952964012956">
                 <jpa:bv/>
             </jpa:basic>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_1489529640428150" v="true" name="tercero" ft="false" id="_148952964012957">
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1489529640428150" v="true" name="tercero" ft="false" id="_148952964012957">
                 <jpa:bv/>
             </jpa:many-to-one>
             <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_148952964012854">
@@ -22,12 +24,14 @@
     </jpa:entity>
     <jpa:entity xre="false" compositePrimaryKeyClass="ModuloPK" abs="false" class="Modulo" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_148952964015558">
         <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" name="nombre" ft="false" id="_148952964015560">
                 <jpa:bv/>
             </jpa:basic>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_1489529640532188" v="true" name="empresa" ft="false" id="_148952964015561">
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1489529640532188" v="true" name="empresa" ft="false" id="_148952964015561">
                 <jpa:bv/>
             </jpa:many-to-one>
             <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_148952964015559">
@@ -39,6 +43,8 @@
     </jpa:entity>
     <jpa:entity xre="false" compositePrimaryKeyClass="ComprobanteSaldoPK" abs="false" class="ComprobanteSaldo" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_148952964019262">
         <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" name="descripcion" ft="false" id="_148952964019364">
@@ -50,7 +56,7 @@
             <jpa:basic attribute-type="String" v="true" name="usuario" ft="false" id="_148952964019366">
                 <jpa:bv/>
             </jpa:basic>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_148952964020868" v="true" name="periodo" ft="false" id="_148952964019367">
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_148952964020868" v="true" name="periodo" ft="false" id="_148952964019367">
                 <jpa:bv/>
             </jpa:many-to-one>
             <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_148952964019263">
@@ -62,6 +68,8 @@
     </jpa:entity>
     <jpa:entity xre="false" compositePrimaryKeyClass="PeriodoPK" abs="false" class="Periodo" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_148952964020868">
         <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" name="anio" ft="false" id="_148952964020970">
@@ -82,7 +90,7 @@
             <jpa:basic attribute-type="String" v="true" name="usuario" ft="false" id="_148952964020975">
                 <jpa:bv/>
             </jpa:basic>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_1489529640532188" v="true" name="empresa" ft="false" id="_148952964020976">
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1489529640532188" v="true" name="empresa" ft="false" id="_148952964020976">
                 <jpa:bv/>
             </jpa:many-to-one>
             <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_148952964020969">
@@ -94,17 +102,19 @@
     </jpa:entity>
     <jpa:entity xre="false" compositePrimaryKeyClass="PermisoPK" abs="false" class="Permiso" v="true" pkg="seguridad" m="false" rootElement="_148952964007652" id="_148952964022477">
         <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
-            <jpa:one-to-many own="true" collection-type="java.util.List" connected-entity-id="_1489529640358117" v="true" name="usuario" ft="false" id="_148952964022479">
+            <jpa:one-to-many orp="false" own="true" collection-type="java.util.List" connected-entity-id="_1489529640358117" v="true" name="usuario" ft="false" id="_148952964022479">
                 <jpa:bv/>
                 <jpa:join-column name="USUARIO_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:one-to-many>
-            <jpa:one-to-many own="true" collection-type="java.util.List" connected-entity-id="_1489529640331114" v="true" name="rol" ft="false" id="_148952964022780">
+            <jpa:one-to-many orp="false" own="true" collection-type="java.util.List" connected-entity-id="_1489529640331114" v="true" name="rol" ft="false" id="_148952964022780">
                 <jpa:bv/>
                 <jpa:join-column name="ROL_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:one-to-many>
-            <jpa:one-to-many own="true" collection-type="java.util.List" connected-entity-id="_1489529640532188" v="true" name="empresa" ft="false" id="_148952964022781">
+            <jpa:one-to-many orp="false" own="true" collection-type="java.util.List" connected-entity-id="_1489529640532188" v="true" name="empresa" ft="false" id="_148952964022781">
                 <jpa:bv/>
                 <jpa:join-column name="EMPRESA_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:one-to-many>
@@ -118,6 +128,8 @@
     </jpa:entity>
     <jpa:entity xre="false" compositePrimaryKeyClass="AsientoContablePK" abs="false" class="AsientoContable" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_148952964024782">
         <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
             <jpa:basic attribute-type="java.sql.Date" v="true" name="fecha" ft="false" id="_148952964024884">
@@ -138,13 +150,13 @@
             <jpa:basic attribute-type="String" v="true" name="usuario" ft="false" id="_148952964024889">
                 <jpa:bv/>
             </jpa:basic>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_148952964026493" v="true" name="tipoDocumento" ft="false" id="_148952964024890">
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_148952964026493" v="true" name="tipoDocumento" ft="false" id="_148952964024890">
                 <jpa:bv/>
             </jpa:many-to-one>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_148952964020868" v="true" name="periodo" ft="false" id="_148952964024891">
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_148952964020868" v="true" name="periodo" ft="false" id="_148952964024891">
                 <jpa:bv/>
             </jpa:many-to-one>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_1489529640532188" v="true" name="empresa" ft="false" id="_148952964024992">
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1489529640532188" v="true" name="empresa" ft="false" id="_148952964024992">
                 <jpa:bv/>
             </jpa:many-to-one>
             <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_148952964024783">
@@ -156,12 +168,14 @@
     </jpa:entity>
     <jpa:entity xre="false" compositePrimaryKeyClass="TipoDocumentoPK" abs="false" class="TipoDocumento" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_148952964026493">
         <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" name="nombre" ft="false" id="_148952964026495">
                 <jpa:bv/>
             </jpa:basic>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_148952964015558" v="true" name="modulo" ft="false" id="_148952964026496">
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_148952964015558" v="true" name="modulo" ft="false" id="_148952964026496">
                 <jpa:bv/>
             </jpa:many-to-one>
             <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_148952964026494">
@@ -173,6 +187,8 @@
     </jpa:entity>
     <jpa:entity xre="false" compositePrimaryKeyClass="DetalleSaldoTerceroPK" abs="false" class="DetalleSaldoTercero" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_148952964028297">
         <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
             <jpa:basic attribute-type="double" v="true" name="saldoAnterior" ft="false" id="_148952964028299">
@@ -187,13 +203,13 @@
             <jpa:basic attribute-type="double" v="true" name="saldoFinal" ft="false" id="_1489529640283102">
                 <jpa:bv/>
             </jpa:basic>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_148952964019262" v="true" name="comprobanteSaldo" ft="false" id="_1489529640283103">
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_148952964019262" v="true" name="comprobanteSaldo" ft="false" id="_1489529640283103">
                 <jpa:bv/>
             </jpa:many-to-one>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_1489529640428150" v="true" name="tercero" ft="false" id="_1489529640283104">
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1489529640428150" v="true" name="tercero" ft="false" id="_1489529640283104">
                 <jpa:bv/>
             </jpa:many-to-one>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_1489529640410138" v="true" name="planUnicoCuentas" ft="false" id="_1489529640283105">
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1489529640410138" v="true" name="planUnicoCuentas" ft="false" id="_1489529640283105">
                 <jpa:bv/>
             </jpa:many-to-one>
             <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_148952964028298">
@@ -205,6 +221,8 @@
     </jpa:entity>
     <jpa:entity xre="false" compositePrimaryKeyClass="DetalleSaldoCuentaPK" abs="false" class="DetalleSaldoCuenta" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_1489529640304106">
         <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
             <jpa:basic attribute-type="double" v="true" name="saldoAnterior" ft="false" id="_1489529640304108">
@@ -219,10 +237,10 @@
             <jpa:basic attribute-type="Double" v="true" name="saldoFinal" ft="false" id="_1489529640304111">
                 <jpa:bv/>
             </jpa:basic>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_148952964019262" v="true" name="comprobanteSaldo" ft="false" id="_1489529640304112">
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_148952964019262" v="true" name="comprobanteSaldo" ft="false" id="_1489529640304112">
                 <jpa:bv/>
             </jpa:many-to-one>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_1489529640410138" v="true" name="planUnicoCuentas" ft="false" id="_1489529640304113">
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1489529640410138" v="true" name="planUnicoCuentas" ft="false" id="_1489529640304113">
                 <jpa:bv/>
             </jpa:many-to-one>
             <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_1489529640304107">
@@ -234,6 +252,8 @@
     </jpa:entity>
     <jpa:entity xre="false" compositePrimaryKeyClass="RolPK" abs="false" class="Rol" v="true" pkg="seguridad" m="false" rootElement="_148952964007652" id="_1489529640331114">
         <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" name="nombre" ft="false" id="_1489529640331116">
@@ -249,6 +269,8 @@
     </jpa:entity>
     <jpa:entity xre="false" compositePrimaryKeyClass="UsuarioPK" abs="false" class="Usuario" v="true" pkg="seguridad" m="false" rootElement="_148952964007652" id="_1489529640358117">
         <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" name="login" ft="false" id="_1489529640358119">
@@ -260,7 +282,7 @@
             <jpa:basic attribute-type="boolean" v="true" name="activo" ft="false" id="_1489529640359121">
                 <jpa:bv/>
             </jpa:basic>
-            <jpa:one-to-many own="true" collection-type="java.util.List" connected-entity-id="_1489529640428150" v="true" name="tercero" ft="false" id="_1489529640359122">
+            <jpa:one-to-many orp="false" own="true" collection-type="java.util.List" connected-entity-id="_1489529640428150" v="true" name="tercero" ft="false" id="_1489529640359122">
                 <jpa:bv/>
                 <jpa:join-column name="TERCERO_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:one-to-many>
@@ -274,6 +296,8 @@
     </jpa:entity>
     <jpa:entity xre="false" compositePrimaryKeyClass="DetalleAsientoPK" abs="true" class="DetalleAsiento" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_1489529640377123">
         <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" name="naturaleza" ft="false" id="_1489529640378125">
@@ -288,13 +312,13 @@
             <jpa:basic attribute-type="String" v="true" name="descrpcion" ft="false" id="_1489529640379128">
                 <jpa:bv/>
             </jpa:basic>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_1489529640428150" v="true" name="tercero" ft="false" id="_1489529640379129">
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1489529640428150" v="true" name="tercero" ft="false" id="_1489529640379129">
                 <jpa:bv/>
             </jpa:many-to-one>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_148952964024782" v="true" name="asientoContable" ft="false" id="_1489529640379130">
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_148952964024782" v="true" name="asientoContable" ft="false" id="_1489529640379130">
                 <jpa:bv/>
             </jpa:many-to-one>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_1489529640484179" v="true" name="centroCosto" ft="false" id="_1489529640379131">
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1489529640484179" v="true" name="centroCosto" ft="false" id="_1489529640379131">
                 <jpa:bv/>
             </jpa:many-to-one>
             <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_1489529640378124">
@@ -306,6 +330,8 @@
     </jpa:entity>
     <jpa:entity xre="false" compositePrimaryKeyClass="DetalleDocumentoPK" abs="false" class="DetalleDocumento" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_1489529640394132">
         <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" name="naturaleza" ft="false" id="_1489529640395134">
@@ -314,10 +340,10 @@
             <jpa:basic attribute-type="String" v="true" name="acreedora" ft="false" id="_1489529640395135">
                 <jpa:bv/>
             </jpa:basic>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_148952964026493" v="true" name="tipoDocumento" ft="false" id="_1489529640395136">
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_148952964026493" v="true" name="tipoDocumento" ft="false" id="_1489529640395136">
                 <jpa:bv/>
             </jpa:many-to-one>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_1489529640410138" v="true" name="planUnicoCuentas" ft="false" id="_1489529640395137">
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1489529640410138" v="true" name="planUnicoCuentas" ft="false" id="_1489529640395137">
                 <jpa:bv/>
             </jpa:many-to-one>
             <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_1489529640394133">
@@ -329,6 +355,8 @@
     </jpa:entity>
     <jpa:entity xre="false" compositePrimaryKeyClass="PlanUnicoCuentasPK" abs="false" class="PlanUnicoCuentas" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_1489529640410138">
         <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" name="cuenta" ft="false" id="_1489529640410140">
@@ -358,7 +386,7 @@
             <jpa:basic attribute-type="String" v="true" name="usuario" ft="false" id="_1489529640411148">
                 <jpa:bv/>
             </jpa:basic>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_1489529640532188" v="true" name="empresa" ft="false" id="_1489529640411149">
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1489529640532188" v="true" name="empresa" ft="false" id="_1489529640411149">
                 <jpa:bv/>
             </jpa:many-to-one>
             <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_1489529640410139">
@@ -412,12 +440,13 @@
             <jpa:basic attribute-type="String" v="true" name="usuario" ft="false" id="_1489529640430163">
                 <jpa:bv/>
             </jpa:basic>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_1489529640468175" v="true" name="tipoIdentificacion" ft="false" id="_1489529640430164">
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1489529640468175" v="true" name="tipoIdentificacion" ft="false" id="_1489529640430164">
                 <jpa:bv/>
                 <jpa:join-column name="TIPOIDENTIFICACION_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:many-to-one>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_1489529640532188" v="true" name="empresa" ft="false" id="_1489529640430165">
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1489529640532188" v="true" name="empresa" ft="false" id="_1489529640430165">
                 <jpa:bv/>
+                <jpa:join-column name="EMPRESA_ID" rc="" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
             </jpa:many-to-one>
             <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_1489529640429151">
                 <jpa:bv/>
@@ -429,13 +458,15 @@
     </jpa:entity>
     <jpa:entity xre="false" compositePrimaryKeyClass="RepresentantePK" abs="false" class="Representante" v="true" pkg="general" m="false" rootElement="_148952964007652" id="_1489529640443166">
         <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_1489529640532188" v="true" name="empresa" ft="false" id="_1489529640443168">
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1489529640532188" v="true" name="empresa" ft="false" id="_1489529640443168">
                 <jpa:bv/>
                 <jpa:join-column name="EMPRESA_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:many-to-one>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_1489529640428150" v="true" name="tercero" ft="false" id="_1489529640443169">
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1489529640428150" v="true" name="tercero" ft="false" id="_1489529640443169">
                 <jpa:bv/>
                 <jpa:join-column name="TERCERO_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:many-to-one>
@@ -459,7 +490,7 @@
             <jpa:basic attribute-type="String" v="true" name="ciudad" ft="false" id="_1489529640453173">
                 <jpa:bv/>
             </jpa:basic>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_1489529640428150" v="true" name="tercero" ft="false" id="_1489529640453174">
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1489529640428150" v="true" name="tercero" ft="false" id="_1489529640453174">
                 <jpa:bv/>
                 <jpa:join-column name="TERCERO_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:many-to-one>
@@ -470,21 +501,36 @@
         </jpa:attributes>
         <jpa:el/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="TipoIdentificacionPK" abs="false" class="TipoIdentificacion" v="true" pkg="general" m="false" rootElement="_148952964007652" id="_1489529640468175">
+    <jpa:entity name="gen_tipo_identificacion" lbl-ref="_1489529640468177" xre="false" compositePrimaryKeyClass="TipoIdentificacionPK" abs="false" class="TipoIdentificacion" v="true" pkg="general" m="false" rootElement="_148952964007652" id="_1489529640468175">
         <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
-            <jpa:basic attribute-type="String" v="true" name="descripcion" ft="false" id="_1489529640468177">
+            <jpa:basic attribute-type="String" v="true" name="codigo" ft="false" id="_1489529640468177">
                 <jpa:bv/>
+                <jpa:column name="ti_codigo" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" v="true" name="abreviatura" ft="false" id="_1489529640468178">
                 <jpa:bv/>
+                <jpa:column name="ti_abreviatura" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="descripcion" id="_149026375592365">
+                <jpa:bv/>
+                <jpa:column name="ti_identificacion" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:basic>
             <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_1489529640468176">
                 <jpa:bv/>
+                <jpa:column name="ti_id" unique="false" nullable="true" insertable="true" updatable="true"/>
                 <jpa:generated-value strategy="IDENTITY"/>
             </jpa:id>
         </jpa:attributes>
+        <jpa:nq e="false" name="TipoIdentificacion.findByDescripcion">
+            <jpa:query>Select t from TipoIdentificacion t where t.descripcion=:descripcion</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="true" name="TipoIdentificacion.findAllByCodigo">
+            <jpa:query>Select t from TipoIdentificacion t where t.codigo=:codigo</jpa:query>
+        </jpa:nq>
         <jpa:el/>
         <jpa:table name="tipo_identificacion"/>
     </jpa:entity>
@@ -512,7 +558,7 @@
             <jpa:basic attribute-type="java.sql.Date" v="true" name="fecha" ft="false" id="_1489529640485186">
                 <jpa:bv/>
             </jpa:basic>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_1489529640532188" v="true" name="empresa" ft="false" id="_1489529640485187">
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1489529640532188" v="true" name="empresa" ft="false" id="_1489529640485187">
                 <jpa:bv/>
             </jpa:many-to-one>
             <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_1489529640485180">
@@ -524,6 +570,8 @@
     </jpa:entity>
     <jpa:entity xre="false" compositePrimaryKeyClass="EmpresaPK" abs="false" class="Empresa" v="true" pkg="general" m="false" rootElement="_148952964007652" id="_1489529640532188">
         <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" name="identificacion" ft="false" id="_1489529640532190">
@@ -541,7 +589,7 @@
             <jpa:basic attribute-type="String" v="true" name="email" ft="false" id="_1489529640532194">
                 <jpa:bv/>
             </jpa:basic>
-            <jpa:one-to-many own="true" collection-type="java.util.List" connected-entity-id="_1489529640358117" v="true" name="creado_por" ft="false" id="_1489529640532195">
+            <jpa:one-to-many orp="false" own="true" collection-type="java.util.List" connected-entity-id="_1489529640358117" v="true" name="creado_por" ft="false" id="_1489529640532195">
                 <jpa:bv/>
                 <jpa:join-column name="CREADO_POR" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:one-to-many>
