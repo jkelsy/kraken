@@ -9,6 +9,13 @@
     <f:view>
         <h:form>
             <p:panelGrid columns="2">
+                <p:outputLabel value="Tipo Identificacion:" for="tipoIdentificacion" />
+                <p:selectOneMenu  autoWidth="false" required="true"  id="tipoIdentificacion"  
+                                  value="#{empresaController.tipoIdentificacionId}">
+                    <f:selectItems  value="#{empresaController.tipoIdentificacionList}" var="tiInstance"
+                                    itemLabel="#{tiInstance.codigo} | #{tiInstance.descripcion}" itemValue="#{tiInstance.id}"/>
+                </p:selectOneMenu>            
+
                 <p:outputLabel value="Identificacion:" for="identificacion" />
                 <p:inputText id="identificacion" value="#{empresaController.nueva.identificacion}" title="Identificacion" />
                 <p:outputLabel value="Nombre:" for="nombre" />
@@ -20,18 +27,64 @@
                 <p:outputLabel value="Email:" for="email" />
                 <p:inputText id="email" value="#{empresaController.nueva.email}" title="Email" />
             </p:panelGrid>
-            <p:commandButton action="#{empresaController.crear()}" value="Guardar"/>
+
+            <p:growl id="msgs" showDetail="true"/>
+
+            <p:commandButton action="#{empresaController.agregarRepresentante}" update="tablaRepresentante"/>
+            <p:dataTable value="#{empresaController.representanteList}" 
+                         var="item"  editable="true" id="tablaRepresentante" 
+
+                         >
+                <p:column headerText="Id">
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+                
+                <p:column headerText="Tipo Iden">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{item.tipoIdentificacion.abreviatura}" /></f:facet>
+                        <f:facet name="input">
+                            <h:selectOneMenu converter="tipoIdentificacionConverter" value="#{item.tipoIdentificacion}" style="width:100%">
+                                <f:selectItems value="#{empresaController.tipoIdentificacionList}" var="tid" 
+                                               itemLabel="#{tid.abreviatura}" itemValue="#{tid}" />
+                            </h:selectOneMenu>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                    <p:column headerText="Identificacion">
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{item.identificacion}" /></f:facet>
+                            <f:facet name="input"><p:inputText value="#{item.identificacion}" style="width:100%" label="Year"/></f:facet>
+                        </p:cellEditor>
+                    </p:column>
+                    <p:column headerText="Nombres">
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{item.nombres}" /></f:facet>
+                            <f:facet name="input"><p:inputText value="#{item.nombres}" style="width:100%" label="Year"/></f:facet>
+                        </p:cellEditor>
+                    </p:column>
+                    <p:column headerText="Apellidos">
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{item.apellidos}" /></f:facet>
+                            <f:facet name="input"><p:inputText value="#{item.apellidos}" style="width:100%" label="Year"/></f:facet>
+                        </p:cellEditor>
+                    </p:column>
+                    <p:column style="width:32px">
+                        <p:rowEditor />
+                    </p:column>
+            </p:dataTable>
+
 
             <p:commandButton icon="ui-icon-check" rendered="#{(empresaController.labelAccion =='Actualizar')}"
                              value="#{empresaController.labelAccion}"
                              action="#{empresaController.grabar}"
-                             
+
                              />
 
             <p:commandButton icon="ui-icon-check" rendered="#{(empresaController.labelAccion =='Grabar')}"
                              value="#{empresaController.labelAccion}"
                              action="#{empresaController.grabar}"
-                             
+
                              />
 
 

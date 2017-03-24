@@ -24,7 +24,7 @@
                 </f:metadata>
                 <f:view>
                     <h:form>
-                        
+
                         <p:dataTable value="#{empresaController.empresas}" 
                                      var="item" filteredValue="#{empresaController.empresasFiltradas}">
                             <p:column>
@@ -63,16 +63,19 @@
                                 </f:facet>
                                 <h:outputText value="#{item.email}"/>
                             </p:column>
-                            
+
                             <p:column style="text-align: center">
                                 <f:facet name="header">
                                     <h:outputText value="Opciones"/>
                                 </f:facet>                                  
-                                
+
                                 <p:commandButton action="#{'/pages/configuracion/empresa/empresaMostrar?faces-redirect=true&amp;id='.concat(item.id)}" icon="fa fa-search" title="Mostrar" />
                                 <p:commandButton action="#{'/pages/configuracion/empresa/empresaEditar?faces-redirect=true&amp;id='.concat(item.id)}" icon="fa fa-pencil" title="Editar" />
                                 <p:commandButton action="/pages/configuracion/empresa/empresaListado" icon="fa fa-remove" title="Eliminar" />
-                                    
+                                <p:commandButton actionListener="#{miSession.seleccionarEmpresa(item)}" icon="fa fa-check" 
+                                                 title="Seleccionar" 
+                                                 ajax="false"
+                                                 />
                             </p:column>
                         </p:dataTable>
                     </h:form>

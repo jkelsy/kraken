@@ -1,7 +1,11 @@
 package j2o.software.kraken.managed.general;
 
-import j2o.software.kraken.db.general.Empresa;
+import j2o.software.kraken.db.model.general.Empresa;
+import j2o.software.kraken.db.model.general.Representante;
+import j2o.software.kraken.db.model.general.TipoIdentificacion;
 import j2o.software.kraken.services.general.EmpresaService;
+import j2o.software.kraken.services.general.RepresentanteService;
+import j2o.software.kraken.services.general.TipoIdentificacionService;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -16,6 +20,10 @@ public class EmpresaController implements Serializable {
 
     @Inject
     private EmpresaService empresaService;
+    @Inject
+    private TipoIdentificacionService tipoIdentificacionService;
+    @Inject
+    private RepresentanteService representanteService;
 
     private List<Empresa> empresas;
     private List<Empresa> empresasFiltradas;
@@ -24,6 +32,11 @@ public class EmpresaController implements Serializable {
     private Long id; //id empresa seleccionada utilizado para mostrar o editar las empresas
 
     String labelAccion;
+
+    private List<TipoIdentificacion> tipoIdentificacionList;
+    private Long tipoIdentificacionId;
+
+    private List<Representante> representanteList;
 
     public List<Empresa> getEmpresas() {
         return empresas;
@@ -65,19 +78,63 @@ public class EmpresaController implements Serializable {
         this.labelAccion = labelAccion;
     }
 
+    public List<TipoIdentificacion> getTipoIdentificacionList() {
+        return tipoIdentificacionList;
+    }
+
+    public void setTipoIdentificacionList(List<TipoIdentificacion> tipoIdentificacionList) {
+        this.tipoIdentificacionList = tipoIdentificacionList;
+    }
+
+    public Long getTipoIdentificacionId() {
+        return tipoIdentificacionId;
+    }
+
+    public void setTipoIdentificacionId(Long tipoIdentificacionId) {
+        this.tipoIdentificacionId = tipoIdentificacionId;
+    }
+
+    public List<Representante> getRepresentanteList() {
+        return representanteList;
+    }
+
+    public void setRepresentanteList(List<Representante> representanteList) {
+        this.representanteList = representanteList;
+    }
+
     public void inicio() {
-        nueva = new Empresa();
+        //nueva = new Empresa();
         empresas = empresaService.getEmpresaFacade().findAll();
+        tipoIdentificacionList = tipoIdentificacionService.getTipoIdentificacionFacade().findAll();
+
+        System.err.println("INIT" + nueva.getId());
+        if (nueva != null) {
+            System.err.println("INICIO BUSCAR REP");
+            representanteList = representanteService.findAllByEmpresa(nueva.getId());
+            System.err.println("ajshaks" + representanteList);
+        }
+
     }
 
     public void cargarCrear() {
         labelAccion = "Grabar";
         nueva = new Empresa();
+        inicio();
     }
 
     public void cargarEditar() {
         labelAccion = "Actualizar";
         nueva = empresaService.getEmpresaFacade().find(id);
+
+        if (nueva != null) {
+            if (nueva.getIdentificacion() != null) {
+                tipoIdentificacionId = nueva.getTipoIdentificacion().getId();
+            }
+
+        }
+
+        inicio();
+
     }
 
     public void cargarListado() {
@@ -96,12 +153,40 @@ public class EmpresaController implements Serializable {
 
         try {
 
+            
+            
+            if (tipoIdentificacionId != null) {
+                TipoIdentificacion tipoIden = tipoIdentificacionService.getTipoIdentificacionFacade().find(tipoIdentificacionId);
+                if (tipoIden != null) {
+                    nueva.setTipoIdentificacion(tipoIden);
+                }
+            }
+
             if (nueva.getId() == null) {
                 mensaje = "Registro creado con exito";
                 empresaService.getEmpresaFacade().create(nueva);
             } else {
                 mensaje = "Registro Modificado con exito";
                 empresaService.getEmpresaFacade().edit(nueva);
+            }
+
+            for (Representante rep : representanteService.findAllByEmpresa(nueva.getId())) {
+                representanteService.getRepresentanteFacade().remove(rep);
+            }
+            
+            
+            
+            if (representanteList != null) {
+                for (Representante rep : representanteList) {
+                    Representante r = new Representante();
+                    r.setIdentificacion(rep.getIdentificacion());
+                    r.setNombres(rep.getNombres());
+                    r.setApellidos(rep.getApellidos());
+                    r.setTipoIdentificacion(rep.getTipoIdentificacion());
+                    r.setEmpresa(nueva);
+                    representanteService.getRepresentanteFacade().create(r);
+                }
+
             }
 
             // MENSAJE
@@ -129,7 +214,14 @@ public class EmpresaController implements Serializable {
         FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Éxito", "Registro modificado con éxito"));
+      
         return "/pages/configuracion/empresa/empresaListado?faces-redirect=true";
     }
+    
+    public void agregarRepresentante(){
+        Representante rep = new Representante();
+        representanteList.add(rep);
+    }
+    
 
 }

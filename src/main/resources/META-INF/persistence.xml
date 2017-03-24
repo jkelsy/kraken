@@ -2,41 +2,27 @@
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="KrakenPU" transaction-type="JTA">
     <jta-data-source>java:/jboss/datasources/KrakenDS</jta-data-source>
-    <class>j2o.software.kraken.db.Tercero</class>
-    <class>j2o.software.kraken.db.TipoIdentificacion</class>
-    <class>j2o.software.kraken.db.Direccion</class>
-    <class>j2o.software.kraken.db.Telefono</class>
-    <class>j2o.software.kraken.db.Empresa</class>
-    <class>j2o.software.kraken.db.contabilidad.pcga.Tercero</class>
-    <class>j2o.software.kraken.db.contabilidad.pcga.TipoIdentificacion</class>
-    <class>j2o.software.kraken.db.contabilidad.pcga.Direccion</class>
-    <class>j2o.software.kraken.db.contabilidad.pcga.Telefono</class>
-    <class>j2o.software.kraken.db.contabilidad.pcga.Empresa</class>
-    <class>j2o.software.kraken.db.contabilidad.pcga.PlanUnicoCuentas</class>
-    <class>j2o.software.kraken.db.contabilidad.pcga.CentroCosto</class>
-    <class>j2o.software.kraken.db.contabilidad.pcga.TipoDocumento</class>
-    <class>j2o.software.kraken.db.contabilidad.pcga.AsientoContable</class>
-    <class>j2o.software.kraken.db.contabilidad.pcga.Periodo</class>
-    <class>j2o.software.kraken.db.contabilidad.pcga.DetalleAsiento</class>
-    <class>j2o.software.kraken.db.contabilidad.pcga.ComprobanteSaldo</class>
-    <class>j2o.software.kraken.db.contabilidad.pcga.DetalleSaldoCuenta</class>
-    <class>j2o.software.kraken.db.contabilidad.pcga.DetalleSaldoTercero</class>
-    <class>j2o.software.kraken.db.contabilidad.pcga.Modulo</class>
-    <class>j2o.software.kraken.db.contabilidad.pcga.DetalleDocumento</class>
-    <class>j2o.software.kraken.db.Representante</class>
-    <class>j2o.software.kraken.db.contabilidad.pcga.Representante</class>
-    <class>j2o.software.kraken.db.Usuario</class>
-    <class>j2o.software.kraken.db.Rol</class>
-    <class>j2o.software.kraken.db.Permiso</class>
-    <class>j2o.software.kraken.db.general.Telefono</class>
-    <class>j2o.software.kraken.db.seguridad.Permiso</class>
-    <class>j2o.software.kraken.db.seguridad.Rol</class>
-    <class>j2o.software.kraken.db.seguridad.Usuario</class>
-    <class>j2o.software.kraken.db.general.Tercero</class>
-    <class>j2o.software.kraken.db.general.Representante</class>
-    <class>j2o.software.kraken.db.general.Direccion</class>
-    <class>j2o.software.kraken.db.general.TipoIdentificacion</class>
-    <class>j2o.software.kraken.db.general.Empresa</class>
+    
+    <class>j2o.software.kraken.db.model.general.Telefono</class>
+    <class>j2o.software.kraken.db.model.contabilidad.pcga.Modulo</class>
+    <class>j2o.software.kraken.db.model.contabilidad.pcga.ComprobanteSaldo</class>
+    <class>j2o.software.kraken.db.model.contabilidad.pcga.Periodo</class>
+    <class>j2o.software.kraken.db.model.seguridad.Permiso</class>
+    <class>j2o.software.kraken.db.model.contabilidad.pcga.AsientoContable</class>
+    <class>j2o.software.kraken.db.model.contabilidad.pcga.TipoDocumento</class>
+    <class>j2o.software.kraken.db.model.contabilidad.pcga.DetalleSaldoTercero</class>
+    <class>j2o.software.kraken.db.model.contabilidad.pcga.DetalleSaldoCuenta</class>
+    <class>j2o.software.kraken.db.model.seguridad.Rol</class>
+    <class>j2o.software.kraken.db.model.seguridad.Usuario</class>
+    <class>j2o.software.kraken.db.model.contabilidad.pcga.DetalleAsiento</class>
+    <class>j2o.software.kraken.db.model.contabilidad.pcga.DetalleDocumento</class>
+    <class>j2o.software.kraken.db.model.contabilidad.pcga.PlanUnicoCuentas</class>
+    <class>j2o.software.kraken.db.model.general.Tercero</class>
+    <class>j2o.software.kraken.db.model.general.Representante</class>
+    <class>j2o.software.kraken.db.model.general.Direccion</class>
+    <class>j2o.software.kraken.db.model.general.TipoIdentificacion</class>
+    <class>j2o.software.kraken.db.model.contabilidad.pcga.CentroCosto</class>
+    <class>j2o.software.kraken.db.model.general.Empresa</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.hbm2ddl.auto" value="update"/>

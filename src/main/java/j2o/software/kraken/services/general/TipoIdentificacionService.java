@@ -6,8 +6,8 @@
 package j2o.software.kraken.services.general;
 
 
-import j2o.software.kraken.db.general.TipoIdentificacion;
-import j2o.software.kraken.db.general.TipoIdentificacionFacade;
+import j2o.software.kraken.db.facade.general.TipoIdentificacionFacade;
+import j2o.software.kraken.db.model.general.TipoIdentificacion;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
