@@ -2,8 +2,8 @@ package j2o.software.kraken.managed.contabilidad.pcga;
 
 
 import j2o.software.kraken.configuracion.MiSesion;
-import j2o.software.kraken.db.model.contabilidad.pcga.Periodo;
-import j2o.software.kraken.services.contabilidad.pcga.PeriodoService;
+import j2o.software.kraken.db.model.contabilidad.pcga.Clase;
+import j2o.software.kraken.services.contabilidad.pcga.ClaseService;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -12,18 +12,18 @@ import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 
-@Named(value = "periodoController")
+@Named(value = "claseController")
 @ViewScoped
-public class PeriodoController implements Serializable {
+public class ClaseController implements Serializable {
 
     @Inject MiSesion miSession;
     
     @Inject
-    private PeriodoService servicio;
+    private ClaseService servicio;
 
-    private List<Periodo> listaList;
-    private List<Periodo> listaFiltradas;
-    private Periodo nueva;
+    private List<Clase> listaList;
+    private List<Clase> listaFiltradas;
+    private Clase nueva;
 
     private Long id; //id empresa seleccionada utilizado para mostrar o editar las empresas
 
@@ -42,45 +42,47 @@ public class PeriodoController implements Serializable {
         return labelAccion;
     }
 
-    public List<Periodo> getListaList() {
+    public List<Clase> getListaList() {
         return listaList;
     }
 
-    public void setListaList(List<Periodo> listaList) {
+    public void setListaList(List<Clase> listaList) {
         this.listaList = listaList;
     }
 
-    public List<Periodo> getListaFiltradas() {
+    public List<Clase> getListaFiltradas() {
         return listaFiltradas;
     }
 
-    public void setListaFiltradas(List<Periodo> listaFiltradas) {
+    public void setListaFiltradas(List<Clase> listaFiltradas) {
         this.listaFiltradas = listaFiltradas;
     }
 
-    public Periodo getNueva() {
+    public Clase getNueva() {
         return nueva;
     }
 
-    public void setNueva(Periodo nueva) {
+    public void setNueva(Clase nueva) {
         this.nueva = nueva;
     }
 
+    
 
    
+    
     
     
     public void inicio() {
         //nueva = new Empresa();
         
-        System.err.println("MI EMPRESA."+miSession.getMiEmpresa().getId());
+        //System.err.println("MI EMPRESA."+miSession.getMiEmpresa().getId());
         
-        listaList = servicio.findAllByEmpresa(miSession.getMiEmpresa().getId());
+        //listaList = servicio.findAllByEmpresa(miSession.getMiEmpresa().getId());
     }
 
     public void cargarCrear() {
         labelAccion = "Grabar";
-        nueva = new Periodo();
+        nueva = new Clase();
         inicio();
     }
 
@@ -94,7 +96,7 @@ public class PeriodoController implements Serializable {
 
     public void cargarListado() {
        listaList = servicio.getFachada().findAll();
-       listaList = servicio.findAllByEmpresa(miSession.getMiEmpresa().getId());
+       //listaList = servicio.findAllByEmpresa(miSession.getMiEmpresa().getId());
 
     }
 
@@ -111,7 +113,7 @@ public class PeriodoController implements Serializable {
         try {
 
             
-            nueva.setEmpresa(miSession.getMiEmpresa());
+           //nueva.setEmpresa(miSession.getMiEmpresa());
 
             if (nueva.getId() == null) {
                 mensaje = "Registro creado con exito";

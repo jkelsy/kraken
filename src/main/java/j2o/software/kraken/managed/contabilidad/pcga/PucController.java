@@ -2,7 +2,9 @@ package j2o.software.kraken.managed.contabilidad.pcga;
 
 
 import j2o.software.kraken.configuracion.MiSesion;
+import j2o.software.kraken.db.model.contabilidad.pcga.Clase;
 import j2o.software.kraken.db.model.contabilidad.pcga.PlanUnicoCuentas;
+import j2o.software.kraken.services.contabilidad.pcga.ClaseService;
 import j2o.software.kraken.services.contabilidad.pcga.PucService;
 import java.io.Serializable;
 import java.util.List;
@@ -29,6 +31,9 @@ public class PucController implements Serializable {
 
     String labelAccion;
 
+    private List<Clase> claseList;
+    @Inject private ClaseService claseService;
+    
 
     public Long getId() {
         return id;
@@ -70,6 +75,14 @@ public class PucController implements Serializable {
         this.nueva = nueva;
     }
 
+    public List<Clase> getClaseList() {
+        return claseList;
+    }
+
+    public void setClaseList(List<Clase> claseList) {
+        this.claseList = claseList;
+    }
+
 
    
     
@@ -80,6 +93,7 @@ public class PucController implements Serializable {
         System.err.println("MI EMPRESA."+miSession.getMiEmpresa().getId());
         
         pucList = pucService.findAllByEmpresa(miSession.getMiEmpresa().getId());
+        claseList = claseService.getFachada().findAll();
     }
 
     public void cargarCrear() {

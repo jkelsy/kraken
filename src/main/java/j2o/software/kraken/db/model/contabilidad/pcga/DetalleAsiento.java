@@ -21,17 +21,20 @@ public abstract class DetalleAsiento implements Serializable {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
-    @Basic
-    private String naturaleza;
-
     @Basic(optional=false)
     private double valorDB;
 
     @Basic
-    private int valorCR;
+    private Double valorCR;
 
     @Basic
     private String descrpcion;
+
+    @Basic
+    private String valorBase;
+
+    @Basic
+    private Double valorTasa;
 
     @ManyToOne(targetEntity = Tercero.class)
     private Tercero tercero;
@@ -42,6 +45,9 @@ public abstract class DetalleAsiento implements Serializable {
     @ManyToOne(targetEntity = CentroCosto.class)
     private CentroCosto centroCosto;
 
+    @ManyToOne(targetEntity = Naturaleza.class)
+    private Naturaleza naturaleza;
+
 
     public Long getId() {
         return this.id;
@@ -49,14 +55,6 @@ public abstract class DetalleAsiento implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getNaturaleza() {
-        return this.naturaleza;
-    }
-
-    public void setNaturaleza(String naturaleza) {
-        this.naturaleza = naturaleza;
     }
 
     public double getValorDB() {
@@ -67,11 +65,11 @@ public abstract class DetalleAsiento implements Serializable {
         this.valorDB = valorDB;
     }
 
-    public int getValorCR() {
+    public Double getValorCR() {
         return this.valorCR;
     }
 
-    public void setValorCR(int valorCR) {
+    public void setValorCR(Double valorCR) {
         this.valorCR = valorCR;
     }
 
@@ -81,6 +79,22 @@ public abstract class DetalleAsiento implements Serializable {
 
     public void setDescrpcion(String descrpcion) {
         this.descrpcion = descrpcion;
+    }
+
+    public String getValorBase() {
+        return this.valorBase;
+    }
+
+    public void setValorBase(String valorBase) {
+        this.valorBase = valorBase;
+    }
+
+    public Double getValorTasa() {
+        return this.valorTasa;
+    }
+
+    public void setValorTasa(Double valorTasa) {
+        this.valorTasa = valorTasa;
     }
 
     public Tercero getTercero() {
@@ -105,6 +119,14 @@ public abstract class DetalleAsiento implements Serializable {
 
     public void setCentroCosto(CentroCosto centroCosto) {
         this.centroCosto = centroCosto;
+    }
+
+    public Naturaleza getNaturaleza() {
+        return this.naturaleza;
+    }
+
+    public void setNaturaleza(Naturaleza naturaleza) {
+        this.naturaleza = naturaleza;
     }
 
 

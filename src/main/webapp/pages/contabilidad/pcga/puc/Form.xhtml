@@ -23,7 +23,14 @@
                 <p:outputLabel value="Auxiliar" for="auxiliar" />
                 <p:inputText id="auxiliar" value="#{pucController.nueva.auxiliar}" title="Auxiliar" />
                 <p:outputLabel value="Clase" for="clase" />
-                <p:inputText id="clase" value="#{pucController.nueva.clase}" title="Clase" />
+               
+                
+                <p:selectOneMenu id="clase" value="#{pucController.nueva.clase}" 
+                                 converter="entityConverter" >
+                    <f:selectItems value="#{pucController.claseList}" var="m" 
+                                   itemLabel="#{m.codigo} | #{m.nombre}" itemValue="#{m}"/>
+                </p:selectOneMenu>
+                
                 <p:outputLabel value="Fecha" for="fecha" />
                 <p:inputText id="fecha" value="#{pucController.nueva.fecha}" title="Fecha" />
                 
