@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">    
+    <h:body>
+        <ui:composition template="/plantilla.xhtml">
+            <ui:define name="contentHeader">
+                <h1>
+                    <small>LISTADO</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <h:link outcome="Crear">
+                        <i class="fa fa-link"></i> 
+                        <span>Nuevo</span>
+                    </h:link>
+                </ol> 
+            </ui:define>
+            <ui:define name="content">
+                <f:metadata>                        
+                    <f:event type="preValidate"  listener="#{miSession.preRenderView}" />
+                    <f:viewAction action="#{periodoController.cargarListado()}"/>
+                </f:metadata>
+                <f:view>
+                    <h:form>
+                        
+                        <p:dataTable value="#{periodoController.listaList}" 
+                                     var="item" >
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Id"/>
+                                </f:facet>
+                                <h:outputText value="#{item.id}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Año"/>
+                                </f:facet>
+                                <h:outputText value="#{item.anyo}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Mes"/>
+                                </f:facet>
+                                <h:outputText value="#{item.mes}"/>
+                            </p:column>
+                             <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Fecha Apertura"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fechaApertura}">
+                                     <f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
+                                 </h:outputText>
+                            </p:column>
+                             <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Fecha Cierre"/>
+                                </f:facet>
+                                 <h:outputText value="#{item.fechaCierre}">
+                                     <f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
+                                 </h:outputText>
+                            </p:column>
+                             <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Estado"/>
+                                </f:facet>
+                                 <h:outputText value="#{item.estado}"/>
+                                    
+                            </p:column>
+                            
+                            
+                            
+                            <p:column style="text-align: center">
+                                <f:facet name="header">
+                                    <h:outputText value="Opciones"/>
+                                </f:facet>                                  
+                                
+                                <p:commandButton action="#{'Mostrar?faces-redirect=true&amp;id='.concat(item.id)}" icon="fa fa-search" title="Mostrar" />
+                                <p:commandButton action="#{'Editar?faces-redirect=true&amp;id='.concat(item.id)}" icon="fa fa-pencil" title="Editar" />
+                                <p:commandButton action="Listado" icon="fa fa-remove" title="Eliminar" />
+                                    
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </f:view>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

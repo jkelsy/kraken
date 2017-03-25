@@ -9,24 +9,25 @@
         <ui:composition template="/plantilla.xhtml">
             <ui:define name="contentHeader">
                 <h1>
-                    <small>LISTADO DE EMPRESAS</small>
+                    <small>LISTADO</small>
                 </h1>
                 <ol class="breadcrumb">
-                    <h:link outcome="/pages/configuracion/empresa/empresaCrear">
+                    <h:link outcome="Crear">
                         <i class="fa fa-link"></i> 
-                        <span>Nueva Empresa</span>
+                        <span>Nuevo</span>
                     </h:link>
                 </ol> 
             </ui:define>
             <ui:define name="content">
                 <f:metadata>                        
-                    <f:viewAction action="#{empresaController.cargarListado()}"/>
+                    <f:event type="preValidate"  listener="#{miSession.preRenderView}" />
+                    <f:viewAction action="#{pucController.cargarListado()}"/>
                 </f:metadata>
                 <f:view>
                     <h:form>
-
-                        <p:dataTable value="#{empresaController.empresas}" 
-                                     var="item" filteredValue="#{empresaController.empresasFiltradas}">
+                        
+                        <p:dataTable value="#{pucController.pucList}" 
+                                     var="item" >
                             <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Id"/>
@@ -35,17 +36,11 @@
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Tipo Identificacion"/>
+                                    <h:outputText value="Cuenta"/>
                                 </f:facet>
-                                <h:outputText value="#{item.tipoIdentificacion.abreviatura}"/>
+                                <h:outputText value="#{item.cuenta}"/>
                             </p:column>
                             <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Identificacion"/>
-                                </f:facet>
-                                <h:outputText value="#{item.identificacion}"/>
-                            </p:column>
-                            <p:column filterBy="#{item.nombre}">
                                 <f:facet name="header">
                                     <h:outputText value="Nombre"/>
                                 </f:facet>
@@ -53,35 +48,26 @@
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Direccion"/>
+                                    <h:outputText value="Nivel"/>
                                 </f:facet>
-                                <h:outputText value="#{item.direccion}"/>
+                                <h:outputText value="#{item.nivel}"/>
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Telefono"/>
+                                    <h:outputText value="Naturaleza"/>
                                 </f:facet>
-                                <h:outputText value="#{item.telefono}"/>
+                                <h:outputText value="#{item.naturaleza}"/>
                             </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Email"/>
-                                </f:facet>
-                                <h:outputText value="#{item.email}"/>
-                            </p:column>
-
+                            
                             <p:column style="text-align: center">
                                 <f:facet name="header">
                                     <h:outputText value="Opciones"/>
                                 </f:facet>                                  
-
-                                <p:commandButton action="#{'/pages/configuracion/empresa/empresaMostrar?faces-redirect=true&amp;id='.concat(item.id)}" icon="fa fa-search" title="Mostrar" />
-                                <p:commandButton action="#{'/pages/configuracion/empresa/empresaEditar?faces-redirect=true&amp;id='.concat(item.id)}" icon="fa fa-pencil" title="Editar" />
-                                <p:commandButton action="/pages/configuracion/empresa/empresaListado" icon="fa fa-remove" title="Eliminar" />
-                                <p:commandButton actionListener="#{miSession.seleccionarEmpresa(item)}" icon="fa fa-check" 
-                                                 title="Seleccionar" 
-                                                 ajax="false"
-                                                 />
+                                
+                                <p:commandButton action="#{'Mostrar?faces-redirect=true&amp;id='.concat(item.id)}" icon="fa fa-search" title="Mostrar" />
+                                <p:commandButton action="#{'Editar?faces-redirect=true&amp;id='.concat(item.id)}" icon="fa fa-pencil" title="Editar" />
+                                <p:commandButton action="Listado" icon="fa fa-remove" title="Eliminar" />
+                                    
                             </p:column>
                         </p:dataTable>
                     </h:form>

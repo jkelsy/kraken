@@ -5,7 +5,7 @@
 package j2o.software.kraken.db.model.contabilidad.pcga;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +18,7 @@ import javax.persistence.ManyToOne;
 public class ComprobanteSaldo implements Serializable { 
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
     @Basic

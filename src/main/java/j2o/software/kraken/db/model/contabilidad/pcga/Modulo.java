@@ -7,24 +7,38 @@ package j2o.software.kraken.db.model.contabilidad.pcga;
 import j2o.software.kraken.db.model.general.Empresa;
 import java.io.Serializable;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 
 @Entity
+@Table(name="conta_pcga_modulo")
+@NamedQueries({@NamedQuery(name="Modulo.findAllByEmpresa",query="Select m from Modulo m where m.empresa.id=:empresa"),@NamedQuery(name="Modulo.findAllByEmpresaAndCodigo",query="Select m from Modulo m where m.empresa.id=:empresa and m.codigo=:codigo")})
 public class Modulo implements Serializable { 
 
+    @Column(name="modulo_id")
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name="modulo_codigo")
+    @Basic
+    private String codigo;
+
+    @Column(name="modulo_nombre")
     @Basic
     private String nombre;
 
     @ManyToOne(targetEntity = Empresa.class)
+    @JoinColumn(name="MODULO_EMPRESA_ID")
     private Empresa empresa;
 
 
@@ -34,6 +48,14 @@ public class Modulo implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getCodigo() {
+        return this.codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     public String getNombre() {

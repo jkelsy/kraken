@@ -6,7 +6,7 @@ package j2o.software.kraken.db.model.contabilidad.pcga;
 
 import j2o.software.kraken.db.model.general.Empresa;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,7 +27,7 @@ public class CentroCosto implements Serializable {
 
     @Column(name="cc_id")
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
     @Column(name="cc_codigo")

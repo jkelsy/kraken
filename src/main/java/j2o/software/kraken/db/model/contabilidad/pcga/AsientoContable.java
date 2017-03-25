@@ -6,47 +6,60 @@ package j2o.software.kraken.db.model.contabilidad.pcga;
 
 import j2o.software.kraken.db.model.general.Empresa;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 
 @Entity
+@Table(name="conta_pcga_asiento_contable")
+@NamedQueries({@NamedQuery(name="AsientoContable.findAllByEmpresa",query="Select a from AsientoContable a where a.empresa.id =:empresa"),@NamedQuery(name="AsientoContable.findAllByEmpresaAndPeriodo",query="Select a from AsientoContable a where a.empresa.id=:empresa and a.periodo.id=:periodo"),@NamedQuery(name="AsientoContable.findAllByEmpresaAndTipoDocumento",query="Select a from AsientoContable a where a.empresa.id=:empresa and a.tipoDocumento.id=:tipoDocumento"),@NamedQuery(name="AsientoContable.findAllByEmpresaAndPeriodoAndTipoDocumento",query="Select a from AsientoContable a where a.empresa.id=:empresa and a.periodo.id=:periodo and a.tipoDocumento.id=:tipoDocumento"),@NamedQuery(name="AsientoContable.findAllByEmpresaAndFechaBetween",query="Select a from AsientoContable a where a.empresa.id=:empresa and a.fecha between :fechaInicio and :fechaFin"),@NamedQuery(name="AsientoContable.findAllByEmpresaAndFecha",query="Select a from AsientoContable a where a.empresa.id=:empresa and a.fecha=:fecha")})
 public class AsientoContable implements Serializable { 
 
+    @Column(name="asi_conta_id")
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name="asi_conta_fecha")
     @Basic
     private Date fecha;
 
+    @Column(name="asi_conta_numero_documento")
     @Basic
-    private String nroDocumento;
+    private String numeroDocumento;
 
+    @Column(name="asi_conta_aprobado")
     @Basic
     private String aprobado;
 
+    @Column(name="asi_conta_fecha_aprobacion")
     @Basic
     private Date fechaAprobacion;
 
+    @Column(name="asi_conta_numero_externo")
     @Basic
-    private String nroExterno;
-
-    @Basic
-    private String usuario;
+    private String numeroExterno;
 
     @ManyToOne(targetEntity = TipoDocumento.class)
+    @JoinColumn(name="ASI_CONTA_TIP_DOC_ID")
     private TipoDocumento tipoDocumento;
 
     @ManyToOne(targetEntity = Periodo.class)
+    @JoinColumn(name="ASI_CONTA_PERIODO_ID")
     private Periodo periodo;
 
     @ManyToOne(targetEntity = Empresa.class)
+    @JoinColumn(name="ASI_CONTA_EMPRESA_ID")
     private Empresa empresa;
 
 
@@ -66,12 +79,12 @@ public class AsientoContable implements Serializable {
         this.fecha = fecha;
     }
 
-    public String getNroDocumento() {
-        return this.nroDocumento;
+    public String getNumeroDocumento() {
+        return this.numeroDocumento;
     }
 
-    public void setNroDocumento(String nroDocumento) {
-        this.nroDocumento = nroDocumento;
+    public void setNumeroDocumento(String numeroDocumento) {
+        this.numeroDocumento = numeroDocumento;
     }
 
     public String getAprobado() {
@@ -90,20 +103,12 @@ public class AsientoContable implements Serializable {
         this.fechaAprobacion = fechaAprobacion;
     }
 
-    public String getNroExterno() {
-        return this.nroExterno;
+    public String getNumeroExterno() {
+        return this.numeroExterno;
     }
 
-    public void setNroExterno(String nroExterno) {
-        this.nroExterno = nroExterno;
-    }
-
-    public String getUsuario() {
-        return this.usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setNumeroExterno(String numeroExterno) {
+        this.numeroExterno = numeroExterno;
     }
 
     public TipoDocumento getTipoDocumento() {

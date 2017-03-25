@@ -10,10 +10,10 @@
         <h:form>
             <p:panelGrid columns="2">
                 <p:outputLabel value="Tipo Identificacion:" for="tipoIdentificacion" />
-                <p:selectOneMenu  autoWidth="false" required="true"  id="tipoIdentificacion"  
-                                  value="#{empresaController.tipoIdentificacionId}">
+                <p:selectOneMenu  autoWidth="true" required="true"  id="tipoIdentificacion"  
+                                  value="#{empresaController.nueva.tipoIdentificacion}" converter="entityConverter">
                     <f:selectItems  value="#{empresaController.tipoIdentificacionList}" var="tiInstance"
-                                    itemLabel="#{tiInstance.codigo} | #{tiInstance.descripcion}" itemValue="#{tiInstance.id}"/>
+                                    itemLabel="#{tiInstance.codigo} | #{tiInstance.descripcion}" itemValue="#{tiInstance}"/>
                 </p:selectOneMenu>            
 
                 <p:outputLabel value="Identificacion:" for="identificacion" />
@@ -43,7 +43,7 @@
                     <p:cellEditor>
                         <f:facet name="output"><h:outputText value="#{item.tipoIdentificacion.abreviatura}" /></f:facet>
                         <f:facet name="input">
-                            <h:selectOneMenu converter="tipoIdentificacionConverter" value="#{item.tipoIdentificacion}" style="width:100%">
+                            <h:selectOneMenu converter="entityConverter" value="#{item.tipoIdentificacion}" style="width:100%">
                                 <f:selectItems value="#{empresaController.tipoIdentificacionList}" var="tid" 
                                                itemLabel="#{tid.abreviatura}" itemValue="#{tid}" />
                             </h:selectOneMenu>

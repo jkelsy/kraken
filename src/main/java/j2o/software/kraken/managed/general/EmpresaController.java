@@ -7,6 +7,7 @@ import j2o.software.kraken.services.general.EmpresaService;
 import j2o.software.kraken.services.general.RepresentanteService;
 import j2o.software.kraken.services.general.TipoIdentificacionService;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -34,7 +35,6 @@ public class EmpresaController implements Serializable {
     String labelAccion;
 
     private List<TipoIdentificacion> tipoIdentificacionList;
-    private Long tipoIdentificacionId;
 
     private List<Representante> representanteList;
 
@@ -86,13 +86,6 @@ public class EmpresaController implements Serializable {
         this.tipoIdentificacionList = tipoIdentificacionList;
     }
 
-    public Long getTipoIdentificacionId() {
-        return tipoIdentificacionId;
-    }
-
-    public void setTipoIdentificacionId(Long tipoIdentificacionId) {
-        this.tipoIdentificacionId = tipoIdentificacionId;
-    }
 
     public List<Representante> getRepresentanteList() {
         return representanteList;
@@ -107,11 +100,9 @@ public class EmpresaController implements Serializable {
         empresas = empresaService.getEmpresaFacade().findAll();
         tipoIdentificacionList = tipoIdentificacionService.getTipoIdentificacionFacade().findAll();
 
-        System.err.println("INIT" + nueva.getId());
+      
         if (nueva != null) {
-            System.err.println("INICIO BUSCAR REP");
             representanteList = representanteService.findAllByEmpresa(nueva.getId());
-            System.err.println("ajshaks" + representanteList);
         }
 
     }
@@ -126,12 +117,6 @@ public class EmpresaController implements Serializable {
         labelAccion = "Actualizar";
         nueva = empresaService.getEmpresaFacade().find(id);
 
-        if (nueva != null) {
-            if (nueva.getIdentificacion() != null) {
-                tipoIdentificacionId = nueva.getTipoIdentificacion().getId();
-            }
-
-        }
 
         inicio();
 
@@ -139,10 +124,12 @@ public class EmpresaController implements Serializable {
 
     public void cargarListado() {
         empresas = empresaService.getEmpresaFacade().findAll();
+        inicio();
     }
 
     public void cargarMostrar() {
         nueva = empresaService.getEmpresaFacade().find(id);
+        inicio();
     }
 
     public String grabar() {
@@ -153,14 +140,7 @@ public class EmpresaController implements Serializable {
 
         try {
 
-            
-            
-            if (tipoIdentificacionId != null) {
-                TipoIdentificacion tipoIden = tipoIdentificacionService.getTipoIdentificacionFacade().find(tipoIdentificacionId);
-                if (tipoIden != null) {
-                    nueva.setTipoIdentificacion(tipoIden);
-                }
-            }
+
 
             if (nueva.getId() == null) {
                 mensaje = "Registro creado con exito";
@@ -220,6 +200,9 @@ public class EmpresaController implements Serializable {
     
     public void agregarRepresentante(){
         Representante rep = new Representante();
+        if(representanteList == null){
+            representanteList = new ArrayList<Representante>();
+        }
         representanteList.add(rep);
     }
     

@@ -17,7 +17,7 @@ import javax.persistence.ManyToOne;
 public class DetalleDocumento implements Serializable { 
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
     @Basic

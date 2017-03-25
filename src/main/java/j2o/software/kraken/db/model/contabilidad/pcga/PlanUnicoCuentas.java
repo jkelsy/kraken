@@ -6,50 +6,64 @@ package j2o.software.kraken.db.model.contabilidad.pcga;
 
 import j2o.software.kraken.db.model.general.Empresa;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 
 @Entity
+@Table(name="conta_pcga_puc")
+@NamedQueries({@NamedQuery(name="PlanUnicoCuentas.findAllByEmpresa",query="Select p from PlanUnicoCuentas p where p.empresa.id=:empresa"),@NamedQuery(name="PlanUnicoCuentas.findAllByEmpresaAndCuenta",query="Select p from PlanUnicoCuentas p where p.empresa.id=:empresa and p.cuenta=:cuenta")})
 public class PlanUnicoCuentas implements Serializable { 
 
+    @Column(name="puc_id")
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name="puc_cuenta")
     @Basic
     private String cuenta;
 
+    @Column(name="puc_pertenece")
     @Basic
     private String pertenece;
 
+    @Column(name="puc_nombre")
     @Basic
     private String nombre;
 
+    @Column(name="puc_naturaleza")
     @Basic
     private String naturaleza;
 
+    @Column(name="puc_nivel")
     @Basic
     private String nivel;
 
+    @Column(name="puc_auxiliar")
     @Basic
     private String auxiliar;
 
+    @Column(name="puc_clase")
     @Basic
     private String clase;
 
+    @Column(name="puc_fecha")
     @Basic
     private Date fecha;
 
-    @Basic
-    private String usuario;
-
     @ManyToOne(targetEntity = Empresa.class)
+    @JoinColumn(name="PUC_EMPRESA_ID")
     private Empresa empresa;
 
 
@@ -123,14 +137,6 @@ public class PlanUnicoCuentas implements Serializable {
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
-    }
-
-    public String getUsuario() {
-        return this.usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
     }
 
     public Empresa getEmpresa() {

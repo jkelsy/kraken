@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">    
+
+    <f:view>
+        <h:form>
+            <p:panelGrid columns="2">
+               
+                <p:outputLabel value="Cuenta" for="cuenta" />
+                <p:inputText id="cuenta" value="#{pucController.nueva.cuenta}" title="Cuenta" />
+                <p:outputLabel value="Nombre" for="nombre" />
+                <p:inputText id="nombre" value="#{pucController.nueva.nombre}" title="Nombre" />
+                <p:outputLabel value="Pertenece" for="pertenece" />
+                <p:inputText id="pertenece" value="#{pucController.nueva.pertenece}" title="Pertenece" />
+                <p:outputLabel value="Nivel" for="nivel" />
+                <p:inputText id="nivel" value="#{pucController.nueva.nivel}" title="Nivel" />
+                <p:outputLabel value="Naturaleza" for="naturaleza" />
+                <p:inputText id="naturaleza" value="#{pucController.nueva.naturaleza}" title="Naturaleza" />
+                <p:outputLabel value="Auxiliar" for="auxiliar" />
+                <p:inputText id="auxiliar" value="#{pucController.nueva.auxiliar}" title="Auxiliar" />
+                <p:outputLabel value="Clase" for="clase" />
+                <p:inputText id="clase" value="#{pucController.nueva.clase}" title="Clase" />
+                <p:outputLabel value="Fecha" for="fecha" />
+                <p:inputText id="fecha" value="#{pucController.nueva.fecha}" title="Fecha" />
+                
+            </p:panelGrid>
+
+            
+
+
+            <p:commandButton icon="ui-icon-check" rendered="#{(pucController.labelAccion =='Actualizar')}"
+                             value="#{pucController.labelAccion}"
+                             action="#{pucController.grabar}"
+
+                             />
+
+            <p:commandButton icon="ui-icon-check" rendered="#{(pucController.labelAccion =='Grabar')}"
+                             value="#{pucController.labelAccion}"
+                             action="#{pucController.grabar}"
+
+                             />
+
+
+        </h:form>
+    </f:view>
+</html>

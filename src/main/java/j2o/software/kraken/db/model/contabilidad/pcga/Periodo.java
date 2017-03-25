@@ -6,41 +6,52 @@ package j2o.software.kraken.db.model.contabilidad.pcga;
 
 import j2o.software.kraken.db.model.general.Empresa;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 
 @Entity
+@Table(name="conta_pcga_periodo")
+@NamedQueries({@NamedQuery(name="Periodo.findAllByEmpresa",query="Select p from Periodo p where p.empresa.id=:empresa"),@NamedQuery(name="Periodo.findAllByEmpresaAndAnyoAndMes",query="Select p from Periodo p where p.empresa.id=:empresa and p.anyo=:anyo and p.mes=:mes")})
 public class Periodo implements Serializable { 
 
+    @Column(name="periodo_id")
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name="periodo_anyo")
     @Basic
-    private String anio;
+    private String anyo;
 
+    @Column(name="periodo_mes")
     @Basic
     private String mes;
 
+    @Column(name="periodo_estado")
     @Basic
     private String estado;
 
+    @Column(name="periodo_fecha_apertura")
     @Basic
     private Date fechaApertura;
 
+    @Column(name="periodo_fecha_cierre")
     @Basic
     private Date fechaCierre;
 
-    @Basic
-    private String usuario;
-
     @ManyToOne(targetEntity = Empresa.class)
+    @JoinColumn(name="PERIODO_EMPRESA_ID")
     private Empresa empresa;
 
 
@@ -52,12 +63,12 @@ public class Periodo implements Serializable {
         this.id = id;
     }
 
-    public String getAnio() {
-        return this.anio;
+    public String getAnyo() {
+        return this.anyo;
     }
 
-    public void setAnio(String anio) {
-        this.anio = anio;
+    public void setAnyo(String anyo) {
+        this.anyo = anyo;
     }
 
     public String getMes() {
@@ -90,14 +101,6 @@ public class Periodo implements Serializable {
 
     public void setFechaCierre(Date fechaCierre) {
         this.fechaCierre = fechaCierre;
-    }
-
-    public String getUsuario() {
-        return this.usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
     }
 
     public Empresa getEmpresa() {

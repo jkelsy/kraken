@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">    
+
+    <f:view>
+        <h:form>
+            <p:panelGrid columns="2">
+
+                <p:outputLabel value="Codigo" for="codigo" />
+                <p:inputText id="codigo" value="#{tipoDocumentoController.nueva.codigo}" title="Codigo" />
+                <p:outputLabel value="Nombre" for="nombre" />
+                <p:inputText id="nombre" value="#{tipoDocumentoController.nueva.nombre}" title="Nombre" />
+                <p:outputLabel value="Modulo" for="modulo" />
+                <p:selectOneMenu id="modulo" value="#{tipoDocumentoController.nueva.modulo}" 
+                                 converter="entityConverter" >
+                    <f:selectItems value="#{tipoDocumentoController.moduloList}" var="m" 
+                                   itemLabel="#{m.codigo} | #{m.nombre}" itemValue="#{m}"/>
+                </p:selectOneMenu>
+
+
+
+            </p:panelGrid>
+
+
+
+
+            <p:commandButton icon="ui-icon-check" rendered="#{(tipoDocumentoController.labelAccion =='Actualizar')}"
+                             value="#{tipoDocumentoController.labelAccion}"
+                             action="#{tipoDocumentoController.grabar}"
+
+                             />
+
+            <p:commandButton icon="ui-icon-check" rendered="#{(tipoDocumentoController.labelAccion =='Grabar')}"
+                             value="#{tipoDocumentoController.labelAccion}"
+                             action="#{tipoDocumentoController.grabar}"
+
+                             />
+
+
+        </h:form>
+    </f:view>
+</html>

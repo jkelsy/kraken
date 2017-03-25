@@ -4,7 +4,6 @@
 
 package j2o.software.kraken.db.model.seguridad;
 
-import j2o.software.kraken.db.model.general.Empresa;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
@@ -32,10 +31,6 @@ public class Permiso implements Serializable {
     @JoinColumn(name="ROL_ID")
     private List<Rol> rol;
 
-    @OneToMany(targetEntity = Empresa.class)
-    @JoinColumn(name="EMPRESA_ID")
-    private List<Empresa> empresa;
-
 
     public Long getId() {
         return this.id;
@@ -59,14 +54,6 @@ public class Permiso implements Serializable {
 
     public void setRol(List<Rol> rol) {
         this.rol = rol;
-    }
-
-    public List<Empresa> getEmpresa() {
-        return this.empresa;
-    }
-
-    public void setEmpresa(List<Empresa> empresa) {
-        this.empresa = empresa;
     }
 
 

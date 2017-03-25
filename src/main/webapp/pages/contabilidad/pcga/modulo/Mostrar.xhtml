@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">    
+    <h:body>
+        <ui:composition template="/plantilla.xhtml">
+            <ui:define name="contentHeader">
+                <h1>
+                    <small>MOSTRAR</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <h:link outcome="Listado"><i class="fa fa-link"></i> <span>Listado</span></h:link>
+                </ol> 
+            </ui:define>
+            <ui:define name="content">
+                <f:metadata>     
+                    <f:event type="preValidate"  listener="#{miSession.preRenderView}" />
+                    <f:viewParam name="id" value="#{moduloController.id}"/>
+                    <f:viewAction action="#{moduloController.cargarMostrar()}"/>
+                </f:metadata>
+                <f:view>
+                    <h:form>
+
+                        <p:panelGrid columns="2">
+
+
+                            <h:outputText value="Codigo"/>
+                            <h:outputText id="codigo" value="#{moduloController.nueva.codigo}" title="Codigo" />
+                            <h:outputText value="Nombre"/>
+                            <h:outputText id="nombre" value="#{moduloController.nueva.nombre}" title="Nombre" />
+                            
+
+                        </p:panelGrid>
+                    </h:form>
+                </f:view>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

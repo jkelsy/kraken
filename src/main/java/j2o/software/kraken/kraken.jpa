@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" pkg="j2o.software.kraken.db.model" v="3.5.1" rws="_1489529657821247" Pws="_1489529657821247" cws="_1489529657821247" persistenceUnitName="KrakenPU" sm="false" xs="false" id="_148952964007652" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
-    <jpa:entity xre="false" compositePrimaryKeyClass="TelefonoPK" abs="false" class="Telefono" v="true" gen="false" pkg="general" m="false" rootElement="_148952964007652" id="_148952964012653">
+<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" pkg="j2o.software.kraken.db.model" v="3.5.1" rws="_1489529657821247" Pws="_1489613252947603" cws="_1489613252947603" persistenceUnitName="KrakenPU" sm="false" xs="false" id="_148952964007652" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
+    <jpa:entity xre="false" compositePrimaryKeyClass="TelefonoPK" abs="false" class="Telefono" v="true" pkg="general" m="false" rootElement="_148952964007652" id="_148952964012653">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -22,23 +22,43 @@
         </jpa:attributes>
         <jpa:el/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="ModuloPK" abs="false" class="Modulo" v="true" gen="false" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_148952964015558">
+    <jpa:entity lbl-ref="_148952964015560" xre="false" compositePrimaryKeyClass="ModuloPK" abs="false" class="Modulo" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_148952964015558">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
-            <jpa:basic attribute-type="String" v="true" name="nombre" ft="false" id="_148952964015560">
+            <jpa:basic attribute-type="String" v="true" name="codigo" ft="false" id="_148952964015560">
                 <jpa:bv/>
+                <jpa:column name="modulo_codigo" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="nombre" id="_149040948420048">
+                <jpa:bv/>
+                <jpa:column name="modulo_nombre" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1489529640532188" v="true" name="empresa" id="_149040951143449">
+                <jpa:bv/>
+                <jpa:join-column name="MODULO_EMPRESA_ID" rc="" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
+            </jpa:many-to-one>
             <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_148952964015559">
                 <jpa:bv/>
-                <jpa:generated-value strategy="AUTO"/>
+                <jpa:column name="modulo_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="IDENTITY"/>
             </jpa:id>
         </jpa:attributes>
+        <jpa:nq e="false" name="Modulo.findByNombre">
+            <jpa:query>Select m from Modulo m where m.nombre=:nombre</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="true" name="Modulo.findAllByEmpresa">
+            <jpa:query>Select m from Modulo m where m.empresa.id=:empresa</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="true" name="Modulo.findAllByEmpresaAndCodigo">
+            <jpa:query>Select m from Modulo m where m.empresa.id=:empresa and m.codigo=:codigo</jpa:query>
+        </jpa:nq>
         <jpa:el/>
+        <jpa:table name="conta_pcga_modulo"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="ComprobanteSaldoPK" abs="false" class="ComprobanteSaldo" v="true" gen="false" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_148952964019262">
+    <jpa:entity xre="false" compositePrimaryKeyClass="ComprobanteSaldoPK" abs="false" class="ComprobanteSaldo" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_148952964019262">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -47,7 +67,7 @@
             <jpa:basic attribute-type="String" v="true" name="descripcion" ft="false" id="_148952964019364">
                 <jpa:bv/>
             </jpa:basic>
-            <jpa:basic attribute-type="java.sql.Date" v="true" name="fecha" ft="false" id="_148952964019365">
+            <jpa:basic attribute-type="java.util.Date" v="true" name="fecha" ft="false" id="_148952964019365">
                 <jpa:bv/>
             </jpa:basic>
             <jpa:basic attribute-type="String" v="true" name="usuario" ft="false" id="_148952964019366">
@@ -58,43 +78,57 @@
             </jpa:many-to-one>
             <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_148952964019263">
                 <jpa:bv/>
-                <jpa:generated-value strategy="AUTO"/>
+                <jpa:generated-value strategy="IDENTITY"/>
             </jpa:id>
         </jpa:attributes>
         <jpa:el/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="PeriodoPK" abs="false" class="Periodo" v="true" gen="false" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_148952964020868">
+    <jpa:entity lbl-ref="_148952964020970" xre="false" compositePrimaryKeyClass="PeriodoPK" abs="false" class="Periodo" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_148952964020868">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
-            <jpa:basic attribute-type="String" v="true" name="anio" ft="false" id="_148952964020970">
+            <jpa:basic attribute-type="String" v="true" name="anyo" ft="false" id="_148952964020970">
                 <jpa:bv/>
+                <jpa:column name="periodo_anyo" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" v="true" name="mes" ft="false" id="_148952964020971">
                 <jpa:bv/>
+                <jpa:column name="periodo_mes" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" v="true" name="estado" ft="false" id="_148952964020972">
                 <jpa:bv/>
+                <jpa:column name="periodo_estado" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:basic>
-            <jpa:basic attribute-type="java.sql.Date" v="true" name="fechaApertura" ft="false" id="_148952964020973">
+            <jpa:basic attribute-type="java.util.Date" v="true" name="fechaApertura" ft="false" id="_148952964020973">
                 <jpa:bv/>
+                <jpa:column name="periodo_fecha_apertura" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:basic>
-            <jpa:basic attribute-type="java.sql.Date" v="true" name="fechaCierre" ft="false" id="_148952964020974">
+            <jpa:basic attribute-type="java.util.Date" v="true" name="fechaCierre" ft="false" id="_148952964020974">
                 <jpa:bv/>
+                <jpa:column name="periodo_fecha_cierre" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:basic>
-            <jpa:basic attribute-type="String" v="true" name="usuario" ft="false" id="_148952964020975">
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1489529640532188" v="true" name="empresa" id="_149044752303081">
                 <jpa:bv/>
-            </jpa:basic>
+                <jpa:join-column name="PERIODO_EMPRESA_ID" rc="" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
+            </jpa:many-to-one>
             <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_148952964020969">
                 <jpa:bv/>
-                <jpa:generated-value strategy="AUTO"/>
+                <jpa:column name="periodo_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="IDENTITY"/>
             </jpa:id>
         </jpa:attributes>
+        <jpa:nq e="true" name="Periodo.findAllByEmpresa">
+            <jpa:query>Select p from Periodo p where p.empresa.id=:empresa</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="true" name="Periodo.findAllByEmpresaAndAnyoAndMes">
+            <jpa:query>Select p from Periodo p where p.empresa.id=:empresa and p.anyo=:anyo and p.mes=:mes</jpa:query>
+        </jpa:nq>
         <jpa:el/>
+        <jpa:table name="conta_pcga_periodo"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="PermisoPK" abs="false" class="Permiso" v="true" gen="false" pkg="seguridad" m="false" rootElement="_148952964007652" id="_148952964022477">
+    <jpa:entity xre="false" compositePrimaryKeyClass="PermisoPK" abs="false" class="Permiso" v="true" pkg="seguridad" m="false" rootElement="_148952964007652" id="_148952964022477">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -116,63 +150,112 @@
         <jpa:el/>
         <jpa:table name="sec_permiso"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="AsientoContablePK" abs="false" class="AsientoContable" v="true" gen="false" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_148952964024782">
+    <jpa:entity lbl-ref="_148952964024884" xre="false" compositePrimaryKeyClass="AsientoContablePK" abs="false" class="AsientoContable" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_148952964024782">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
-            <jpa:basic attribute-type="java.sql.Date" v="true" name="fecha" ft="false" id="_148952964024884">
+            <jpa:basic attribute-type="java.util.Date" v="true" name="fecha" ft="false" id="_148952964024884">
                 <jpa:bv/>
+                <jpa:column name="asi_conta_fecha" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:basic>
-            <jpa:basic attribute-type="String" v="true" name="nroDocumento" ft="false" id="_148952964024885">
+            <jpa:basic attribute-type="String" v="true" name="numeroDocumento" ft="false" id="_148952964024885">
                 <jpa:bv/>
+                <jpa:column name="asi_conta_numero_documento" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" v="true" name="aprobado" ft="false" id="_148952964024886">
                 <jpa:bv/>
+                <jpa:column name="asi_conta_aprobado" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:basic>
-            <jpa:basic attribute-type="java.sql.Date" v="true" name="fechaAprobacion" ft="false" id="_148952964024887">
+            <jpa:basic attribute-type="java.util.Date" v="true" name="fechaAprobacion" ft="false" id="_148952964024887">
                 <jpa:bv/>
+                <jpa:column name="asi_conta_fecha_aprobacion" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:basic>
-            <jpa:basic attribute-type="String" v="true" name="nroExterno" ft="false" id="_148952964024888">
+            <jpa:basic attribute-type="String" v="true" name="numeroExterno" ft="false" id="_148952964024888">
                 <jpa:bv/>
-            </jpa:basic>
-            <jpa:basic attribute-type="String" v="true" name="usuario" ft="false" id="_148952964024889">
-                <jpa:bv/>
+                <jpa:column name="asi_conta_numero_externo" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:basic>
             <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_148952964026493" v="true" name="tipoDocumento" ft="false" id="_148952964024890">
                 <jpa:bv/>
+                <jpa:join-column name="ASI_CONTA_TIP_DOC_ID" rc="" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
             </jpa:many-to-one>
             <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_148952964020868" v="true" name="periodo" ft="false" id="_148952964024891">
                 <jpa:bv/>
+                <jpa:join-column name="ASI_CONTA_PERIODO_ID" rc="" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
+            </jpa:many-to-one>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1489529640532188" v="true" name="empresa" id="_1490451632413115">
+                <jpa:bv/>
+                <jpa:join-column name="ASI_CONTA_EMPRESA_ID" rc="" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
             </jpa:many-to-one>
             <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_148952964024783">
                 <jpa:bv/>
-                <jpa:generated-value strategy="AUTO"/>
+                <jpa:column name="asi_conta_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="IDENTITY"/>
             </jpa:id>
         </jpa:attributes>
+        <jpa:nq e="true" name="AsientoContable.findAllByEmpresa">
+            <jpa:query>Select a from AsientoContable a where a.empresa.id =:empresa</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="true" name="AsientoContable.findAllByEmpresaAndPeriodo">
+            <jpa:query>Select a from AsientoContable a where a.empresa.id=:empresa and a.periodo.id=:periodo</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="true" name="AsientoContable.findAllByEmpresaAndTipoDocumento">
+            <jpa:query>Select a from AsientoContable a where a.empresa.id=:empresa and a.tipoDocumento.id=:tipoDocumento</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="true" name="AsientoContable.findAllByEmpresaAndPeriodoAndTipoDocumento">
+            <jpa:query>Select a from AsientoContable a where a.empresa.id=:empresa and a.periodo.id=:periodo and a.tipoDocumento.id=:tipoDocumento</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="true" name="AsientoContable.findAllByEmpresaAndFechaBetween">
+            <jpa:query>Select a from AsientoContable a where a.empresa.id=:empresa and a.fecha between :fechaInicio and :fechaFin</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="true" name="AsientoContable.findAllByEmpresaAndFecha">
+            <jpa:query>Select a from AsientoContable a where a.empresa.id=:empresa and a.fecha=:fecha</jpa:query>
+        </jpa:nq>
         <jpa:el/>
+        <jpa:table name="conta_pcga_asiento_contable"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="TipoDocumentoPK" abs="false" class="TipoDocumento" v="true" gen="false" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_148952964026493">
+    <jpa:entity lbl-ref="_148952964026495" xre="false" compositePrimaryKeyClass="TipoDocumentoPK" abs="false" class="TipoDocumento" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_148952964026493">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
-            <jpa:basic attribute-type="String" v="true" name="nombre" ft="false" id="_148952964026495">
+            <jpa:basic attribute-type="String" v="true" name="codigo" ft="false" id="_148952964026495">
                 <jpa:bv/>
+                <jpa:column name="tip_doc_codigo" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="nombre" id="_149040943537547">
+                <jpa:bv/>
+                <jpa:column name="tip_doc_nombre" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:basic>
             <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_148952964015558" v="true" name="modulo" ft="false" id="_148952964026496">
                 <jpa:bv/>
+                <jpa:join-column name="TIP_DOC_MODULO_ID" rc="" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
+            </jpa:many-to-one>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1489529640532188" v="true" name="empresa" id="_149040951877050">
+                <jpa:bv/>
+                <jpa:join-column name="TIP_DOC_EMPRESA_ID" rc="" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
             </jpa:many-to-one>
             <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_148952964026494">
                 <jpa:bv/>
-                <jpa:generated-value strategy="AUTO"/>
+                <jpa:column name="tip_doc_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="IDENTITY"/>
             </jpa:id>
         </jpa:attributes>
+        <jpa:nq e="false" name="TipoDocumento.findByNombre">
+            <jpa:query>Select t from TipoDocumento t where t.nombre=:nombre</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="true" name="TipoDocumento.findAllByEmpresa">
+            <jpa:query>Select t from TipoDocumento t where t.empresa.id=:empresa</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="true" name="TipoDocumento.findAllByEmpresaAndCodigo">
+            <jpa:query>Select t from TipoDocumento t  where t.empresa.id=:empresa and t.codigo=:codigo</jpa:query>
+        </jpa:nq>
         <jpa:el/>
+        <jpa:table name="conta_pcga_tipo_documento"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="DetalleSaldoTerceroPK" abs="false" class="DetalleSaldoTercero" v="true" gen="false" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_148952964028297">
+    <jpa:entity xre="false" compositePrimaryKeyClass="DetalleSaldoTerceroPK" abs="false" class="DetalleSaldoTercero" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_148952964028297">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -201,12 +284,12 @@
             </jpa:many-to-one>
             <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_148952964028298">
                 <jpa:bv/>
-                <jpa:generated-value strategy="AUTO"/>
+                <jpa:generated-value strategy="IDENTITY"/>
             </jpa:id>
         </jpa:attributes>
         <jpa:el/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="DetalleSaldoCuentaPK" abs="false" class="DetalleSaldoCuenta" v="true" gen="false" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_1489529640304106">
+    <jpa:entity xre="false" compositePrimaryKeyClass="DetalleSaldoCuentaPK" abs="false" class="DetalleSaldoCuenta" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_1489529640304106">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -232,12 +315,12 @@
             </jpa:many-to-one>
             <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_1489529640304107">
                 <jpa:bv/>
-                <jpa:generated-value strategy="AUTO"/>
+                <jpa:generated-value strategy="IDENTITY"/>
             </jpa:id>
         </jpa:attributes>
         <jpa:el/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="RolPK" abs="false" class="Rol" v="true" gen="false" pkg="seguridad" m="false" rootElement="_148952964007652" id="_1489529640331114">
+    <jpa:entity xre="false" compositePrimaryKeyClass="RolPK" abs="false" class="Rol" v="true" pkg="seguridad" m="false" rootElement="_148952964007652" id="_1489529640331114">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -254,7 +337,7 @@
         <jpa:el/>
         <jpa:table name="sec_rol"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="UsuarioPK" abs="false" class="Usuario" v="true" gen="false" pkg="seguridad" m="false" rootElement="_148952964007652" id="_1489529640358117">
+    <jpa:entity xre="false" compositePrimaryKeyClass="UsuarioPK" abs="false" class="Usuario" v="true" pkg="seguridad" m="false" rootElement="_148952964007652" id="_1489529640358117">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -281,7 +364,7 @@
         <jpa:el/>
         <jpa:table name="sec_usuario"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="DetalleAsientoPK" abs="true" class="DetalleAsiento" v="true" gen="false" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_1489529640377123">
+    <jpa:entity xre="false" compositePrimaryKeyClass="DetalleAsientoPK" abs="true" class="DetalleAsiento" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_1489529640377123">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -310,12 +393,12 @@
             </jpa:many-to-one>
             <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_1489529640378124">
                 <jpa:bv/>
-                <jpa:generated-value strategy="AUTO"/>
+                <jpa:generated-value strategy="IDENTITY"/>
             </jpa:id>
         </jpa:attributes>
         <jpa:el/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="DetalleDocumentoPK" abs="false" class="DetalleDocumento" v="true" gen="false" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_1489529640394132">
+    <jpa:entity lbl-ref="_1489529640395134" xre="false" compositePrimaryKeyClass="DetalleDocumentoPK" abs="false" class="DetalleDocumento" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_1489529640394132">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -335,12 +418,12 @@
             </jpa:many-to-one>
             <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_1489529640394133">
                 <jpa:bv/>
-                <jpa:generated-value strategy="AUTO"/>
+                <jpa:generated-value strategy="IDENTITY"/>
             </jpa:id>
         </jpa:attributes>
         <jpa:el/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="PlanUnicoCuentasPK" abs="false" class="PlanUnicoCuentas" v="true" gen="false" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_1489529640410138">
+    <jpa:entity lbl-ref="_1489529640410140" xre="false" compositePrimaryKeyClass="PlanUnicoCuentasPK" abs="false" class="PlanUnicoCuentas" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_1489529640410138">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -348,37 +431,54 @@
         <jpa:attributes>
             <jpa:basic attribute-type="String" v="true" name="cuenta" ft="false" id="_1489529640410140">
                 <jpa:bv/>
+                <jpa:column name="puc_cuenta" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" v="true" name="pertenece" ft="false" id="_1489529640410141">
                 <jpa:bv/>
+                <jpa:column name="puc_pertenece" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" v="true" name="nombre" ft="false" id="_1489529640410142">
                 <jpa:bv/>
+                <jpa:column name="puc_nombre" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" v="true" name="naturaleza" ft="false" id="_1489529640411143">
                 <jpa:bv/>
+                <jpa:column name="puc_naturaleza" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" v="true" name="nivel" ft="false" id="_1489529640411144">
                 <jpa:bv/>
+                <jpa:column name="puc_nivel" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" v="true" name="auxiliar" ft="false" id="_1489529640411145">
                 <jpa:bv/>
+                <jpa:column name="puc_auxiliar" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" v="true" name="clase" ft="false" id="_1489529640411146">
                 <jpa:bv/>
+                <jpa:column name="puc_clase" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:basic>
-            <jpa:basic attribute-type="java.sql.Date" v="true" name="fecha" ft="false" id="_1489529640411147">
+            <jpa:basic attribute-type="java.util.Date" v="true" name="fecha" ft="false" id="_1489529640411147">
                 <jpa:bv/>
+                <jpa:column name="puc_fecha" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:basic>
-            <jpa:basic attribute-type="String" v="true" name="usuario" ft="false" id="_1489529640411148">
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1489529640532188" v="true" name="empresa" id="_149040559530046">
                 <jpa:bv/>
-            </jpa:basic>
+                <jpa:join-column name="PUC_EMPRESA_ID" rc="" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
+            </jpa:many-to-one>
             <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_1489529640410139">
                 <jpa:bv/>
-                <jpa:generated-value strategy="AUTO"/>
+                <jpa:column name="puc_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="IDENTITY"/>
             </jpa:id>
         </jpa:attributes>
+        <jpa:nq e="true" name="PlanUnicoCuentas.findAllByEmpresa">
+            <jpa:query>Select p from PlanUnicoCuentas p where p.empresa.id=:empresa</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="true" name="PlanUnicoCuentas.findAllByEmpresaAndCuenta">
+            <jpa:query>Select p from PlanUnicoCuentas p where p.empresa.id=:empresa and p.cuenta=:cuenta</jpa:query>
+        </jpa:nq>
         <jpa:el/>
+        <jpa:table name="conta_pcga_puc"/>
     </jpa:entity>
     <jpa:entity name="Tercero" lbl-ref="_1489529640429152" xre="false" compositePrimaryKeyClass="TerceroPK" abs="false" class="Tercero" v="true" pkg="general" m="false" rootElement="_148952964007652" id="_1489529640428150">
         <jpa:ts e="true"/>
@@ -424,11 +524,11 @@
                 <jpa:bv/>
                 <jpa:column name="ter_estado_civil" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:basic>
-            <jpa:basic attribute-type="java.sql.Date" v="true" name="fechaNacimiento" ft="false" id="_1489529640429161">
+            <jpa:basic attribute-type="java.util.Date" v="true" name="fechaNacimiento" ft="false" id="_1489529640429161">
                 <jpa:bv/>
                 <jpa:column name="ter_fecha_nacimiento" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:basic>
-            <jpa:basic attribute-type="java.sql.Date" v="true" name="fechaCreacion" ft="false" id="_1489529640430162">
+            <jpa:basic attribute-type="java.util.Date" v="true" name="fechaCreacion" ft="false" id="_1489529640430162">
                 <jpa:bv/>
                 <jpa:column name="ter_fecha_creacion" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:basic>
@@ -455,7 +555,7 @@
         <jpa:el/>
         <jpa:table name="gen_tercero"/>
     </jpa:entity>
-    <jpa:entity name="Representante" lbl-ref="_1489529640443167" xre="false" compositePrimaryKeyClass="RepresentantePK" abs="false" class="Representante" v="true" gen="false" pkg="general" m="false" rootElement="_148952964007652" id="_1489529640443166">
+    <jpa:entity name="Representante" lbl-ref="_1489529640443167" xre="false" compositePrimaryKeyClass="RepresentantePK" abs="false" class="Representante" v="true" pkg="general" m="false" rootElement="_148952964007652" id="_1489529640443166">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -502,7 +602,7 @@
         <jpa:el/>
         <jpa:table name="gen_representante"/>
     </jpa:entity>
-    <jpa:entity lbl-ref="_1489529640453172" xre="false" compositePrimaryKeyClass="DireccionPK" abs="false" class="Direccion" v="true" gen="false" pkg="general" m="false" rootElement="_148952964007652" id="_1489529640453170">
+    <jpa:entity lbl-ref="_1489529640453172" xre="false" compositePrimaryKeyClass="DireccionPK" abs="false" class="Direccion" v="true" pkg="general" m="false" rootElement="_148952964007652" id="_1489529640453170">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -525,7 +625,7 @@
         </jpa:attributes>
         <jpa:el/>
     </jpa:entity>
-    <jpa:entity name="TipoIdentificacion" lbl-ref="_1489529640468177" xre="false" compositePrimaryKeyClass="TipoIdentificacionPK" abs="false" class="TipoIdentificacion" v="true" gen="false" pkg="general" m="false" rootElement="_148952964007652" id="_1489529640468175">
+    <jpa:entity name="TipoIdentificacion" lbl-ref="_1489529640468177" xre="false" compositePrimaryKeyClass="TipoIdentificacionPK" abs="false" class="TipoIdentificacion" v="true" pkg="general" m="false" rootElement="_148952964007652" id="_1489529640468175">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -558,7 +658,7 @@
         <jpa:el/>
         <jpa:table name="gen_tipo_identificacion"/>
     </jpa:entity>
-    <jpa:entity lbl-ref="_1489529640485181" xre="false" compositePrimaryKeyClass="CentroCostoPK" abs="false" class="CentroCosto" v="true" gen="false" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_1489529640484179">
+    <jpa:entity lbl-ref="_1489529640485181" xre="false" compositePrimaryKeyClass="CentroCostoPK" abs="false" class="CentroCosto" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_1489529640484179">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -584,7 +684,7 @@
                 <jpa:bv/>
                 <jpa:column name="cc_fecha_final" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:basic>
-            <jpa:basic attribute-type="java.sql.Date" v="true" name="fecha" ft="false" id="_1489529640485186">
+            <jpa:basic attribute-type="java.util.Date" v="true" name="fecha" ft="false" id="_1489529640485186">
                 <jpa:bv/>
                 <jpa:column name="cc_fecha" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:basic>
@@ -595,7 +695,7 @@
             <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_1489529640485180">
                 <jpa:bv/>
                 <jpa:column name="cc_id" unique="false" nullable="true" insertable="true" updatable="true"/>
-                <jpa:generated-value strategy="AUTO"/>
+                <jpa:generated-value strategy="IDENTITY"/>
             </jpa:id>
         </jpa:attributes>
         <jpa:nq e="true" name="CentroCosto.findAllByEmpresa">
@@ -607,7 +707,7 @@
         <jpa:el/>
         <jpa:table name="conta_pcga_centro_costo"/>
     </jpa:entity>
-    <jpa:entity lbl-ref="_1489529640532190" xre="false" compositePrimaryKeyClass="EmpresaPK" abs="false" class="Empresa" v="true" gen="false" pkg="general" m="false" rootElement="_148952964007652" id="_1489529640532188">
+    <jpa:entity lbl-ref="_1489529640532190" xre="false" compositePrimaryKeyClass="EmpresaPK" abs="false" class="Empresa" v="true" pkg="general" m="false" rootElement="_148952964007652" id="_1489529640532188">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -664,20 +764,20 @@
             <i ref="_1489529640394132" x="817" y="1542"/>
             <i ref="_148952964022477" x="1397" y="314"/>
             <i ref="_1489529640532188" x="1020" y="676"/>
-            <i ref="_148952964026493" x="2004" y="1018"/>
+            <i ref="_148952964026493" x="1370" y="1048"/>
             <i ref="_148952964028297" x="1699" y="1804"/>
             <i ref="_1489529640453170" x="254" y="314"/>
             <i ref="_148952964024782" x="539" y="1200"/>
             <i ref="_148952964020868" x="1699" y="1200"/>
             <i ref="_1489529640443166" x="817" y="1018"/>
-            <i ref="_148952964015558" x="1397" y="1018"/>
+            <i ref="_148952964015558" x="1635" y="921"/>
             <i ref="_148952964012653" x="32" y="1200"/>
             <i ref="_1489529640331114" x="1108" y="32"/>
             <i ref="_1489529640377123" x="539" y="32"/>
             <i ref="_1489529640358117" x="1699" y="596"/>
             <i ref="_148952964019262" x="2004" y="1542"/>
             <i ref="_1489529640484179" x="817" y="314"/>
-            <i ref="_1489529640410138" x="1108" y="1200"/>
+            <i ref="_1489529640410138" x="1108" y="1199"/>
             <i ref="_1489529640428150" x="539" y="596"/>
             <i ref="_1489529640468175" x="254" y="1018"/>
         </jpa:ws>
@@ -696,19 +796,19 @@
             <i ref="_1489529640428150" x="317" y="202"/>
         </jpa:ws>
         <jpa:ws n="contabilidad.pcga" id="_1489613252947603">
-            <i ref="_1489529640304106"/>
-            <i ref="_1489529640394132"/>
-            <i ref="_1489529640532188"/>
-            <i ref="_148952964026493"/>
-            <i ref="_148952964028297"/>
-            <i ref="_148952964024782"/>
-            <i ref="_148952964020868"/>
-            <i ref="_148952964015558"/>
-            <i ref="_1489529640377123"/>
-            <i ref="_1489529640484179"/>
-            <i ref="_148952964019262"/>
-            <i ref="_1489529640410138"/>
-            <i ref="_1489529640428150"/>
+            <i ref="_1489529640304106" x="1732" y="1047"/>
+            <i ref="_1489529640394132" x="882" y="32"/>
+            <i ref="_1489529640532188" x="882" y="722"/>
+            <i ref="_148952964026493" x="1173" y="337"/>
+            <i ref="_148952964028297" x="328" y="722"/>
+            <i ref="_148952964024782" x="1421" y="32"/>
+            <i ref="_148952964020868" x="1732" y="337"/>
+            <i ref="_148952964015558" x="1173" y="1047"/>
+            <i ref="_1489529640377123" x="882" y="1332"/>
+            <i ref="_1489529640484179" x="633" y="1047"/>
+            <i ref="_148952964019262" x="32" y="1047"/>
+            <i ref="_1489529640410138" x="1443" y="722"/>
+            <i ref="_1489529640428150" x="633" y="337"/>
         </jpa:ws>
     </jpa:wsl>
 </jpa:entity-mappings>

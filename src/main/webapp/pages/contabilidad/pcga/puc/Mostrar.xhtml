@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">    
+    <h:body>
+        <ui:composition template="/plantilla.xhtml">
+            <ui:define name="contentHeader">
+                <h1>
+                    <small>MOSTRAR</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <h:link outcome="Listado"><i class="fa fa-link"></i> <span>Listado</span></h:link>
+                </ol> 
+            </ui:define>
+            <ui:define name="content">
+                <f:metadata>     
+                    <f:event type="preValidate"  listener="#{miSession.preRenderView}" />
+                    <f:viewParam name="id" value="#{pucController.id}"/>
+                    <f:viewAction action="#{pucController.cargarMostrar()}"/>
+                </f:metadata>
+                <f:view>
+                    <h:form>
+
+                        <p:panelGrid columns="2">
+
+
+                            <h:outputText value="Cuenta"/>
+                            <h:outputText id="cuenta" value="#{pucController.nueva.cuenta}" title="Cuenta" />
+                            <h:outputText value="Nombre"/>
+                            <h:outputText id="nombre" value="#{pucController.nueva.nombre}" title="Nombre" />
+                            <h:outputText value="Pertenece" />
+                            <h:outputText id="pertenece" value="#{pucController.nueva.pertenece}" title="Pertenece" />
+                            <h:outputText value="Nivel"/>
+                            <h:outputText id="nivel" value="#{pucController.nueva.nivel}" title="Nivel" />
+                            <h:outputText value="Naturaleza"/>
+                            <h:outputText id="naturaleza" value="#{pucController.nueva.naturaleza}" title="Naturaleza" />
+                            <h:outputText value="Auxiliar"/>
+                            <h:outputText id="auxiliar" value="#{pucController.nueva.auxiliar}" title="Auxiliar" />
+                            <h:outputText value="Clase"/>
+                            <h:outputText id="clase" value="#{pucController.nueva.clase}" title="Clase" />
+                            <h:outputText value="Fecha"/>
+                            <h:outputText id="fecha" value="#{pucController.nueva.fecha}" title="Fecha" />
+
+
+                        </p:panelGrid>
+                    </h:form>
+                </f:view>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

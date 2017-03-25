@@ -4,27 +4,46 @@
 
 package j2o.software.kraken.db.model.contabilidad.pcga;
 
+import j2o.software.kraken.db.model.general.Empresa;
 import java.io.Serializable;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 
 @Entity
+@Table(name="conta_pcga_tipo_documento")
+@NamedQueries({@NamedQuery(name="TipoDocumento.findAllByEmpresa",query="Select t from TipoDocumento t where t.empresa.id=:empresa"),@NamedQuery(name="TipoDocumento.findAllByEmpresaAndCodigo",query="Select t from TipoDocumento t  where t.empresa.id=:empresa and t.codigo=:codigo")})
 public class TipoDocumento implements Serializable { 
 
+    @Column(name="tip_doc_id")
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name="tip_doc_codigo")
+    @Basic
+    private String codigo;
+
+    @Column(name="tip_doc_nombre")
     @Basic
     private String nombre;
 
     @ManyToOne(targetEntity = Modulo.class)
+    @JoinColumn(name="TIP_DOC_MODULO_ID")
     private Modulo modulo;
+
+    @ManyToOne(targetEntity = Empresa.class)
+    @JoinColumn(name="TIP_DOC_EMPRESA_ID")
+    private Empresa empresa;
 
 
     public Long getId() {
@@ -33,6 +52,14 @@ public class TipoDocumento implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getCodigo() {
+        return this.codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     public String getNombre() {
@@ -49,6 +76,14 @@ public class TipoDocumento implements Serializable {
 
     public void setModulo(Modulo modulo) {
         this.modulo = modulo;
+    }
+
+    public Empresa getEmpresa() {
+        return this.empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
     }
 
 
