@@ -29,6 +29,9 @@
     <class>j2o.software.kraken.db.model.general.TipoContribuyente</class>
     <class>j2o.software.kraken.db.model.general.ActividadEconomica</class>
     <class>j2o.software.kraken.db.model.general.TerceroActividadEconomica</class>
+    <class>j2o.software.kraken.db.model.general.Departamento</class>
+    <class>j2o.software.kraken.db.model.general.Municipio</class>
+    <class>j2o.software.kraken.db.model.general.Poblado</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.hbm2ddl.auto" value="update"/>

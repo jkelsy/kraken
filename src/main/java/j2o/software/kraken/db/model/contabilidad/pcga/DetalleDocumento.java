@@ -6,31 +6,43 @@ package j2o.software.kraken.db.model.contabilidad.pcga;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 
 @Entity
+@Table(name="conta_pcga_detalle_documento")
+@NamedQueries({@NamedQuery(name="DetalleDocumento.findAllByTipoDocumento",query="Select d from DetalleDocumento d where d.tipoDocumento.id=:tipoDocumento"),@NamedQuery(name="DetalleDocumento.findAllByPlanUnicoCuentas",query="Select d from DetalleDocumento d where d.planUnicoCuentas.id=:planUnicoCuentas"),@NamedQuery(name="DetalleDocumento.findAllByNaturaleza",query="Select d from DetalleDocumento d where d.naturaleza.id=:naturaleza"),@NamedQuery(name="DetalleDocumento.findAllByTipoDocumentoAndPlanUnicoCuentasAndNaturaleza",query="Select d from DetalleDocumento d where d.tipoDocumento.id=:tipoDocumento and d.planUnicoCuentas.id=:plaUnicoCuentas and d.naturaleza.id=:naturaleza")})
 public class DetalleDocumento implements Serializable { 
 
+    @Column(name="det_doc_id")
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
-    @Basic
-    private String naturaleza;
-
+    @Column(name="det_doc_acreedora")
     @Basic
     private String acreedora;
 
     @ManyToOne(targetEntity = TipoDocumento.class)
+    @JoinColumn(name="DET_DOC_TIP_DOC_ID")
     private TipoDocumento tipoDocumento;
 
     @ManyToOne(targetEntity = PlanUnicoCuentas.class)
+    @JoinColumn(name="DET_DOC_PUC_ID")
     private PlanUnicoCuentas planUnicoCuentas;
+
+    @ManyToOne(targetEntity = Naturaleza.class)
+    @JoinColumn(name="DET_DOC_NATURALEZA_ID")
+    private Naturaleza naturaleza;
 
 
     public Long getId() {
@@ -39,14 +51,6 @@ public class DetalleDocumento implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getNaturaleza() {
-        return this.naturaleza;
-    }
-
-    public void setNaturaleza(String naturaleza) {
-        this.naturaleza = naturaleza;
     }
 
     public String getAcreedora() {
@@ -71,6 +75,14 @@ public class DetalleDocumento implements Serializable {
 
     public void setPlanUnicoCuentas(PlanUnicoCuentas planUnicoCuentas) {
         this.planUnicoCuentas = planUnicoCuentas;
+    }
+
+    public Naturaleza getNaturaleza() {
+        return this.naturaleza;
+    }
+
+    public void setNaturaleza(Naturaleza naturaleza) {
+        this.naturaleza = naturaleza;
     }
 
 
