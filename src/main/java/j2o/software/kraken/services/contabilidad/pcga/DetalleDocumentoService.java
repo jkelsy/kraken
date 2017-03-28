@@ -27,6 +27,12 @@ public class DetalleDocumentoService implements Serializable {
     @Inject
     DetalleDocumentoFacade fachada;
 
+    public DetalleDocumentoFacade getFachada() {
+        return fachada;
+    }
+    
+    
+
     public List<DetalleDocumento> findAllByTipoDocumento(Long tipoDocumento) {
         Map<String, Object> parameters = new HashMap<String, Object>();
         parameters.put("tipoDocumento", tipoDocumento);

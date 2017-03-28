@@ -150,7 +150,7 @@
         <jpa:el/>
         <jpa:table name="sec_permiso"/>
     </jpa:entity>
-    <jpa:entity lbl-ref="_148952964024884" xre="false" compositePrimaryKeyClass="AsientoContablePK" abs="false" class="AsientoContable" v="true" gen="false" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_148952964024782">
+    <jpa:entity lbl-ref="_148952964024884" xre="false" compositePrimaryKeyClass="AsientoContablePK" abs="false" class="AsientoContable" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_148952964024782">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -364,41 +364,51 @@
         <jpa:el/>
         <jpa:table name="sec_usuario"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="DetalleAsientoPK" abs="true" class="DetalleAsiento" v="true" gen="false" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_1489529640377123">
+    <jpa:entity lbl-ref="_1489529640378126" xre="false" compositePrimaryKeyClass="DetalleAsientoPK" abs="true" class="DetalleAsiento" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_1489529640377123">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
         <jpa:inf e="true" n="java.io.Serializable"/>
         <jpa:attributes>
-            <jpa:basic optional="false" attribute-type="double" v="true" name="valorDB" ft="false" id="_1489529640378126">
+            <jpa:basic optional="false" attribute-type="double" v="true" name="valorDebito" ft="false" id="_1489529640378126">
                 <jpa:bv/>
+                <jpa:column name="det_asi_valor_debito" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:basic>
-            <jpa:basic attribute-type="Double" v="true" name="valorCR" ft="false" id="_1489529640379127">
+            <jpa:basic attribute-type="Double" v="true" name="valorCredito" ft="false" id="_1489529640379127">
                 <jpa:bv/>
+                <jpa:column name="det_asi_valor_credito" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" v="true" name="descrpcion" ft="false" id="_1489529640379128">
                 <jpa:bv/>
+                <jpa:column name="det_asi_descripcion" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:basic>
             <jpa:basic attribute-type="String" v="true" name="valorBase" id="_1490458549722121">
                 <jpa:bv/>
+                <jpa:column name="det_asi_valor_base" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:basic>
             <jpa:basic attribute-type="Double" v="true" name="valorTasa" id="_1490458558914122">
                 <jpa:bv/>
+                <jpa:column name="det_asi_valor_tasa" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:basic>
             <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1489529640428150" v="true" name="tercero" ft="false" id="_1489529640379129">
                 <jpa:bv/>
+                <jpa:join-column name="DET_ASI_TERCERO_ID" rc="" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
             </jpa:many-to-one>
             <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_148952964024782" v="true" name="asientoContable" ft="false" id="_1489529640379130">
                 <jpa:bv/>
+                <jpa:join-column name="DET_ASI_ASIENTO_CONTABLE_ID" rc="" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
             </jpa:many-to-one>
             <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1489529640484179" v="true" name="centroCosto" ft="false" id="_1489529640379131">
                 <jpa:bv/>
+                <jpa:join-column name="DET_ASI_CENTRO_COSTO_ID" rc="" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
             </jpa:many-to-one>
             <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1490458612852" v="true" name="naturaleza" id="_1490458724278127">
                 <jpa:bv/>
+                <jpa:join-column name="DET_ASI_NATURALEZA_ID" rc="" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
             </jpa:many-to-one>
             <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_1489529640378124">
                 <jpa:bv/>
+                <jpa:column name="det_asi_id" unique="false" nullable="true" insertable="true" updatable="true"/>
                 <jpa:generated-value strategy="IDENTITY"/>
             </jpa:id>
         </jpa:attributes>
@@ -408,9 +418,25 @@
         <jpa:nq e="false" name="DetalleAsiento.findByValorTasa">
             <jpa:query>Select d from DetalleAsiento d where d.valorTasa=:valorTasa</jpa:query>
         </jpa:nq>
+        <jpa:nq e="true" name="DetalleAsiento.findAllByTercero">
+            <jpa:query>Select d from DetalleAsiento d where d.tercero.id =:tercero</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="true" name="DetalleAsiento.findAllByAsientoContable">
+            <jpa:query>Select d from DetalleAsiento d where d.asientoContable.id =:asientoContable</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="true" name="DetalleAsiento.findAllByCentroCosto">
+            <jpa:query>Select d from DetalleAsiento d where d.centroCosto.id =:centroCosto</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="true" name="DetalleAsiento.findAllByNaturaleza">
+            <jpa:query>Select d from DetalleAsiento d where d.naturaleza.id =:naturaleza</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="true" name="DetalleAsiento.findAllByAsientoContableAndTerceroAndCentroCostoAndNaturaleza">
+            <jpa:query>Select d from DetalleAsiento d where d.asientoContable.id=:asientoContable and d.tercero.id =:tercero and d.centroCosto.id=:centroCosto and d.naturaleza.id=:naturaleza</jpa:query>
+        </jpa:nq>
         <jpa:el/>
+        <jpa:table name="conta_pcga_detalle_asiento"/>
     </jpa:entity>
-    <jpa:entity lbl-ref="_1489529640395134" xre="false" compositePrimaryKeyClass="DetalleDocumentoPK" abs="false" class="DetalleDocumento" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_1489529640394132">
+    <jpa:entity lbl-ref="_1489529640395135" xre="false" compositePrimaryKeyClass="DetalleDocumentoPK" abs="false" class="DetalleDocumento" v="true" gen="false" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_1489529640394132">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
