@@ -10,12 +10,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  * @author jdmp
  */
 
 @Entity
+@Table(name="gen_tipo_contribuyente")
+@NamedQuery(name="TipoContribuyente.findAllByCodigo",query="Select t from TipoContribuyente t where t.codigo=:codigo")
 public class TipoContribuyente { 
 
     @Column(name="tip_contri_id")

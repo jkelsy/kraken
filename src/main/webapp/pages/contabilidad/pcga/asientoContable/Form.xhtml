@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">    
+
+    <f:view>
+        <h:form>
+            <p:panelGrid columns="2">
+
+                <p:outputLabel value="Aprobado" for="aprobado" />
+                <p:inputText id="aprobado" value="#{asientoContableController.nueva.aprobado}" title="Aprobado" />
+                
+                <p:outputLabel value="Fecha" for="fecha" />
+                <p:calendar id="fecha" navigator="true" title="Fecha"
+                            value="#{asientoContableController.nueva.fecha}" pattern="dd-MM-yyyy" />
+                
+                              
+                <p:outputLabel value="Fecha Aprobacion" for="fechaAprobacion" />
+                <p:calendar id="fechaAprobacion" navigator="true" title="Fecha Aprobacion"
+                            value="#{asientoContableController.nueva.fechaAprobacion}" pattern="dd-MM-yyyy" />
+
+                 <p:outputLabel value="Numero Documento" for="numeroDocumento" />
+                <p:inputText id="numeroDocumento" value="#{asientoContableController.nueva.numeroDocumento}" title="Numero Documento" />
+                
+                <p:outputLabel value="Numero Externo" for="numeroExterno" />
+                <p:inputText id="numeroExterno" value="#{asientoContableController.nueva.numeroExterno}" title="Numero Externo" />
+                
+
+                
+                <p:outputLabel value="Periodo" for="periodo" />
+                <p:selectOneMenu id="periodo" value="#{asientoContableController.nueva.periodo}" 
+                                 converter="entityConverter" title="Periodo" >
+                    <f:selectItems value="#{asientoContableController.periodoList}" var="p" 
+                                   itemLabel="#{p.anyo} | #{p.mes}" itemValue="#{p}"/>
+                </p:selectOneMenu>
+                
+                <p:outputLabel value="Tipo Documento" for="tipoDocumento" />
+                <p:selectOneMenu id="tipoDocumento" value="#{asientoContableController.nueva.tipoDocumento}" 
+                                 converter="entityConverter" title="Tipo Documento" >
+                    <f:selectItems value="#{asientoContableController.tipoDocumentoList}" var="td" 
+                                   itemLabel="#{td.codigo} | #{td.nombre}" itemValue="#{td}"/>
+                </p:selectOneMenu>
+
+
+
+            </p:panelGrid>
+
+            <p:commandButton action="#{asientoContableController.agregarDetalle}" update="tablaDetalle"/>
+            <p:dataTable value="#{asientoContableController.detalleList}" 
+                         var="item"  editable="true" id="tablaDetalle" 
+
+                         >
+                <p:column headerText="Id">
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+
+                <p:column headerText="valorDebito">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{item.valorDebito}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{item.valorDebito}" style="width:100%" label="valorDebito"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+                
+                <p:column headerText="valorCredito">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{item.valorCredito}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{item.valorCredito}" style="width:100%" label="valorCredito"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+                
+                <p:column headerText="descrpcion">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{item.descrpcion}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{item.descrpcion}" style="width:100%" label="descrpcion"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+                
+                <p:column headerText="valorBase">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{item.valorBase}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{item.valorBase}" style="width:100%" label="valorBase"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+                
+                <p:column headerText="valorTasa">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{item.valorTasa}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{item.valorTasa}" style="width:100%" label="valorTasa"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+                
+
+                <p:column headerText="Tercero">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{item.tercero.identificacion}" /></f:facet>
+                        <f:facet name="input">
+                            <h:selectOneMenu converter="entityConverter" value="#{item.tercero}" style="width:100%">
+                                <f:selectItems value="#{asientoContableController.terceroList}" var="ter" 
+                                               itemLabel="#{ter.identificacion}" itemValue="#{ter}" />
+                            </h:selectOneMenu>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                 <p:column headerText="Centro Costo">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{item.centroCosto.nombre}" /></f:facet>
+                        <f:facet name="input">
+                            <h:selectOneMenu converter="entityConverter" value="#{item.centroCosto}" style="width:100%">
+                                <f:selectItems value="#{asientoContableController.centroCostoList}" var="cecos" 
+                                               itemLabel="#{cecos.nombre}" itemValue="#{cecos}" />
+                            </h:selectOneMenu>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="Naturaleza">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{item.naturaleza.nombre}" /></f:facet>
+                        <f:facet name="input">
+                            <h:selectOneMenu converter="entityConverter" value="#{item.naturaleza}" style="width:100%">
+                                <f:selectItems value="#{asientoContableController.naturalezaList}" var="nat" 
+                                               itemLabel="#{nat.nombre}" itemValue="#{nat}" />
+                            </h:selectOneMenu>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+               
+                <p:column style="width:32px">
+                    <p:rowEditor />
+                </p:column>
+            </p:dataTable>
+
+
+
+            <p:commandButton icon="ui-icon-check" rendered="#{(asientoContableController.labelAccion =='Actualizar')}"
+                             value="#{asientoContableController.labelAccion}"
+                             action="#{asientoContableController.grabar}"
+
+                             />
+
+            <p:commandButton icon="ui-icon-check" rendered="#{(asientoContableController.labelAccion =='Grabar')}"
+                             value="#{asientoContableController.labelAccion}"
+                             action="#{asientoContableController.grabar}"
+
+                             />
+
+
+        </h:form>
+    </f:view>
+</html>

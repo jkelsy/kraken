@@ -10,12 +10,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  * @author jdmp
  */
 
 @Entity
+@Table(name="gen_actividad_economica")
+@NamedQuery(name="ActividadEconomica.findAllByCodigo",query="Select a from ActividadEconomica a where a.codigo=:codigo")
 public class ActividadEconomica { 
 
     @Column(name="act_eco_id")

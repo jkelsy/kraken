@@ -22,7 +22,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="conta_pcga_detalle_asiento")
 @NamedQueries({@NamedQuery(name="DetalleAsiento.findAllByTercero",query="Select d from DetalleAsiento d where d.tercero.id =:tercero"),@NamedQuery(name="DetalleAsiento.findAllByAsientoContable",query="Select d from DetalleAsiento d where d.asientoContable.id =:asientoContable"),@NamedQuery(name="DetalleAsiento.findAllByCentroCosto",query="Select d from DetalleAsiento d where d.centroCosto.id =:centroCosto"),@NamedQuery(name="DetalleAsiento.findAllByNaturaleza",query="Select d from DetalleAsiento d where d.naturaleza.id =:naturaleza"),@NamedQuery(name="DetalleAsiento.findAllByAsientoContableAndTerceroAndCentroCostoAndNaturaleza",query="Select d from DetalleAsiento d where d.asientoContable.id=:asientoContable and d.tercero.id =:tercero and d.centroCosto.id=:centroCosto and d.naturaleza.id=:naturaleza")})
-public abstract class DetalleAsiento implements Serializable { 
+public class DetalleAsiento implements Serializable { 
 
     @Column(name="det_asi_id")
     @Id

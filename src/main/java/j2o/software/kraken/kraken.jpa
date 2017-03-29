@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" pkg="j2o.software.kraken.db.model" v="3.5.1" rws="_1489529657821247" Pws="_1489613252947603" cws="_1489613252947603" persistenceUnitName="KrakenPU" sm="false" xs="false" id="_148952964007652" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
+<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" pkg="j2o.software.kraken.db.model" v="3.5.1" rws="_1489529657821247" Pws="_1489529657821247" cws="_1489529657821247" persistenceUnitName="KrakenPU" sm="false" xs="false" id="_148952964007652" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
     <jpa:entity xre="false" compositePrimaryKeyClass="TelefonoPK" abs="false" class="Telefono" v="true" gen="false" pkg="general" m="false" rootElement="_148952964007652" id="_148952964012653">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
@@ -150,7 +150,7 @@
         <jpa:el/>
         <jpa:table name="sec_permiso"/>
     </jpa:entity>
-    <jpa:entity lbl-ref="_148952964024884" xre="false" compositePrimaryKeyClass="AsientoContablePK" abs="false" class="AsientoContable" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_148952964024782">
+    <jpa:entity lbl-ref="_148952964024884" xre="false" compositePrimaryKeyClass="AsientoContablePK" abs="false" class="AsientoContable" v="true" gen="false" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_148952964024782">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -364,7 +364,7 @@
         <jpa:el/>
         <jpa:table name="sec_usuario"/>
     </jpa:entity>
-    <jpa:entity lbl-ref="_1489529640378126" xre="false" compositePrimaryKeyClass="DetalleAsientoPK" abs="true" class="DetalleAsiento" v="true" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_1489529640377123">
+    <jpa:entity lbl-ref="_1489529640378126" xre="false" compositePrimaryKeyClass="DetalleAsientoPK" abs="false" class="DetalleAsiento" v="true" gen="false" pkg="contabilidad.pcga" m="false" rootElement="_148952964007652" id="_1489529640377123">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -877,7 +877,7 @@
         <jpa:el/>
         <jpa:table name="conta_pcga_naturaleza"/>
     </jpa:entity>
-    <jpa:entity lbl-ref="_1490465207667222" xre="false" compositePrimaryKeyClass="TipoContribuyentePK" abs="false" class="TipoContribuyente" v="true" gen="false" pkg="general" m="false" rootElement="_148952964007652" id="_1490465136906">
+    <jpa:entity lbl-ref="_1490465207667222" xre="false" compositePrimaryKeyClass="TipoContribuyentePK" abs="false" class="TipoContribuyente" v="true" pkg="general" m="false" rootElement="_148952964007652" id="_1490465136906">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -900,15 +900,16 @@
         <jpa:nq e="false" name="TipoContribuyente.findAll">
             <jpa:query>Select e from TipoContribuyente e</jpa:query>
         </jpa:nq>
-        <jpa:nq e="false" name="TipoContribuyente.findByCodigo">
+        <jpa:nq e="true" name="TipoContribuyente.findAllByCodigo">
             <jpa:query>Select t from TipoContribuyente t where t.codigo=:codigo</jpa:query>
         </jpa:nq>
         <jpa:nq e="false" name="TipoContribuyente.findByNombre">
             <jpa:query>Select t from TipoContribuyente t where t.nombre=:nombre</jpa:query>
         </jpa:nq>
         <jpa:el/>
+        <jpa:table name="gen_tipo_contribuyente"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="ActividadEconomicaPK" abs="false" class="ActividadEconomica" v="true" gen="false" pkg="general" m="false" rootElement="_148952964007652" id="_1490465329146">
+    <jpa:entity lbl-ref="_1490465391840227" xre="false" compositePrimaryKeyClass="ActividadEconomicaPK" abs="false" class="ActividadEconomica" v="true" pkg="general" m="false" rootElement="_148952964007652" id="_1490465329146">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -931,15 +932,16 @@
         <jpa:nq e="false" name="ActividadEconomica.findAll">
             <jpa:query>Select e from ActividadEconomica e</jpa:query>
         </jpa:nq>
-        <jpa:nq e="false" name="ActividadEconomica.findByCodigo">
+        <jpa:nq e="true" name="ActividadEconomica.findAllByCodigo">
             <jpa:query>Select a from ActividadEconomica a where a.codigo=:codigo</jpa:query>
         </jpa:nq>
         <jpa:nq e="false" name="ActividadEconomica.findByNombre">
             <jpa:query>Select a from ActividadEconomica a where a.nombre=:nombre</jpa:query>
         </jpa:nq>
         <jpa:el/>
+        <jpa:table name="gen_actividad_economica"/>
     </jpa:entity>
-    <jpa:entity xre="false" compositePrimaryKeyClass="TerceroActividadEconomicaPK" abs="false" class="TerceroActividadEconomica" v="true" gen="false" pkg="general" m="false" rootElement="_148952964007652" id="_1490465470696">
+    <jpa:entity lbl-ref="_1490465670155233" xre="false" compositePrimaryKeyClass="TerceroActividadEconomicaPK" abs="false" class="TerceroActividadEconomica" v="true" pkg="general" m="false" rootElement="_148952964007652" id="_1490465470696">
         <jpa:ts e="true"/>
         <jpa:hc e="true"/>
         <jpa:eq e="true"/>
@@ -947,12 +949,15 @@
         <jpa:attributes>
             <jpa:basic attribute-type="Boolean" v="true" name="principal" id="_1490465670155233">
                 <jpa:bv/>
+                <jpa:column name="ter_act_eco_principal" unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:basic>
             <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1490465329146" v="true" name="actividadEconomica" id="_1490465554106231">
                 <jpa:bv/>
+                <jpa:join-column name="TER_ACT_ECO_ACTIVIDAD_ECONOMICA_ID" rc="" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
             </jpa:many-to-one>
             <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1489529640428150" v="true" name="tercero" id="_1490465560234232">
                 <jpa:bv/>
+                <jpa:join-column name="TER_ACT_ECO_TERCERO_ID" rc="" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
             </jpa:many-to-one>
             <jpa:id attribute-type="Long" v="true" name="id" id="_1490465472191229">
                 <jpa:bv/>
@@ -963,10 +968,26 @@
         <jpa:nq e="false" name="TerceroActividadEconomica.findAll">
             <jpa:query>Select e from TerceroActividadEconomica e</jpa:query>
         </jpa:nq>
-        <jpa:nq e="false" name="TerceroActividadEconomica.findByPrincipal">
+        <jpa:nq e="true" name="TerceroActividadEconomica.findAllByPrincipal">
             <jpa:query>Select t from TerceroActividadEconomica t where t.principal=:principal</jpa:query>
         </jpa:nq>
+        <jpa:nq e="true" name="TerceroActividadEconomica.findAllByTerceroAndActividadEconomica">
+            <jpa:query>Select e from TerceroActividadEconomica e where e.tercero.id=:tercero and e.actividadEconomica.id=:actividadEconomica</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="true" name="TerceroActividadEconomica.findAllByTercero">
+            <jpa:query>Select e from TerceroActividadEconomica e where e.tercero.id=:tercero</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="true" name="TerceroActividadEconomica.findAllByActividadEconomica">
+            <jpa:query>Select e from TerceroActividadEconomica e where e.actividadEconomica.id=:actividadEconomica</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="true" name="TerceroActividadEconomica.findAllByTerceroAndPrincipal">
+            <jpa:query>Select e from TerceroActividadEconomica e where e.tercero.id=:tercero and e.principal=:principal</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="true" name="TerceroActividadEconomica.findAllByTerceroAndActividadEconomicaAndPrincipal">
+            <jpa:query>Select e from TerceroActividadEconomica e where e.tercero.id=:tercero and e.actividadEconomica.id=:actividadEconomica and e.principal=:principal</jpa:query>
+        </jpa:nq>
         <jpa:el/>
+        <jpa:table name="gen_tercero_actividad_economica"/>
     </jpa:entity>
     <jpa:entity lbl-ref="_149060666853264" xre="false" compositePrimaryKeyClass="DepartamentoPK" abs="false" class="Departamento" v="true" gen="false" pkg="general" m="false" rootElement="_148952964007652" id="_1490606651885">
         <jpa:ts e="true"/>

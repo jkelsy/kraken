@@ -10,13 +10,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  * @author jdmp
  */
 
 @Entity
+@Table(name="gen_tercero_actividad_economica")
+@NamedQueries({@NamedQuery(name="TerceroActividadEconomica.findAllByPrincipal",query="Select t from TerceroActividadEconomica t where t.principal=:principal"),@NamedQuery(name="TerceroActividadEconomica.findAllByTerceroAndActividadEconomica",query="Select e from TerceroActividadEconomica e where e.tercero.id=:tercero and e.actividadEconomica.id=:actividadEconomica"),@NamedQuery(name="TerceroActividadEconomica.findAllByTercero",query="Select e from TerceroActividadEconomica e where e.tercero.id=:tercero"),@NamedQuery(name="TerceroActividadEconomica.findAllByActividadEconomica",query="Select e from TerceroActividadEconomica e where e.actividadEconomica.id=:actividadEconomica"),@NamedQuery(name="TerceroActividadEconomica.findAllByTerceroAndPrincipal",query="Select e from TerceroActividadEconomica e where e.tercero.id=:tercero and e.principal=:principal"),@NamedQuery(name="TerceroActividadEconomica.findAllByTerceroAndActividadEconomicaAndPrincipal",query="Select e from TerceroActividadEconomica e where e.tercero.id=:tercero and e.actividadEconomica.id=:actividadEconomica and e.principal=:principal")})
 public class TerceroActividadEconomica { 
 
     @Column(name="ter_act_eco_id")
@@ -24,13 +30,16 @@ public class TerceroActividadEconomica {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name="ter_act_eco_principal")
     @Basic
     private Boolean principal;
 
     @ManyToOne(targetEntity = ActividadEconomica.class)
+    @JoinColumn(name="TER_ACT_ECO_ACTIVIDAD_ECONOMICA_ID")
     private ActividadEconomica actividadEconomica;
 
     @ManyToOne(targetEntity = Tercero.class)
+    @JoinColumn(name="TER_ACT_ECO_TERCERO_ID")
     private Tercero tercero;
 
 
