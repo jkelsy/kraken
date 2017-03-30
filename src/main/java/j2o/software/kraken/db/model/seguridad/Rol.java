@@ -6,21 +6,25 @@ package j2o.software.kraken.db.model.seguridad;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name="sec_rol")
+@NamedQuery(name="Rol.findByNombre",query="Select r from Rol r where r.nombre=:nombre")
 public class Rol implements Serializable { 
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name="rol_nombre")
     @Basic
     private String nombre;
 

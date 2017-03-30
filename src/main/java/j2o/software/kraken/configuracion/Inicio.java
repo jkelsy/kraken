@@ -5,14 +5,28 @@
  */
 package j2o.software.kraken.configuracion;
 
+import j2o.software.kraken.db.facade.seguridad.PermisoFacade;
+import j2o.software.kraken.db.facade.seguridad.RolFacade;
+import j2o.software.kraken.db.facade.seguridad.UsuarioFacade;
 import j2o.software.kraken.db.model.contabilidad.pcga.CentroCosto;
 import j2o.software.kraken.db.model.general.Empresa;
 import j2o.software.kraken.db.model.general.TipoIdentificacion;
+import j2o.software.kraken.db.model.seguridad.Permiso;
+import j2o.software.kraken.db.model.seguridad.Rol;
+import j2o.software.kraken.db.model.seguridad.Usuario;
 import j2o.software.kraken.services.contabilidad.pcga.CentroCostoService;
 import j2o.software.kraken.services.general.EmpresaService;
 import j2o.software.kraken.services.general.TipoIdentificacionService;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
+import java.util.Base64;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
@@ -34,6 +48,13 @@ public class Inicio {
     EmpresaService empresaService;
     @Inject
     CentroCostoService centroCostoService;
+    
+    @Inject 
+    RolFacade rolService;
+    @Inject
+    UsuarioFacade usuarioService;
+    @Inject
+    PermisoFacade permisoService;
 
     @PostConstruct
     public void iniciar() {
@@ -47,6 +68,9 @@ public class Inicio {
        // miSesion.setMiEmpresa(emp);
 
         iniciarCentroCosto();
+        
+        iniciarSeguridadAdministrador();
+        iniciarSeguridadContabilidad();
     }
 
     /* PARA TIPO IDENTIFICACION */
@@ -132,5 +156,110 @@ public class Inicio {
         }
     }
 
-    /* PARA EMPRESA */
+    /* SEGURIDAD */
+    public void iniciarSeguridadAdministrador(){
+        Rol rol = null;
+        Usuario usuario = null;
+        Permiso permiso = null;        
+
+        Map<String, Object> parameters = new HashMap<String, Object>();
+        parameters.put("nombre", "ADMIN");
+        Optional<Rol> rolOptional = rolService.findSingleByNamedQuery("Rol.findByNombre", parameters, Rol.class);
+
+        if (!rolOptional.isPresent()) {
+            rol = new Rol();
+            rol.setNombre("ADMIN");
+            rolService.create(rol);
+
+            parameters.clear();
+            parameters.put("login", "admin");
+
+            Optional<Usuario> usuarioOptional = usuarioService.findSingleByNamedQuery("Usuario.findByLogin", parameters, Usuario.class);
+            if (!usuarioOptional.isPresent()) {
+                MessageDigest md;
+                String _password = "admin";
+                try {
+                    md = MessageDigest.getInstance("SHA-256");
+                    byte[] passwordBytes = _password.getBytes();
+                    byte[] hash = md.digest(passwordBytes);
+                    String passwordHash = Base64.getEncoder().encodeToString(hash);
+                    
+                    usuario = new Usuario();
+                    usuario.setLogin("admin");
+                    usuario.setPassword(passwordHash);
+                    usuario.setActivo(true);
+                    
+                    usuarioService.create(usuario);
+                    
+                } catch (NoSuchAlgorithmException ex) {
+                    System.err.println(ex.getMessage());
+                }                
+            }
+
+            parameters.clear();
+            parameters.put("usuarioID", usuario.getId());
+            parameters.put("rolID", rol.getId());
+            Optional<Permiso> permisoOptional = permisoService.findSingleByNamedQuery("Permiso.findByUsuarioAndRol", parameters, Permiso.class);
+
+            if (!permisoOptional.isPresent()) {
+                permiso = new Permiso();
+                permiso.setUsuario(usuario);
+                permiso.setRol(rol);
+                permisoService.create(permiso);
+            }
+        }
+    }
+    
+    public void iniciarSeguridadContabilidad(){
+        Rol rol = null;
+        Usuario usuario = null;
+        Permiso permiso = null;        
+
+        Map<String, Object> parameters = new HashMap<String, Object>();
+        parameters.put("nombre", "CONTABILIDAD");
+        Optional<Rol> rolOptional = rolService.findSingleByNamedQuery("Rol.findByNombre", parameters, Rol.class);
+
+        if (!rolOptional.isPresent()) {
+            rol = new Rol();
+            rol.setNombre("CONTABILIDAD");
+            rolService.create(rol);
+
+            parameters.clear();
+            parameters.put("login", "contabilidad");
+
+            Optional<Usuario> usuarioOptional = usuarioService.findSingleByNamedQuery("Usuario.findByLogin", parameters, Usuario.class);
+            if (!usuarioOptional.isPresent()) {
+                MessageDigest md;
+                String _password = "contabilidad";
+                try {
+                    md = MessageDigest.getInstance("SHA-256");
+                    byte[] passwordBytes = _password.getBytes();
+                    byte[] hash = md.digest(passwordBytes);
+                    String passwordHash = Base64.getEncoder().encodeToString(hash);
+                    
+                    usuario = new Usuario();
+                    usuario.setLogin("contabilidad");
+                    usuario.setPassword(passwordHash);
+                    usuario.setActivo(true);
+                    
+                    usuarioService.create(usuario);
+                    
+                } catch (NoSuchAlgorithmException ex) {
+                    System.err.println(ex.getMessage());
+                }                
+            }
+
+            parameters.clear();
+            parameters.put("usuarioID", usuario.getId());
+            parameters.put("rolID", rol.getId());
+            Optional<Permiso> permisoOptional = permisoService.findSingleByNamedQuery("Permiso.findByUsuarioAndRol", parameters, Permiso.class);
+
+            if (!permisoOptional.isPresent()) {
+                permiso = new Permiso();
+                permiso.setUsuario(usuario);
+                permiso.setRol(rol);
+                permisoService.create(permiso);
+            }
+        }
+    }
 }

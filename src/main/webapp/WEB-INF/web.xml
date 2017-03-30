@@ -27,6 +27,65 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>index.xhtml</welcome-file>
+        <welcome-file>pages/usuario/index.xhtml</welcome-file>
     </welcome-file-list>
+    
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>todos</web-resource-name>
+            <description>application security constraints</description>
+            <url-pattern>/pages/*</url-pattern>            
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>*</role-name>
+        </auth-constraint>
+    </security-constraint>
+    
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>configuracion</web-resource-name>
+            <description>application security constraints</description>
+            <url-pattern>/pages/configuracion/*</url-pattern>            
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>ADMIN</role-name>
+        </auth-constraint>
+    </security-constraint>
+    
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>contabilidad</web-resource-name>
+            <description>application security constraints</description>
+            <url-pattern>/pages/contabilidad/*</url-pattern>            
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>CONTABILIDAD</role-name>                        
+        </auth-constraint>
+    </security-constraint>
+    
+    <login-config>
+        <auth-method>FORM</auth-method>        
+        <form-login-config>
+            <form-login-page>/login.xhtml</form-login-page>
+            <form-error-page>/errorLogin.xhtml</form-error-page>
+        </form-login-config>
+    </login-config>
+    
+    <security-role>
+        <role-name>ADMIN</role-name>        
+        <role-name>CONTADOR</role-name>
+        <role-name>*</role-name>
+    </security-role>
+    
+    <error-page>
+    <!-- Forbidden directory listing -->
+        <error-code>403</error-code>
+        <location>/noPermiso.xhtml</location>
+    </error-page>
 </web-app>

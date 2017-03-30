@@ -8,26 +8,31 @@ import j2o.software.kraken.db.model.general.Tercero;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name="sec_usuario")
+@NamedQuery(name="Usuario.findByLogin",query="Select u from Usuario u where u.login=:login")
 public class Usuario implements Serializable { 
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name="usr_login")
     @Basic
     private String login;
 
+    @Column(name="usr_password")
     @Basic
     private String password;
 

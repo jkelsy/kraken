@@ -5,31 +5,32 @@
 package j2o.software.kraken.db.model.seguridad;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name="sec_permiso")
+@NamedQuery(name="Permiso.findByUsuarioAndRol",query="Select e from Permiso e where e.usuario.id = :usuarioID and e.rol.id = :rolID ")
 public class Permiso implements Serializable { 
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(targetEntity = Usuario.class)
-    @JoinColumn(name="USUARIO_ID")
-    private List<Usuario> usuario;
+    @ManyToOne(targetEntity = Usuario.class)
+    @JoinColumn(name="USUARIO_USR_ID")
+    private Usuario usuario;
 
-    @OneToMany(targetEntity = Rol.class)
-    @JoinColumn(name="ROL_ID")
-    private List<Rol> rol;
+    @ManyToOne(targetEntity = Rol.class)
+    @JoinColumn(name="ROL_ROL_ID")
+    private Rol rol;
 
 
     public Long getId() {
@@ -40,19 +41,19 @@ public class Permiso implements Serializable {
         this.id = id;
     }
 
-    public List<Usuario> getUsuario() {
+    public Usuario getUsuario() {
         return this.usuario;
     }
 
-    public void setUsuario(List<Usuario> usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 
-    public List<Rol> getRol() {
+    public Rol getRol() {
         return this.rol;
     }
 
-    public void setRol(List<Rol> rol) {
+    public void setRol(Rol rol) {
         this.rol = rol;
     }
 
