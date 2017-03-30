@@ -2,7 +2,6 @@
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="KrakenPU" transaction-type="JTA">
     <jta-data-source>java:/jboss/datasources/KrakenDS</jta-data-source>
-    
     <class>j2o.software.kraken.db.model.general.Telefono</class>
     <class>j2o.software.kraken.db.model.contabilidad.pcga.Modulo</class>
     <class>j2o.software.kraken.db.model.contabilidad.pcga.ComprobanteSaldo</class>
@@ -23,6 +22,16 @@
     <class>j2o.software.kraken.db.model.general.TipoIdentificacion</class>
     <class>j2o.software.kraken.db.model.contabilidad.pcga.CentroCosto</class>
     <class>j2o.software.kraken.db.model.general.Empresa</class>
+    <class>j2o.software.kraken.db.model.Clase</class>
+    <class>j2o.software.kraken.db.model.Naturaleza</class>
+    <class>j2o.software.kraken.db.model.contabilidad.pcga.Clase</class>
+    <class>j2o.software.kraken.db.model.contabilidad.pcga.Naturaleza</class>
+    <class>j2o.software.kraken.db.model.general.TipoContribuyente</class>
+    <class>j2o.software.kraken.db.model.general.ActividadEconomica</class>
+    <class>j2o.software.kraken.db.model.general.TerceroActividadEconomica</class>
+    <class>j2o.software.kraken.db.model.general.Departamento</class>
+    <class>j2o.software.kraken.db.model.general.Municipio</class>
+    <class>j2o.software.kraken.db.model.general.Poblado</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.hbm2ddl.auto" value="update"/>

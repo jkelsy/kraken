@@ -54,10 +54,6 @@ public class PlanUnicoCuentas implements Serializable {
     @Basic
     private String auxiliar;
 
-    @Column(name="puc_clase")
-    @Basic
-    private String clase;
-
     @Column(name="puc_fecha")
     @Basic
     private Date fecha;
@@ -65,6 +61,10 @@ public class PlanUnicoCuentas implements Serializable {
     @ManyToOne(targetEntity = Empresa.class)
     @JoinColumn(name="PUC_EMPRESA_ID")
     private Empresa empresa;
+
+    @ManyToOne(targetEntity = Clase.class)
+    @JoinColumn(name="PUC_CLASE_ID")
+    private Clase clase;
 
 
     public Long getId() {
@@ -123,14 +123,6 @@ public class PlanUnicoCuentas implements Serializable {
         this.auxiliar = auxiliar;
     }
 
-    public String getClase() {
-        return this.clase;
-    }
-
-    public void setClase(String clase) {
-        this.clase = clase;
-    }
-
     public Date getFecha() {
         return this.fecha;
     }
@@ -145,6 +137,14 @@ public class PlanUnicoCuentas implements Serializable {
 
     public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
+    }
+
+    public Clase getClase() {
+        return this.clase;
+    }
+
+    public void setClase(Clase clase) {
+        this.clase = clase;
     }
 
 

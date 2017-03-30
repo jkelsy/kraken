@@ -1,9 +1,8 @@
-package j2o.software.kraken.managed.contabilidad.pcga;
-
+package j2o.software.kraken.managed.general;
 
 import j2o.software.kraken.configuracion.MiSesion;
-import j2o.software.kraken.db.model.contabilidad.pcga.Periodo;
-import j2o.software.kraken.services.contabilidad.pcga.PeriodoService;
+import j2o.software.kraken.db.model.general.ActividadEconomica;
+import j2o.software.kraken.services.general.ActividadEconomicaService;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -11,24 +10,26 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.UploadedFile;
 
-@Named(value = "periodoController")
+@Named(value = "actividadEconomicaController")
 @ViewScoped
-public class PeriodoController implements Serializable {
+public class ActividadEconomicaController implements Serializable {
 
-    @Inject MiSesion miSession;
-    
     @Inject
-    private PeriodoService servicio;
+    private MiSesion miSession;
 
-    private List<Periodo> listaList;
-    private List<Periodo> listaFiltradas;
-    private Periodo nueva;
+    @Inject
+    private ActividadEconomicaService servicio;
+
+    private List<ActividadEconomica> listaList;
+    private List<ActividadEconomica> listaFiltradas;
+    private ActividadEconomica nueva;
 
     private Long id; //id empresa seleccionada utilizado para mostrar o editar las empresas
 
     String labelAccion;
-
 
     public Long getId() {
         return id;
@@ -42,45 +43,39 @@ public class PeriodoController implements Serializable {
         return labelAccion;
     }
 
-    public List<Periodo> getListaList() {
+    public List<ActividadEconomica> getListaList() {
         return listaList;
     }
 
-    public void setListaList(List<Periodo> listaList) {
+    public void setListaList(List<ActividadEconomica> listaList) {
         this.listaList = listaList;
     }
 
-    public List<Periodo> getListaFiltradas() {
+    public List<ActividadEconomica> getListaFiltradas() {
         return listaFiltradas;
     }
 
-    public void setListaFiltradas(List<Periodo> listaFiltradas) {
+    public void setListaFiltradas(List<ActividadEconomica> listaFiltradas) {
         this.listaFiltradas = listaFiltradas;
     }
 
-    public Periodo getNueva() {
+    public ActividadEconomica getNueva() {
         return nueva;
     }
 
-    public void setNueva(Periodo nueva) {
+    public void setNueva(ActividadEconomica nueva) {
         this.nueva = nueva;
     }
 
-
-   
-    
-    
     public void inicio() {
         //nueva = new Empresa();
-        
-        System.err.println("MI EMPRESA."+miSession.getMiEmpresa().getId());
-        
-        listaList = servicio.findAllByEmpresa(miSession.getMiEmpresa().getId());
+
+        listaList = servicio.getFachada().findAll();
     }
 
     public void cargarCrear() {
         labelAccion = "Grabar";
-        nueva = new Periodo();
+        nueva = new ActividadEconomica();
         inicio();
     }
 
@@ -93,8 +88,7 @@ public class PeriodoController implements Serializable {
     }
 
     public void cargarListado() {
-       listaList = servicio.getFachada().findAll();
-       listaList = servicio.findAllByEmpresa(miSession.getMiEmpresa().getId());
+        listaList = servicio.getFachada().findAll();
 
     }
 
@@ -110,17 +104,13 @@ public class PeriodoController implements Serializable {
 
         try {
 
-            
-            nueva.setEmpresa(miSession.getMiEmpresa());
-
             if (nueva.getId() == null) {
                 mensaje = "Registro creado con exito";
-                 servicio.getFachada().create(nueva);
+                servicio.getFachada().create(nueva);
             } else {
                 mensaje = "Registro Modificado con exito";
                 servicio.getFachada().edit(nueva);
             }
-
 
             // MENSAJE
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Éxito", mensaje));
@@ -136,6 +126,12 @@ public class PeriodoController implements Serializable {
 
     }
 
-    
+    public void cargarActividadesEconomica(FileUploadEvent event) {
+        UploadedFile file = event.getFile();
+
+        if (file.getContents().length != 0) {
+            servicio.cargarActividadEconomica(file);
+        }
+    }
 
 }

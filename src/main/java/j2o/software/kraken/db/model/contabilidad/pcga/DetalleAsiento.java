@@ -7,40 +7,63 @@ package j2o.software.kraken.db.model.contabilidad.pcga;
 import j2o.software.kraken.db.model.general.Tercero;
 import java.io.Serializable;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 
 @Entity
-public abstract class DetalleAsiento implements Serializable { 
+@Table(name="conta_pcga_detalle_asiento")
+@NamedQueries({@NamedQuery(name="DetalleAsiento.findAllByTercero",query="Select d from DetalleAsiento d where d.tercero.id =:tercero"),@NamedQuery(name="DetalleAsiento.findAllByAsientoContable",query="Select d from DetalleAsiento d where d.asientoContable.id =:asientoContable"),@NamedQuery(name="DetalleAsiento.findAllByCentroCosto",query="Select d from DetalleAsiento d where d.centroCosto.id =:centroCosto"),@NamedQuery(name="DetalleAsiento.findAllByNaturaleza",query="Select d from DetalleAsiento d where d.naturaleza.id =:naturaleza"),@NamedQuery(name="DetalleAsiento.findAllByAsientoContableAndTerceroAndCentroCostoAndNaturaleza",query="Select d from DetalleAsiento d where d.asientoContable.id=:asientoContable and d.tercero.id =:tercero and d.centroCosto.id=:centroCosto and d.naturaleza.id=:naturaleza")})
+public class DetalleAsiento implements Serializable { 
 
+    @Column(name="det_asi_id")
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
-    @Basic
-    private String naturaleza;
-
+    @Column(name="det_asi_valor_debito")
     @Basic(optional=false)
-    private double valorDB;
+    private double valorDebito;
 
+    @Column(name="det_asi_valor_credito")
     @Basic
-    private int valorCR;
+    private Double valorCredito;
 
+    @Column(name="det_asi_descripcion")
     @Basic
     private String descrpcion;
 
+    @Column(name="det_asi_valor_base")
+    @Basic
+    private String valorBase;
+
+    @Column(name="det_asi_valor_tasa")
+    @Basic
+    private Double valorTasa;
+
     @ManyToOne(targetEntity = Tercero.class)
+    @JoinColumn(name="DET_ASI_TERCERO_ID")
     private Tercero tercero;
 
     @ManyToOne(targetEntity = AsientoContable.class)
+    @JoinColumn(name="DET_ASI_ASIENTO_CONTABLE_ID")
     private AsientoContable asientoContable;
 
     @ManyToOne(targetEntity = CentroCosto.class)
+    @JoinColumn(name="DET_ASI_CENTRO_COSTO_ID")
     private CentroCosto centroCosto;
+
+    @ManyToOne(targetEntity = Naturaleza.class)
+    @JoinColumn(name="DET_ASI_NATURALEZA_ID")
+    private Naturaleza naturaleza;
 
 
     public Long getId() {
@@ -51,28 +74,20 @@ public abstract class DetalleAsiento implements Serializable {
         this.id = id;
     }
 
-    public String getNaturaleza() {
-        return this.naturaleza;
+    public double getValorDebito() {
+        return this.valorDebito;
     }
 
-    public void setNaturaleza(String naturaleza) {
-        this.naturaleza = naturaleza;
+    public void setValorDebito(double valorDebito) {
+        this.valorDebito = valorDebito;
     }
 
-    public double getValorDB() {
-        return this.valorDB;
+    public Double getValorCredito() {
+        return this.valorCredito;
     }
 
-    public void setValorDB(double valorDB) {
-        this.valorDB = valorDB;
-    }
-
-    public int getValorCR() {
-        return this.valorCR;
-    }
-
-    public void setValorCR(int valorCR) {
-        this.valorCR = valorCR;
+    public void setValorCredito(Double valorCredito) {
+        this.valorCredito = valorCredito;
     }
 
     public String getDescrpcion() {
@@ -81,6 +96,22 @@ public abstract class DetalleAsiento implements Serializable {
 
     public void setDescrpcion(String descrpcion) {
         this.descrpcion = descrpcion;
+    }
+
+    public String getValorBase() {
+        return this.valorBase;
+    }
+
+    public void setValorBase(String valorBase) {
+        this.valorBase = valorBase;
+    }
+
+    public Double getValorTasa() {
+        return this.valorTasa;
+    }
+
+    public void setValorTasa(Double valorTasa) {
+        this.valorTasa = valorTasa;
     }
 
     public Tercero getTercero() {
@@ -105,6 +136,14 @@ public abstract class DetalleAsiento implements Serializable {
 
     public void setCentroCosto(CentroCosto centroCosto) {
         this.centroCosto = centroCosto;
+    }
+
+    public Naturaleza getNaturaleza() {
+        return this.naturaleza;
+    }
+
+    public void setNaturaleza(Naturaleza naturaleza) {
+        this.naturaleza = naturaleza;
     }
 
 

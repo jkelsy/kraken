@@ -1,12 +1,18 @@
 package j2o.software.kraken.managed.contabilidad.pcga;
 
-
 import j2o.software.kraken.configuracion.MiSesion;
+import j2o.software.kraken.db.model.contabilidad.pcga.DetalleDocumento;
 import j2o.software.kraken.db.model.contabilidad.pcga.Modulo;
+import j2o.software.kraken.db.model.contabilidad.pcga.Naturaleza;
+import j2o.software.kraken.db.model.contabilidad.pcga.PlanUnicoCuentas;
 import j2o.software.kraken.db.model.contabilidad.pcga.TipoDocumento;
+import j2o.software.kraken.services.contabilidad.pcga.DetalleDocumentoService;
 import j2o.software.kraken.services.contabilidad.pcga.ModuloService;
+import j2o.software.kraken.services.contabilidad.pcga.NaturalezaService;
+import j2o.software.kraken.services.contabilidad.pcga.PucService;
 import j2o.software.kraken.services.contabilidad.pcga.TipoDocumentoService;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -18,8 +24,9 @@ import javax.inject.Inject;
 @ViewScoped
 public class TipoDocumentoController implements Serializable {
 
-    @Inject MiSesion miSession;
-    
+    @Inject
+    private MiSesion miSession;
+
     @Inject
     private TipoDocumentoService tipoDocumentoService;
 
@@ -27,14 +34,25 @@ public class TipoDocumentoController implements Serializable {
     private List<TipoDocumento> tipoDocumentoFiltradas;
     private TipoDocumento nueva;
 
-    @Inject ModuloService moduloService;
+    @Inject
+    private ModuloService moduloService;
     private List<Modulo> moduloList;
-    
-    
+
     private Long id; //id empresa seleccionada utilizado para mostrar o editar las empresas
 
-    String labelAccion;
+    @Inject
+    private DetalleDocumentoService detalleService;
+    private List<DetalleDocumento> detalleList;
 
+    @Inject
+    private PucService pucService;
+    private List<PlanUnicoCuentas> pucList;
+
+    @Inject
+    private NaturalezaService naturalezaService;
+    private List<Naturaleza> naturalezaList;
+
+    String labelAccion;
 
     public Long getId() {
         return id;
@@ -68,8 +86,6 @@ public class TipoDocumentoController implements Serializable {
         this.tipoDocumentoFiltradas = tipoDocumentoFiltradas;
     }
 
-   
-
     public TipoDocumento getNueva() {
         return nueva;
     }
@@ -86,17 +102,43 @@ public class TipoDocumentoController implements Serializable {
         this.moduloList = moduloList;
     }
 
-   
-    
-    
-    
+    public List<DetalleDocumento> getDetalleList() {
+        return detalleList;
+    }
+
+    public void setDetalleList(List<DetalleDocumento> detalleList) {
+        this.detalleList = detalleList;
+    }
+
+    public List<PlanUnicoCuentas> getPucList() {
+        return pucList;
+    }
+
+    public void setPucList(List<PlanUnicoCuentas> pucList) {
+        this.pucList = pucList;
+    }
+
+    public List<Naturaleza> getNaturalezaList() {
+        return naturalezaList;
+    }
+
+    public void setNaturalezaList(List<Naturaleza> naturalezaList) {
+        this.naturalezaList = naturalezaList;
+    }
+
     public void inicio() {
         //nueva = new Empresa();
-        
-        System.err.println("MI EMPRESA."+miSession.getMiEmpresa().getId());
-        
+
         tipoDocumentoList = tipoDocumentoService.findAllByEmpresa(miSession.getMiEmpresa().getId());
         moduloList = moduloService.findAllByEmpresa(miSession.getMiEmpresa().getId());
+        pucList = pucService.findAllByEmpresa(miSession.getMiEmpresa().getId());
+        naturalezaList = naturalezaService.getFachada().findAll();
+
+        if (nueva != null) {
+            detalleList = detalleService.findAllByTipoDocumento(nueva.getId());
+            System.err.println("asjnajksaks"+detalleList);
+        }
+
     }
 
     public void cargarCrear() {
@@ -108,14 +150,13 @@ public class TipoDocumentoController implements Serializable {
     public void cargarEditar() {
         labelAccion = "Actualizar";
         nueva = tipoDocumentoService.getTipoDocumentoFacade().find(id);
-
         inicio();
 
     }
 
     public void cargarListado() {
-       tipoDocumentoList = tipoDocumentoService.getTipoDocumentoFacade().findAll();
-       tipoDocumentoList = tipoDocumentoService.findAllByEmpresa(miSession.getMiEmpresa().getId());
+        tipoDocumentoList = tipoDocumentoService.getTipoDocumentoFacade().findAll();
+        tipoDocumentoList = tipoDocumentoService.findAllByEmpresa(miSession.getMiEmpresa().getId());
 
     }
 
@@ -131,17 +172,32 @@ public class TipoDocumentoController implements Serializable {
 
         try {
 
-            
             nueva.setEmpresa(miSession.getMiEmpresa());
 
             if (nueva.getId() == null) {
                 mensaje = "Registro creado con exito";
-                 tipoDocumentoService.getTipoDocumentoFacade().create(nueva);
+                tipoDocumentoService.getTipoDocumentoFacade().create(nueva);
             } else {
                 mensaje = "Registro Modificado con exito";
                 tipoDocumentoService.getTipoDocumentoFacade().edit(nueva);
             }
 
+            for (DetalleDocumento det : detalleService.findAllByTipoDocumento(nueva.getId())) {
+                detalleService.getFachada().remove(det);
+            }
+
+            if (detalleList != null) {
+                System.err.println("Iniciando lista detalle"+detalleList.size());
+                for (DetalleDocumento det : detalleList) {
+                    DetalleDocumento d = new DetalleDocumento();
+                    d.setTipoDocumento(getNueva());
+                    d.setAcreedora(det.getAcreedora());
+                    d.setNaturaleza(det.getNaturaleza());
+                    d.setPlanUnicoCuentas(det.getPlanUnicoCuentas());
+                    detalleService.getFachada().create(d);
+                }
+
+            }
 
             // MENSAJE
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Éxito", mensaje));
@@ -157,6 +213,12 @@ public class TipoDocumentoController implements Serializable {
 
     }
 
-    
+    public void agregarDetalle() {
+        DetalleDocumento rep = new DetalleDocumento();
+        if (detalleList == null) {
+            detalleList = new ArrayList<DetalleDocumento>();
+        }
+        detalleList.add(rep);
+    }
 
 }

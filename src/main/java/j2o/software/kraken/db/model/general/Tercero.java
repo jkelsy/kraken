@@ -83,6 +83,10 @@ public class Tercero implements Serializable {
     @JoinColumn(name="TER_EMPRESA_ID")
     private Empresa empresa;
 
+    @ManyToOne(targetEntity = TipoContribuyente.class)
+    @JoinColumn(name="TER_TIPO_CONTRI_ID")
+    private TipoContribuyente tipoContribuyente;
+
 
     public Long getId() {
         return this.id;
@@ -194,6 +198,14 @@ public class Tercero implements Serializable {
 
     public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
+    }
+
+    public TipoContribuyente getTipoContribuyente() {
+        return this.tipoContribuyente;
+    }
+
+    public void setTipoContribuyente(TipoContribuyente tipoContribuyente) {
+        this.tipoContribuyente = tipoContribuyente;
     }
 
 

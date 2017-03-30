@@ -117,7 +117,6 @@ public class EmpresaController implements Serializable {
         labelAccion = "Actualizar";
         nueva = empresaService.getEmpresaFacade().find(id);
 
-
         inicio();
 
     }

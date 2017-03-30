@@ -25,6 +25,50 @@
 
             </p:panelGrid>
 
+            <p:commandButton action="#{tipoDocumentoController.agregarDetalle}" update="tablaDetalle"/>
+            <p:dataTable value="#{tipoDocumentoController.detalleList}" 
+                         var="item"  editable="true" id="tablaDetalle" 
+
+                         >
+                <p:column headerText="Id">
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+
+                <p:column headerText="Acreedora">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{item.acreedora}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{item.acreedora}" style="width:100%" label="Acreedora"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="Naturaleza">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{item.naturaleza.nombre}" /></f:facet>
+                        <f:facet name="input">
+                            <h:selectOneMenu converter="entityConverter" value="#{item.naturaleza}" style="width:100%">
+                                <f:selectItems value="#{tipoDocumentoController.naturalezaList}" var="nat" 
+                                               itemLabel="#{nat.nombre}" itemValue="#{nat}" />
+                            </h:selectOneMenu>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Puc">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{item.planUnicoCuentas.cuenta}" /></f:facet>
+                        <f:facet name="input">
+                            <h:selectOneMenu converter="entityConverter" value="#{item.planUnicoCuentas}" style="width:100%">
+                                <f:selectItems value="#{tipoDocumentoController.pucList}" var="p" 
+                                               itemLabel="#{p.cuenta}" itemValue="#{p}" />
+                            </h:selectOneMenu>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+
+                <p:column style="width:32px">
+                    <p:rowEditor />
+                </p:column>
+            </p:dataTable>
 
 
 
